@@ -1,0 +1,107 @@
+.News-block {
+  display: flex;
+  margin-top: 30px;
+}
+
+.News-title {
+  font-size: 21px;
+  padding-top: 20px;
+}
+
+.News-container {
+}
+
+.News-p {
+  padding-top: 20px;
+}
+
+.News-breadcrumbs-title {
+  margin-bottom: 30px;
+}
+
+.News-leftSidebar-button-title {
+  display: flex;
+  justify-content: center;
+}
+
+.News-leftSidebar-button {
+  padding-right: 40px;
+}
+
+.News-button {
+  height: 48px;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.News-data {
+  padding-bottom: 10px;
+}
+
+.News-paragraph {
+  font-size: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+}
+
+.News-link {
+  font-size: 19px;
+  color: red;
+  font-weight: 300;
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(214, 25, 25);
+  }
+}
+
+.News-button-block {
+  padding-top: 15px;
+  width: 70%;
+}
+
+p {
+  line-height: 25px;
+}
+
+.News-button-block-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.News-border {
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.News-link-block {
+  padding-bottom: 20px;
+}
+
+.News-Stiker {
+  height: 200px;
+  width: 200px;
+}
+
+.News-title-block {
+  display: flex;
+  padding-bottom: 60px;
+}
+
+.News-Stiker-block {
+  padding-right: 130px;
+}
+
+@media screen and (max-width: 715px) {
+  .News-leftSidebar-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .News-container {
+    padding: 0 20px;
+  }
+}

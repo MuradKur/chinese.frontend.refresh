@@ -1,0 +1,52 @@
+.FloatingFooter-block {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-around;
+  background-color: #d3d3d3;
+  align-items: center;
+  display: flex;
+  z-index: 1000;
+}
+
+.FloatingFooter-button-service {
+  &:hover {
+    text-decoration: none;
+    color: #ffb000 !important;
+    background-color: #de2a1b !important;
+  }
+}
+
+.FloatingFooter-button-bell {
+  &:hover {
+    text-decoration: none;
+    color: #de2a1b !important;
+    background-color: #ffb000 !important;
+  }
+}
+
+.FloatingFooter-button-application {
+  &:hover {
+    text-decoration: none;
+    background-color: rgb(150, 13, 13) !important;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .FloatingFooter-button {
+    text-transform: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .FloatingFooter-button {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .FloatingFooter-button {
+    font-size: 11px;
+  }
+}

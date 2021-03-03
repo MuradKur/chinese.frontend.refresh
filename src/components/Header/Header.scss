@@ -1,0 +1,277 @@
+.Header-container {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.logo {
+  height: 35px;
+  margin: 5px 10px;
+  width: auto;
+}
+
+.sign-in--button {
+  padding-right: 0;
+
+  .sign-in--label {
+    color: #191919;
+    font-weight: bold;
+    margin-right: 7px;
+    transition: 0.1s;
+  }
+
+  svg {
+    transition: 0.1s;
+  }
+
+  &:hover {
+    .sign-in--label {
+      color: orangered;
+    }
+
+    svg {
+      color: orangered !important;
+    }
+  }
+}
+
+.Header-container--fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.header {
+  padding: 5px 60px;
+}
+
+.header-container--size {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Header-dropdown-menu {
+  background-color: #191919;
+
+  &--item {
+    &:hover {
+      background-color: #191919;
+    }
+  }
+
+  &--link {
+    color: white !important;
+
+    &:hover {
+      color: #ffb000 !important;
+    }
+  }
+}
+
+.Header-nav--item {
+  padding-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .Header-nav--link {
+    font-size: 14px;
+    font-weight: 900;
+    color: #191919;
+    text-decoration: none;
+    padding: 0;
+    font-family: 'Roboto Bold', sans-serif;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+.Header-dropdown-menu {
+  background-color: white;
+
+  .Header-dropdown-menu--item {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    .Header-dropdown-menu--link {
+      color: black !important;
+
+      &:hover {
+        color: orangered !important;
+      }
+    }
+  }
+}
+
+.Header-burger--button {
+  display: none;
+}
+
+.Header-burger--container {
+  display: none;
+  .ant-collapse-content-box {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .ant-collapse-header {
+    padding: 0px 17px !important;
+    .ant-collapse-arrow {
+      padding: 0 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .logo-burger {
+    height: 50px;
+  }
+
+  .Header-burger--button {
+    display: block;
+  }
+
+  .Header-burger--container {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.1s;
+  }
+
+  .Header-burger--container-close {
+    left: 100%;
+    right: -100%;
+
+    .Header-burger--menu {
+      width: 0;
+      padding: 0;
+    }
+  }
+
+  .Header-burger--menu {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    position: absolute;
+    transition: 0.1s;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+
+    .Header-burger-menu--item {
+      margin-bottom: 10px;
+    }
+
+    .Header-burger-menu--panel {
+      .ant-collapse-header {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        padding-left: 17px;
+      }
+
+      .ant-collapse-arrow {
+        top: 11px !important;
+        left: 0 !important;
+        font-weight: bold;
+      }
+    }
+
+    .Header-burger-menu--link {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+
+      &:hover {
+        color: #ffb000;
+      }
+    }
+
+    .Header-burger-menu--panel-link {
+      padding-left: 10px;
+      display: block;
+      padding-top: 10px;
+    }
+  }
+
+  .header {
+    padding: 5px 60px;
+  }
+
+  .Header-container {
+    display: none;
+  }
+
+  .Header-user--block {
+    display: none;
+  }
+
+  .Header-burger--menu-header {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 5px 30px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Header-burger--menu {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .Header-burger--menu {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .Header-burger--menu {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Header-burger--menu {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .logo {
+    display: none;
+  }
+
+  .close-button {
+    display: block;
+
+    svg {
+      &:hover {
+        color: #ffb000 !important;
+      }
+    }
+  }
+
+  .Header-burger--menu-header {
+    display: flex;
+  }
+}

@@ -1,0 +1,21 @@
+.Action-title {
+  font-family: 'Roboto Bold';
+}
+
+.Action-column {
+  &--left {
+    max-width: 400px;
+
+    img {
+      border-radius: 6px;
+    }
+  }
+
+  &--right {
+    max-width: 800px;
+
+    h3 {
+      font-weight: bold;
+    }
+  }
+}

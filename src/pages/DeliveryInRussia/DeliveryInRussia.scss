@@ -1,0 +1,138 @@
+.DeliveryInRussia-block {
+  display: flex;
+  margin-top: 30px;
+}
+
+.DeliveryInRussia-title {
+  font-size: 21px;
+  padding-top: 30px;
+}
+
+.DeliveryInRussia-paragraph {
+  padding-bottom: 20px;
+}
+
+.DeliveryInRussia-last-paragraph {
+  padding-bottom: 70px;
+}
+
+.DeliveryInRussia-paragraph-div {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.DeliveryInRussia-paragraph-attention {
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.DeliveryInRussia-paragraph-p {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.DeliveryInRussia-title-opening-hours {
+  font-size: 15px;
+  padding-bottom: 3px;
+}
+
+.DeliveryInRussia-container {
+  padding-left: 130px;
+  padding-right: 130px;
+}
+
+.DeliveryInRussia-p {
+  padding-top: 20px;
+}
+
+.DeliveryInRussia-breadcrumbs-title {
+  margin-bottom: 30px;
+}
+
+.DeliveryInRussia-leftSidebar-title {
+  display: flex;
+  justify-content: center;
+}
+
+.DeliveryInRussia-link {
+  color: red;
+  font-weight: 400;
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(214, 25, 25);
+  }
+}
+
+.DeliveryInRussia-link-download {
+  color: red;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(214, 25, 25);
+  }
+}
+
+.DeliveryInRussia-paragraph-block {
+  padding-bottom: 20px;
+  padding-left: 18px;
+}
+
+.DeliveryInRussia-em {
+  font-weight: 600;
+}
+
+.DeliveryInRussia-li {
+  padding-bottom: 20px;
+}
+
+.DeliveryInRussia-title-h2 {
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.DeliveryInRussia-leftSidebar {
+  padding-right: 40px;
+}
+
+.DeliveryInRussia-icon {
+  height: 50px;
+  width: 50px;
+}
+
+p {
+  line-height: 25px;
+}
+
+.DeliveryInRussia-border {
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.DeliveryInRussia-icon {
+  margin-right: 30px;
+  width: 100px;
+  height: 80px;
+}
+
+.DeliveryInRussia-besplatnaya_dostavka-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DeliveryInRussia-besplatnaya_dostavka {
+  width: 45%;
+  height: 45%;
+}
+
+@media screen and (max-width: 920px) {
+  .DeliveryInRussia-leftSidebar {
+    padding: 0;
+  }
+}

@@ -1,0 +1,303 @@
+.Main-news-button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 70px;
+  width: 230px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Main-header {
+  font-size: 20px;
+  word-break: break-word;
+  font-weight: bold;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+
+.Main-text {
+  font-family: 'PT Sans', Arial, sans-serif;
+  line-height: 20px;
+  color: #191919;
+  font-size: 15px;
+  padding-top: 15px;
+}
+
+.Main-item {
+  display: block;
+  font-family: 'PT Sans', Arial, sans-serif;
+  line-height: 1.1em;
+  color: #191919;
+  font-size: 17px;
+  font-weight: 700;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.Main-border {
+  border-radius: 1px;
+  background-color: #f2f2f2;
+  width: 100%;
+}
+
+.Main-header-h3 {
+  font-size: 22px;
+  margin-top: 40px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  word-wrap: wrap;
+}
+
+.Main-header-h4 {
+  font-size: 22px;
+  margin-top: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.Main-about-company {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding: 30px;
+}
+
+.Main-text-block {
+  margin-left: 55px;
+}
+
+.Main-text-text {
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.Main-icon {
+  display: flex;
+  align-items: flex-start;
+
+  font-size: 15px;
+  font-weight: 100;
+
+  p {
+    padding-top: 5px;
+  }
+}
+
+.Main-block--icon {
+  min-width: 30px;
+}
+
+.Main-text-item {
+  display: block;
+  font-family: 'PT Sans', Arial, sans-serif;
+  line-height: 20px;
+  color: #191919;
+  font-size: 17px;
+  font-weight: 50;
+}
+
+.Main-text-color {
+  color: red;
+  margin-bottom: 0;
+}
+
+.Main-map {
+  height: 400px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.Main-content-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Main-car-service {
+  color: blacky;
+  margin-right: 30px;
+}
+
+.Main-BiMap {
+  margin-left: 30px;
+}
+
+.Main-section {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  padding-top: 100px;
+  padding-left: 170px;
+}
+
+.Main-iframe {
+  width: 100%;
+  height: 315px;
+  max-width: 430px;
+  min-width: 430px;
+}
+
+.Main-video--section {
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-between;
+}
+
+.Main-container {
+  padding: 0 100px;
+}
+
+.Main-video--container {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 217, 0, 1) 5%,
+    rgba(255, 63, 0, 1) 100%
+  );
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 40%;
+}
+
+.Main-video--block {
+  margin-right: -150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 1090px) {
+  .Main-video--section {
+    display: block;
+  }
+
+  .Main-video--container {
+    background: transparent;
+  }
+
+  .Main-video--block {
+    margin: 0 auto;
+  }
+
+  .Main-header {
+    br {
+      display: none;
+    }
+  }
+
+  .Main-video--container {
+    width: 100%;
+  }
+
+  .Main-iframe {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+  }
+
+  .Main-section {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .Main-iframe {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+  }
+
+  .Main-about-company {
+    display: block;
+
+    .Main-text-block {
+      margin: 0;
+    }
+  }
+
+  .Main-section {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  .Main-video--section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 100px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .Main-container {
+    padding: 0 20px;
+  }
+
+  .Main-video--section {
+    padding: 30px;
+
+    .Main-iframe {
+      width: 100%;
+      display: block;
+      min-width: 100%;
+    }
+
+    .Main-section {
+      width: 100%;
+    }
+  }
+
+  .Main-content-map {
+    .map-marker-block {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .Main-BiMap {
+      margin: 0;
+    }
+
+    .marker-label {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .Main-header-h4 {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .Main-container {
+    padding: 0 10px;
+  }
+
+  .Main-video--section {
+    padding: 30px 0px;
+
+    .Main-section {
+      width: 100%;
+      padding: 0 20px;
+    }
+  }
+}
+
+.Main-heatherpreview-solid {
+  border: none;
+  background-color: red;
+  color: red;
+  height: 2px;
+  width: 30%;
+}

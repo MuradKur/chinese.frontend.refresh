@@ -1,0 +1,130 @@
+.HeatherPreview {
+  background: linear-gradient(90deg, white 0%, #828282 200%);
+}
+
+.HeatherPreview-backround {
+  background-image: url(../../assets/car.png);
+  min-height: 310px;
+  max-height: 310px;
+  background-size: 100% 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-repeat: no-repeat;
+  background-position-y: 100%;
+  padding-top: 20px;
+
+  .HeatherPreview-subtitle--hr {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      rgba(222, 42, 27, 1) 0%,
+      rgba(130, 130, 130, 0) 100%
+    );
+    margin-bottom: 10px;
+  }
+
+  .HeatherPreview-content {
+    padding-top: 20px;
+  }
+
+  .HeatherPreview-subtitle--block {
+    color: #de2a1b;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .HeatherPreview-title {
+    color: #de2a1b;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-bottom: 40px;
+    padding-top: 20px;
+  }
+
+  .slider-container {
+    margin-bottom: -205px;
+    margin-right: 30px;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
+
+    .slick-prev:before,
+    .slick-next:before {
+      font-family: 'slick';
+      font-size: 20px;
+      line-height: 1;
+      opacity: 0.75;
+      color: rgba(0, 0, 0, 45%);
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .HeatherPreview-backround {
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .HeatherPreview-backround {
+    background-size: 250%;
+    background-repeat: no-repeat;
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .HeatherPreview-backround {
+    min-height: 300px;
+    background-size: 310%;
+  }
+
+  .HeatherPreview-content {
+    padding-bottom: 0 !important;
+    padding-top: 40px !important;
+  }
+
+  .HeatherPreview-subtitle--block {
+    padding-bottom: 0px !important;
+  }
+
+  .HeatherPreview-title {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .HeatherPreview-backround {
+    min-height: 240px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .HeatherPreview-backround {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .slider-container {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .HeatherPreview-backround {
+    &::before {
+      content: '';
+      display: none;
+    }
+  }
+}

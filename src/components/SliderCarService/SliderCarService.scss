@@ -1,0 +1,23 @@
+.SliderCarService-icon-block {
+  min-height: 200px;
+  background-color: white;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 0 200px;
+
+  .slick-slider {
+    width: 100%;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: rgb(214, 25, 25);
+  }
+}
+
+.SliderCarService-icon {
+  width: 97%;
+  height: 190px;
+  cursor: pointer;
+}

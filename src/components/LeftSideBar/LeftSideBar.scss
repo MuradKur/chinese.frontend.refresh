@@ -1,0 +1,44 @@
+.LeftSideBar {
+  background-color: #f2f2f2;
+  min-width: 300px;
+  max-width: 300px;
+  height: auto;
+
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    border-bottom: 2px solid white;
+    margin: 0 !important;
+  }
+
+  .LeftSideBar-title {
+    color: orange;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .LeftSideBar {
+    min-width: 230px;
+    max-width: 230px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .LeftSideBar {
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .LeftSideBar {
+    display: none;
+  }
+
+  .Contacts-map {
+    padding-left: 0 !important;
+  }
+
+  .Contacts-item-block {
+    margin-left: 0 !important;
+  }
+}

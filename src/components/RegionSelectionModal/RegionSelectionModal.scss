@@ -1,0 +1,43 @@
+.RegionSelectionModal {
+  border-radius: 1px;
+  width: 65%;
+  height: 85%;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #888;
+}
+
+.RegionSelectionModal-border {
+  border-radius: 1px;
+  width: 860px;
+  height: 270px;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #888;
+  margin-left: 48px;
+}
+
+.RegionSelectionModal-item {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.RegionSelectionModal-Сontainer {
+  display: flex;
+  margin-top: 15px;
+}
+
+.RegionSelectionModal-Block {
+  margin-left: 80px;
+  a {
+    display: block;
+  }
+}
+
+.d-block {
+  display: block;
+}

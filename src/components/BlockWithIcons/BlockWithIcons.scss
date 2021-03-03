@@ -1,0 +1,100 @@
+.BlockWithIcons-SparePartsstyle {
+  width: 110px;
+  height: 90px;
+}
+
+.BlockWithIcons-CarServicestyle {
+  width: 110px;
+  height: 90px;
+}
+
+.BlockWithIcons-CarsForSalestyle {
+  width: 100px;
+  height: 90px;
+}
+
+.BlockWithIcons-ForWholesalersstyle {
+  width: 80px;
+  height: 90px;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.BlockWithIcons-link {
+  display: block;
+  width: 27%;
+  color: #191919;
+  padding: 20px;
+
+  &:hover {
+    color: #ffb000;
+    background-color: #f2f2f2;
+
+    .BlockWithIcons-heading {
+      color: #ffb000;
+    }
+  }
+}
+
+.BlockWithIcons-block {
+  display: flex;
+  padding-right: 390px;
+  padding-left: 50px;
+}
+
+.BlockWithIcons-item {
+  text-align: center;
+}
+
+.BlockWithIcons-heading {
+  margin-top: 10px;
+  font-size: 23px;
+  margin-bottom: 10px;
+  transition: 0.1s;
+  font-family: 'Roboto Bold';
+}
+
+@media screen and (max-width: 1200px) {
+  .BlockWithIcons-block {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .BlockWithIcons-link {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .BlockWithIcons-block {
+    background: white !important;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .BlockWithIcons-link {
+    min-width: 50%;
+    background-color: white;
+    box-sizing: border-box;
+    transition: 0.8s;
+
+    &:hover {
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      border-radius: 6px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .BlockWithIcons-link {
+    min-width: 100%;
+  }
+}

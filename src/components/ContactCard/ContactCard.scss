@@ -1,0 +1,30 @@
+.ContactCard {
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #d3d3d3;
+  padding: 15px;
+  display: inline-block;
+
+  .ContactCard-title {
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    color: #191919;
+    margin-bottom: 5px;
+
+    &:hover {
+      color: #de2a1b;
+    }
+  }
+
+  .ContactCard-phone {
+    color: #de2a1b;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 5px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
