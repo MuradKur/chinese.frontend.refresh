@@ -87,8 +87,8 @@ const NAVS: Nav['navs'] = [
   },
   {
     id: 3,
-    label: 'авто с пробегом',
-    link: '/car-service',
+    label: 'услуги автосервиса',
+    link: '/autoservice',
   },
   {
     id: 4,

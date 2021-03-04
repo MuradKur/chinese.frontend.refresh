@@ -18,6 +18,7 @@ import CarService from '../../pages/CarService/CarService';
 import DeliveryInRussia from '../../pages/DeliveryInRussia/DeliveryInRussia';
 import Actions from '../../pages/Actions/Actions';
 import Action from '../../pages/Action/Action';
+import TechnicalMaintenance from '../../pages/TechnicalMaintenance/TechnicalMaintenance';
 import Header from '../Header/Header';
 
 function App() {
@@ -32,11 +33,15 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route exact path="/news" component={News} />
           <Route exact path="/about-company" component={AboutCompany} />
-          <Route path="/vacancies" component={Vacancies} />
-          <Route path="/car-service" component={CarService} />
+          <Route exact path="/vacancies" component={Vacancies} />
+          <Route exact path="/autoservice" component={CarService} />
           <Route path="/delivery" component={DeliveryInRussia} />
-          <Route path="/actions" component={Actions} />
+          <Route exact path="/actions" component={Actions} />
           <Route path="/action/:id" component={Action} />
+          <Route
+            path="/autoservice/technical-maintenance"
+            component={TechnicalMaintenance}
+          />
           <Redirect to="/" />
         </Switch>
       </div>
