@@ -9,6 +9,11 @@ import { BiPhone } from 'react-icons/bi';
 import SliderCarService from '../../components/SliderCarService/SliderCarService';
 import { Table } from 'antd';
 import { COLORS } from '../../constants';
+import autoservise_kind_work1png from '../../assets/autoservise_kind_work1png.png';
+import servisnaya_knizhka from '../../assets/servisnaya_knizhka.png';
+import autoservise_kind_work1 from '../../assets/autoservise_kind_work1.png';
+import autoservise_kind_work_ from '../../assets/autoservise_kind_work_.png';
+import autoservise_kind_work1_13 from '../../assets/autoservise_kind_work1_13.png';
 // @ts-ignore
 import WOW from 'wowjs';
 
@@ -94,6 +99,71 @@ const CarService: FC<IProps> = () => {
             className="CarService-search--input"
           />
           <Button className="CarService-search--button">Поиск</Button>
+        </div>
+
+        <div className="CarService-icon-block">
+          <a href="/">
+            <img
+              className="CarService-icon "
+              src={autoservise_kind_work1png}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img className="CarService-icon" src={servisnaya_knizhka} alt="" />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work_}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_13}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon "
+              src={autoservise_kind_work1png}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img className="CarService-icon" src={servisnaya_knizhka} alt="" />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work_}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_13}
+              alt=""
+            />
+          </a>
         </div>
 
         <h2 className="CarService-title-h2">АДРЕСА СЕРВИСОВ</h2>
