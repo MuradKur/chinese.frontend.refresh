@@ -14,6 +14,18 @@ import servisnaya_knizhka from '../../assets/servisnaya_knizhka.png';
 import autoservise_kind_work1 from '../../assets/autoservise_kind_work1.png';
 import autoservise_kind_work_ from '../../assets/autoservise_kind_work_.png';
 import autoservise_kind_work1_13 from '../../assets/autoservise_kind_work1_13.png';
+import autoservise_kind_work1_11 from '../../assets/autoservise_kind_work1_11.png';
+import autoservise_kind_work1_13__ from '../../assets/autoservise_kind_work1_13__.png';
+import autoservise_kind_work1_19 from '../../assets/autoservise_kind_work1_19.png';
+import autoservise_kind_work1_17 from '../../assets/autoservise_kind_work1_17.png';
+import autoservise_kind_work1_01 from '../../assets/autoservise_kind_work1_01.png';
+import autoservise_kind_work1_18 from '../../assets/autoservise_kind_work1_18.png';
+import autoservise_kind_work1_14 from '../../assets/autoservise_kind_work1_14.png';
+import autoservise_kind_work1_09 from '../../assets/autoservise_kind_work1_09.png';
+import autoservise_kind_work1_02 from '../../assets/autoservise_kind_work1_02.png';
+import autoservise_kind_work1_05 from '../../assets/autoservise_kind_work1_05.png';
+import autoservise_kind_work1_12 from '../../assets/autoservise_kind_work1_12.png';
+import autoservise_kind_work1_08 from '../../assets/autoservise_kind_work1_08.png';
 // @ts-ignore
 import WOW from 'wowjs';
 
@@ -136,31 +148,84 @@ const CarService: FC<IProps> = () => {
           <a href="/">
             <img
               className="CarService-icon "
-              src={autoservise_kind_work1png}
-              alt=""
-            />
-          </a>
-          <a href="/">
-            <img className="CarService-icon" src={servisnaya_knizhka} alt="" />
-          </a>
-          <a href="/">
-            <img
-              className="CarService-icon"
-              src={autoservise_kind_work1}
+              src={autoservise_kind_work1_11}
               alt=""
             />
           </a>
           <a href="/">
             <img
               className="CarService-icon"
-              src={autoservise_kind_work_}
+              src={autoservise_kind_work1_13__}
               alt=""
             />
           </a>
           <a href="/">
             <img
               className="CarService-icon"
-              src={autoservise_kind_work1_13}
+              src={autoservise_kind_work1_19}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_17}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_01}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_18}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_14}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_09}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_02}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_05}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_12}
+              alt=""
+            />
+          </a>
+          <a href="/">
+            <img
+              className="CarService-icon"
+              src={autoservise_kind_work1_08}
               alt=""
             />
           </a>
