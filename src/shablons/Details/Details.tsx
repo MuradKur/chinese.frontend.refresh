@@ -35,7 +35,7 @@ const Details: FC<IProps> = ({ title, hideSearch, children }) => {
               <Button className="CarService-search--button">Поиск</Button>
             </div>
           )}
-          <section className="d-flex Details-section">
+          <section className="d-flex Details-section align-items-start">
             <LeftSideBar />
             <div className="Details-block--right">{children}</div>
           </section>

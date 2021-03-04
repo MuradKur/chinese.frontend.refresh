@@ -16,7 +16,7 @@ interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
-const dataSource = [
+export const dataSource = [
   {
     key: '1',
     modeWork: 'пн-вс: 09:00-21:00',
@@ -31,7 +31,7 @@ const dataSource = [
   },
 ];
 
-const columns = [
+export const columns = [
   {
     title: 'Подразделение / Адрес',
     dataIndex: 'address',
