@@ -19,6 +19,7 @@ import DeliveryInRussia from '../../pages/DeliveryInRussia/DeliveryInRussia';
 import Actions from '../../pages/Actions/Actions';
 import Action from '../../pages/Action/Action';
 import TechnicalMaintenance from '../../pages/TechnicalMaintenance/TechnicalMaintenance';
+import GuaranteePage from '../../pages/GuaranteePage/GuaranteePage';
 import Header from '../Header/Header';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/autoservice" component={CarService} />
           <Route path="/delivery" component={DeliveryInRussia} />
           <Route exact path="/actions" component={Actions} />
+          <Route exact path="/GuaranteePage" component={GuaranteePage} />
           <Route path="/action/:id" component={Action} />
           <Route
             path="/autoservice/technical-maintenance"
