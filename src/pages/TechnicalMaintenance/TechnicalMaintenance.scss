@@ -25,6 +25,11 @@
   }
 }
 
+.TechnicalMaintenance-content--image {
+  max-width: 300px;
+  border-radius: 6px;
+}
+
 .TechnicalMaintenance {
   .cars-list {
     display: flex;

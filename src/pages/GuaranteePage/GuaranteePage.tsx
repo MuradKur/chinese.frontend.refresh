@@ -3,6 +3,8 @@ import Button from '../../components/Button/Button';
 import Details from '../../shablons/Details/Details';
 import './GuaranteePage.scss';
 import { COLORS } from '../../constants';
+import Footer from '../../components/Footer/Footer';
+import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 
 interface IExternalProps {}
 
@@ -81,6 +83,7 @@ const GuaranteePage: FC<IProps> = () => {
 
           <iframe
             className="GuaranteePage-iframe"
+            title="iframe"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/POfEa0kIxog"
@@ -111,6 +114,8 @@ const GuaranteePage: FC<IProps> = () => {
           </div>
         </div>
       </Details>
+      <Footer />
+      <FloatingFooter />
     </div>
   );
 };
