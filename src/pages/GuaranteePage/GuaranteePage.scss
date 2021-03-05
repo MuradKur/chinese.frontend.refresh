@@ -1,0 +1,96 @@
+.GuaranteePage-border {
+  border-radius: 1px;
+  border: 1px solid #f6cb00;
+  background-color: rgba(250, 223, 18, 0.08);
+  height: 170px;
+  width: 100%;
+}
+
+.GuaranteePage-input {
+  width: 50%;
+  height: 45px;
+  border-radius: 1px;
+  border: 2px solid #c1c1c1;
+  background-color: white;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  font: 14px 'PT Sans', Arial, sans-serif;
+  color: #000;
+}
+
+.GuaranteePage-input-button-block {
+  display: flex;
+  padding-left: 20px;
+}
+
+.GuaranteePage-input-button-block-padding {
+  padding-bottom: 150px;
+}
+
+.GuaranteePage-send-button {
+  height: 43px;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.GuaranteePage-entry-to-those-service {
+  height: 43px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.GuaranteePage-entry-to-those-service-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.GuaranteePage-title-h2 {
+  font-size: 28px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 20px;
+  margin-bottom: 0px;
+}
+
+.GuaranteePage-paragraph {
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+.GuaranteePage-iframe {
+  width: 100%;
+  min-height: 400px;
+  padding-bottom: 50px;
+}
+
+.GuaranteePage-title-h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.GuaranteePage-link {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+    color: red;
+  }
+}
+
+.GuaranteePage-paragraph-b {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.GuaranteePage-ul {
+  color: #e34c19;
+}
+
+.GuaranteePage-span {
+  color: #191919;
+}

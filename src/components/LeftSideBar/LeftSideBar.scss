@@ -4,14 +4,34 @@
   max-width: 300px;
   height: auto;
 
+  .LeftSideBar-icon {
+    padding-top: 3px;
+  }
+
+  a {
+    white-space: break-spaces;
+    line-height: 25px;
+    &:hover {
+      color: #ffb000;
+    }
+  }
+
   .ant-menu-submenu-title,
   .ant-menu-item {
     border-bottom: 2px solid white;
     margin: 0 !important;
+    height: auto !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   .LeftSideBar-title {
     color: orange;
+    white-space: wrap;
+
+    &:hover {
+      color: #de2a1b;
+    }
   }
 }
 

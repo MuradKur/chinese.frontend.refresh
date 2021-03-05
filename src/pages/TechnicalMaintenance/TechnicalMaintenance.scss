@@ -1,0 +1,41 @@
+.TechnicalMaintenance-image {
+  width: 100%;
+  display: block;
+  min-height: 400px;
+}
+
+.TechnicalMaintenance-preview--subtitle {
+  font-weight: bold;
+  color: #797979;
+}
+
+.TechnicalMaintenance-title--h2 {
+  font-size: 22px;
+  font-family: 'Roboto Bold';
+  margin-top: 10px;
+}
+
+.TechnicalMaintenance-title--h3 {
+  font-size: 22px;
+  font-family: 'Roboto Bold';
+  margin-top: 10px;
+
+  &.danger {
+    color: #de2a1b;
+  }
+}
+
+.TechnicalMaintenance-content--image {
+  max-width: 300px;
+  border-radius: 6px;
+}
+
+.TechnicalMaintenance {
+  .cars-list {
+    display: flex;
+
+    .CarCard:not(:nth-child(4n)) {
+      margin-right: 10px;
+    }
+  }
+}
