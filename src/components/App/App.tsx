@@ -21,6 +21,7 @@ import Action from '../../pages/Action/Action';
 import TechnicalMaintenance from '../../pages/TechnicalMaintenance/TechnicalMaintenance';
 import GuaranteePage from '../../pages/GuaranteePage/GuaranteePage';
 import Header from '../Header/Header';
+import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagnosis';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/actions" component={Actions} />
           <Route exact path="/guarante" component={GuaranteePage} />
           <Route path="/action/:id" component={Action} />
+          <Route path="/suspensiondiagnosis" component={SuspensionDiagnosis} />
           <Route
             path="/autoservice/technical-maintenance"
             component={TechnicalMaintenance}
