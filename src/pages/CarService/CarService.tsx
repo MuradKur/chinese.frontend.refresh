@@ -114,7 +114,7 @@ const CarService: FC<IProps> = () => {
         </div>
 
         <div className=" wow fadeIn CarService-icon-block">
-          <a href="/">
+          <a href="/actions">
             <img
               className="CarService-icon "
               src={autoservise_kind_work1png}
@@ -138,7 +138,7 @@ const CarService: FC<IProps> = () => {
               alt=""
             />
           </a>
-          <a href="/">
+          <a href="/suspensiondiagnosis">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_13}
