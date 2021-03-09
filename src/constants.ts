@@ -12,6 +12,7 @@ export const COLORS = {
   transparent: 'transparent',
   yellow: '#f6cb00',
   gray: '#797979',
+  lightgray2: '#eee',
   orangeGradient:
     'linear-gradient(180deg, rgba(255,217,0,1) 45%, rgba(255,63,0,1) 100%)',
   silverGradient: 'linear-gradient(180deg,#aaaaaa80 40%, #f2f2f2 60%)',

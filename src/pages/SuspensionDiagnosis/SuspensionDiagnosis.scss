@@ -1,0 +1,55 @@
+.SuspensionDiagnosis-number {
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+}
+
+.SuspensionDiagnosis-button-td {
+  border: 3px solid #ccc;
+  outline: none;
+  box-shadow: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #ccc !important;
+    outline: none;
+    border: 3px solid #ccc;
+  }
+}
+
+.SuspensionDiagnosis-title-h1 {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.SuspensionDiagnosis-icon {
+  height: 200px;
+  width: 320px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.SuspensionDiagnosis-block-mg-p {
+  display: flex;
+}
+
+.SuspensionDiagnosis-ul {
+  color: #e34c19;
+}
+
+.SuspensionDiagnosis-p {
+  color: black;
+}
+
+.SuspensionDiagnosis-paragraph-p {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 70px;
+  margin-top: 30px;
+}
