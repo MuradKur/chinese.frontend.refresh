@@ -78,7 +78,7 @@ export const columns = [
     key: 'phone',
     render() {
       return (
-        <a href="/">
+        <a href="/autoservice/details">
           <Button
             bgColor={COLORS.lightgray2}
             className="SuspensionDiagnosis-button-td">
