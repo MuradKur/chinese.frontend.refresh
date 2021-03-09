@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/autoservice" component={CarService} />
           <Route path="/delivery" component={DeliveryInRussia} />
           <Route exact path="/actions" component={Actions} />
-          <Route exact path="/GuaranteePage" component={GuaranteePage} />
+          <Route exact path="/guarante" component={GuaranteePage} />
           <Route path="/action/:id" component={Action} />
           <Route
             path="/autoservice/technical-maintenance"

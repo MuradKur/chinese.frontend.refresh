@@ -185,7 +185,7 @@ const TechnicalMaintenance: FC<IProps> = () => {
         title="Плановое техническое обслуживание (ТО) автомобиля">
         <div className="TechnicalMaintenance">
           <img
-            className="TechnicalMaintenance-image mb-2"
+            className=" wow fadeIn TechnicalMaintenance-image mb-2"
             src={headerImage}
             alt="autoservice"
           />
@@ -207,7 +207,7 @@ const TechnicalMaintenance: FC<IProps> = () => {
           <h3 className="text-center TechnicalMaintenance-title--h3 danger mb-3">
             HYUNDAI
           </h3>
-          <Row className="cars-list mb-3 flex-wrap">{renderHundaiCars()}</Row>
+          <Row className="cars-list wow fadeIn mb-3 flex-wrap">{renderHundaiCars()}</Row>
           <p className="text-center color-gray mb-0">
             Не нашли нужную модель или модификацию? Позвоните в любой СТО и
             получите бесплатную консультацию наших <br />
@@ -249,7 +249,7 @@ const TechnicalMaintenance: FC<IProps> = () => {
           />
           <div className="d-flex">
             <img
-              className="TechnicalMaintenance-content--image"
+              className=" wow fadeIn TechnicalMaintenance-content--image"
               src={planovoe_to_avtomobilya}
               alt="planovoe_to_avtomobilya"
             />
