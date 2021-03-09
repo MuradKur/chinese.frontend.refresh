@@ -202,3 +202,101 @@
     padding: 0 !important;
   }
 }
+
+@media screen and (max-width: 1500px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 18%;
+      img {
+        width: 100%;
+      }
+    }
+
+    a:not(:nth-child(5n)) {
+      margin-right: 25px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 22%;
+    }
+
+    a:not(:nth-child(4n)) {
+      margin-right: 25px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 30%;
+    }
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 40%;
+
+      img {
+        min-height: 300px;
+      }
+    }
+
+    a:not(:nth-child(3n)) {
+      margin-right: 25px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 45%;
+
+      img {
+        min-height: 300px;
+      }
+    }
+
+    a:not(:nth-child(2n)) {
+      margin-right: 25px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .CarService-icon-block {
+    a {
+      margin-right: 0 !important;
+      width: 100% !important;
+
+      img {
+        min-height: 450px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .CarService-icon-block {
+    flex-direction: column;
+    align-items: center;
+    a {
+      margin-right: 0 !important;
+    }
+    .CarService-icon {
+      min-height: 300px;
+    }
+  }
+}

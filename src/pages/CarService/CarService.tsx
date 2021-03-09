@@ -113,7 +113,7 @@ const CarService: FC<IProps> = () => {
           <Button className="CarService-search--button">Поиск</Button>
         </div>
 
-        <div className="CarService-icon-block">
+        <div className=" wow fadeIn CarService-icon-block">
           <a href="/">
             <img
               className="CarService-icon "
@@ -121,10 +121,10 @@ const CarService: FC<IProps> = () => {
               alt=""
             />
           </a>
-          <a href="/">
+          <a href="/guarante">
             <img className="CarService-icon" src={servisnaya_knizhka} alt="" />
           </a>
-          <a href="/">
+          <a href="/autoservice/technical-maintenance">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1}
@@ -252,7 +252,7 @@ const CarService: FC<IProps> = () => {
         </h4>
 
         <Table
-          className="wow fadeIn "
+          className=" wow fadeIn "
           dataSource={dataSource}
           columns={columns}
         />

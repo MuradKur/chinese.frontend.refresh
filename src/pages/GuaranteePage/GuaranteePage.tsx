@@ -82,7 +82,7 @@ const GuaranteePage: FC<IProps> = () => {
           </p>
 
           <iframe
-            className="GuaranteePage-iframe"
+            className="GuaranteePage-iframe wow slideInRight"
             title="iframe"
             width="560"
             height="315"
