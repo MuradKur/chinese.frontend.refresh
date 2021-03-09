@@ -90,7 +90,11 @@
 
 @media screen and (max-width: 920px) {
   .LeftSideBar {
-    display: none;
+    margin-bottom: 30px;
+  }
+
+  .section-leftSideBar-map {
+    display: block;
   }
 
   .Contacts-map {

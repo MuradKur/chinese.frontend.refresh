@@ -207,7 +207,9 @@ const TechnicalMaintenance: FC<IProps> = () => {
           <h3 className="text-center TechnicalMaintenance-title--h3 danger mb-3">
             HYUNDAI
           </h3>
-          <Row className="cars-list wow fadeIn mb-3 flex-wrap">{renderHundaiCars()}</Row>
+          <Row className="cars-list wow fadeIn mb-3 flex-wrap">
+            {renderHundaiCars()}
+          </Row>
           <p className="text-center color-gray mb-0">
             Не нашли нужную модель или модификацию? Позвоните в любой СТО и
             получите бесплатную консультацию наших <br />
@@ -247,13 +249,13 @@ const TechnicalMaintenance: FC<IProps> = () => {
             dataSource={dataSource}
             columns={columns}
           />
-          <div className="d-flex">
+          <div className="d-flex TechnicalMaintenance-content">
             <img
               className=" wow fadeIn TechnicalMaintenance-content--image"
               src={planovoe_to_avtomobilya}
               alt="planovoe_to_avtomobilya"
             />
-            <div className="ml-2">
+            <div className="ml-2 TechnicalMaintenance-content--text">
               Есть ли у автолюбителя возможность избежать дорогостоящего ремонта
               в будущем или, как минимум, сократить эксплуатационные расходы? Во
               многом это зависит от самого владельца транспортного средства. И
