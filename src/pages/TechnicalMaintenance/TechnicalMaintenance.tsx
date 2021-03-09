@@ -25,10 +25,85 @@ import planovoe_to_avtomobilya from '../../assets/planovoe_to_avtomobilya.jpg';
 import { columns, dataSource } from '../CarService/CarService';
 import Footer from '../../components/Footer/Footer';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
+import { LeftSideBarMenu, LeftSideBarSubMenu } from './menu';
+import creta from '../../assets/creta.png';
+import elantra from '../../assets/elantra.png';
+import grandeur_0 from '../../assets/grandeur_0.png';
+import h1 from '../../assets/h1.png';
+import i30 from '../../assets/i30.png';
+import i40 from '../../assets/i40.png';
+import ix35 from '../../assets/ix35.png';
+import santa_fe from '../../assets/santa_fe.png';
+import solaris from '../../assets/solaris.png';
+import sonata from '../../assets/sonata.png';
+import tucson from '../../assets/tucson.png';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
+
+const HYUNDAI = [
+  {
+    id: 1,
+    title: 'Creta',
+    image: creta,
+  },
+  {
+    id: 2,
+    title: 'Elantra',
+    image: elantra,
+  },
+  {
+    id: 100,
+    title: 'Grandeur',
+    image: grandeur_0,
+  },
+  {
+    id: 3,
+    title: 'H1',
+    image: h1,
+  },
+  {
+    id: 4,
+    title: 'i30',
+    image: i30,
+  },
+  {
+    id: 5,
+    title: 'i40',
+    image: i40,
+  },
+  {
+    id: 6,
+    title: 'ix35',
+    image: ix35,
+  },
+  {
+    id: 7,
+    title: 'Santa Fe',
+    image: santa_fe,
+  },
+  {
+    id: 8,
+    title: 'Solaris',
+    image: solaris,
+  },
+  {
+    id: 9,
+    title: 'Sonata',
+    image: sonata,
+  },
+  {
+    id: 10,
+    title: 'Tucson',
+    image: tucson,
+  },
+  {
+    id: 11,
+    title: 'Другая',
+    image: notFoundCar,
+  },
+];
 
 const CARS = [
   {
@@ -98,9 +173,16 @@ const TechnicalMaintenance: FC<IProps> = () => {
     return CARS.map((item) => <CarCard key={item.id} {...item} />);
   }, []);
 
+  const renderHundaiCars = useCallback(() => {
+    return HYUNDAI.map((item) => <CarCard key={item.id} {...item} />);
+  }, []);
+
   return (
     <>
-      <Details>
+      <Details
+        menu={LeftSideBarMenu}
+        submenu={LeftSideBarSubMenu}
+        title="Плановое техническое обслуживание (ТО) автомобиля">
         <div className="TechnicalMaintenance">
           <img
             className=" wow fadeIn TechnicalMaintenance-image mb-2"
@@ -125,9 +207,7 @@ const TechnicalMaintenance: FC<IProps> = () => {
           <h3 className="text-center TechnicalMaintenance-title--h3 danger mb-3">
             HYUNDAI
           </h3>
-          <Row className=" wow fadeIn cars-list mb-3 flex-wrap">
-            {renderCars()}
-          </Row>
+          <Row className="cars-list wow fadeIn mb-3 flex-wrap">{renderHundaiCars()}</Row>
           <p className="text-center color-gray mb-0">
             Не нашли нужную модель или модификацию? Позвоните в любой СТО и
             получите бесплатную консультацию наших <br />
@@ -140,16 +220,23 @@ const TechnicalMaintenance: FC<IProps> = () => {
             <Button className="mr-1">АДРЕСА И ТЕЛЕФОНЫ</Button>
             <Button>ЗАКАЗАТЬ ЗВОНОК</Button>
           </Row>
-          <Warning>
-            <b className="mb-1">Внимание!</b>
-            <p className="mb-0">
-              Автовладельцы автомобильных марок SsangYong, Daewoo и Chevrolet
-              могут получить консультацию по стоимости ТО связавшись по телефону
-              с любым из наших технических центров.
-            </p>
-          </Warning>
+          <div className="mb-4">
+            <Warning>
+              <b className="mb-1">Внимание!</b>
+              <p className="mb-0">
+                Автовладельцы автомобильных марок SsangYong, Daewoo и Chevrolet
+                могут получить консультацию по стоимости ТО связавшись по
+                телефону с любым из наших технических центров.
+              </p>
+            </Warning>
+          </div>
+          <hr />
+          <h3 className="text-center TechnicalMaintenance-title--h3 danger mb-3">
+            KIA
+          </h3>
+          <Row className="cars-list mb-3 flex-wrap">{renderCars()}</Row>
           <h3 className="text-center TechnicalMaintenance-title--h3 mb-3">
-            HYUNDAI
+            АДРЕСА СЕРВИСОВ
           </h3>
           <Map className="CarService-map" />
           <h3 className="text-center TechnicalMaintenance-title--h3 mb-3 mt-3">

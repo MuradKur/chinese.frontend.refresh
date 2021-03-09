@@ -4,12 +4,13 @@ import './LeftSideBar.scss';
 import { Link } from 'react-router-dom';
 import SubMenu from 'antd/lib/menu/SubMenu';
 
-interface IMenuItem {
+export interface IMenuItem {
   id: number;
   label: {
     type?: 'title' | 'label'; // по нему будет определяться отмечать лейбл или нет
     value: string;
     link: string; // ссылку куда ввести
+    icon?: React.ReactNode;
   };
   submenu?: Array<IMenuItem>;
 }
@@ -57,7 +58,7 @@ const LeftSideBarMenu: IExternalProps['menu'] = [
   },
 ];
 
-const LeftSideBar: FC<IProps> = () => {
+const LeftSideBar: FC<IProps> = ({ menu }) => {
   const renderSubmenu = (item: IMenuItem) => {
     return item.submenu?.map(renderMenu);
   };
@@ -71,8 +72,11 @@ const LeftSideBar: FC<IProps> = () => {
     if (!item.submenu) {
       return (
         <Menu.Item key={key}>
-          <Link className={className} to={item.label.link}>
-            {item.label.value}
+          <Link
+            className={`d-flex align-items-start ${className}`}
+            to={item.label.link}>
+            <div className="LeftSideBar-icon">{item.label.icon}</div>
+            <div>{item.label.value}</div>
           </Link>
         </Menu.Item>
       );
@@ -87,7 +91,7 @@ const LeftSideBar: FC<IProps> = () => {
 
   return (
     <Menu className="LeftSideBar" mode="inline">
-      {LeftSideBarMenu.map(renderMenu)}
+      {(menu || LeftSideBarMenu).map(renderMenu)}
     </Menu>
   );
 };
