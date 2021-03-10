@@ -71,6 +71,7 @@ const AutoServiceTable: FC<IProps> = ({ className, ...restProps }) => {
         showHeader={true}
         pagination={false}
         dataSource={dataSource}
+        // @ts-ignore
         columns={columns}
         {...restProps}
       />

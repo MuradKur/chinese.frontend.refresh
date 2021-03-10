@@ -79,17 +79,17 @@ const BodyRepair: FC<IProps> = () => {
 
         <div className="d-flex">
           <div className="BodyRepair-border-div ">
-            <a className="BodyRepair-sedans" href="">
+            <a className="BodyRepair-sedans" href="/">
               Седаны
             </a>
           </div>
           <div className="BodyRepair-border-div ">
-            <a className="BodyRepair-sedans" href="">
+            <a className="BodyRepair-sedans" href="/">
               Универсалы и хечбеки
             </a>
           </div>
           <div className="BodyRepair-border-div ">
-            <a className="BodyRepair-sedans" href="">
+            <a className="BodyRepair-sedans" href="/">
               Кроссоверы
             </a>
           </div>
@@ -445,6 +445,7 @@ const BodyRepair: FC<IProps> = () => {
 
         <div className="BodyRepair-iframe mt-5">
           <iframe
+            title="BodyRepair"
             width="560"
             height="315"
             src="https://www.youtube.com/embed/hlnV19jIQRk"

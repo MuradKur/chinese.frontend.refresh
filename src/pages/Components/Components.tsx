@@ -10,6 +10,7 @@ import RegionSelectionModal from '../../components/RegionSelectionModal/RegionSe
 import Map from '../../components/Map/Map';
 import HeatherPreview from '../../components/HeatherPreview/HeatherPreview';
 import BlockWithIcons from '../../components/BlockWithIcons/BlockWithIcons';
+import Table from '../../components/Table/Table';
 import { COLORS } from '../../constants';
 
 interface IExternalProps {}
@@ -60,6 +61,30 @@ const Components: FC<IProps> = () => {
       <RegionSelectionModal
         visible={isOpenModalRegion}
         onClose={handleCloseModalRegion}
+      />
+      <Table
+        columns={[
+          {
+            key: 'name',
+            title: 'name',
+          },
+          {
+            key: 'age',
+            title: () => {
+              return <b>Age: {Math.random() * 90}</b>;
+            },
+          },
+        ]}
+        data={[
+          {
+            name: {
+              value: 'Name',
+            },
+            age: {
+              value: 'Age',
+            },
+          },
+        ]}
       />
     </div>
   );
