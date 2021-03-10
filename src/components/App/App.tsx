@@ -23,6 +23,7 @@ import GuaranteePage from '../../pages/GuaranteePage/GuaranteePage';
 import DetailsAutoService from '../../pages/DetailsAutoService/DetailsAutoService';
 import Header from '../Header/Header';
 import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagnosis';
+import BodyRepair from '../../pages/BodyRepair/BodyRepair';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             path="/autoservice/technical-maintenance"
             component={TechnicalMaintenance}
           />
+          <Route exact path="/bodyrepair" component={BodyRepair} />
           <Route
             exact
             path="/suspensiondiagnosis"
