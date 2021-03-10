@@ -10,11 +10,9 @@ interface IProps extends IExternalProps {}
 const DetailsAutoService: FC<IProps> = () => {
   return (
     <div>
-      <div className="container">
-        <Details>
-          <AutoServiceTable />
-        </Details>
-      </div>
+      <Details>
+        <AutoServiceTable />
+      </Details>
     </div>
   );
 };
