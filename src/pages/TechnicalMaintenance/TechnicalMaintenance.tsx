@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useState } from 'react';
 import Details from '../../shablons/Details/Details';
 import './TechnicalMaintenance.scss';
 import headerImage from '../../assets/autoservice.jpg';
@@ -7,6 +7,7 @@ import { COLORS } from '../../constants';
 import Button from '../../components/Button/Button';
 import CarCard from '../../components/CarCard/CarCard';
 import Warning from '../../components/Warning/Warning';
+import CalculateTo from '../../components/CalculateTo/CalculateTo';
 import Map from '../../components/Map/Map';
 import { Row, Table } from 'antd';
 import ceed from '../../assets/ceed.png';
@@ -37,6 +38,7 @@ import santa_fe from '../../assets/santa_fe.png';
 import solaris from '../../assets/solaris.png';
 import sonata from '../../assets/sonata.png';
 import tucson from '../../assets/tucson.png';
+import Modal from '../../components/Modal/Modal';
 
 interface IExternalProps {}
 
@@ -169,16 +171,33 @@ const CARS = [
 ];
 
 const TechnicalMaintenance: FC<IProps> = () => {
-  const renderCars = useCallback(() => {
-    return CARS.map((item) => <CarCard key={item.id} {...item} />);
+  const [visible, setVisible] = useState(false);
+
+  const handleOpenModal = useCallback(() => {
+    setVisible(true);
   }, []);
 
-  const renderHundaiCars = useCallback(() => {
-    return HYUNDAI.map((item) => <CarCard key={item.id} {...item} />);
+  const handleCloseModal = useCallback(() => {
+    setVisible(false);
   }, []);
+
+  const renderCars = useCallback(() => {
+    return CARS.map((item) => (
+      <CarCard onClick={handleOpenModal} key={item.id} {...item} />
+    ));
+  }, [handleOpenModal]);
+
+  const renderHundaiCars = useCallback(() => {
+    return HYUNDAI.map((item) => (
+      <CarCard onClick={handleOpenModal} key={item.id} {...item} />
+    ));
+  }, [handleOpenModal]);
 
   return (
     <>
+      <Modal visible={visible} onClose={handleCloseModal}>
+        <CalculateTo />
+      </Modal>
       <Details
         menu={LeftSideBarMenu}
         submenu={LeftSideBarSubMenu}
