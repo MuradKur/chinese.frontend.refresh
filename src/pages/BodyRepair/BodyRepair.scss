@@ -1,0 +1,147 @@
+.BodyRepair-title-h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.BodyRepair-icon {
+  height: 200px;
+  width: 320px;
+  border-radius: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.BodyRepair-block-mg-p {
+  display: flex;
+}
+
+.BodyRepair-ul {
+  color: #e34c19;
+}
+
+.BodyRepair-p {
+  color: black;
+}
+
+.BodyRepair-paragraph-p {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 70px;
+  margin-top: 30px;
+}
+
+.BodyRepair-iframe {
+  margin-bottom: 50px;
+}
+
+.BodyRepair-button-td {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 18px;
+  padding: 8px;
+  min-width: 170px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffb000 !important;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: none;
+
+  &:hover {
+    color: #de2a1b !important;
+  }
+}
+
+.BodyRepair-number {
+  font-size: 16px;
+  font-weight: bold;
+
+  a {
+    color: #ffb000;
+    &:hover {
+      color: #de2a1b !important;
+    }
+  }
+}
+
+.BodyRepair-border {
+  border: #ddd solid 1px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BodyRepair-circle {
+  border-radius: 50%;
+  background-color: red;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.BodyRepair-exclamation-point {
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  padding-top: 40px;
+}
+
+.BodyRepair-block-div {
+  display: flex;
+}
+
+.BodyRepair-font-weight {
+  font-size: 20px;
+  color: black;
+}
+
+.BodyRepair-paragraph-b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.BodyRepair-em-p {
+  color: #666;
+}
+
+.BodyRepair-border-div {
+  background-color: #f2f2f2;
+  width: 30%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #d3d3d3;
+  }
+}
+
+.BodyRepair-sedans {
+  margin-bottom: 0;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.BodyRepair-creta {
+  width: 100%;
+}
