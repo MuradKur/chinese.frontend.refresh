@@ -222,7 +222,7 @@ const CarService: FC<IProps> = () => {
               alt=""
             />
           </a>
-          <a href="/">
+          <a href="/bodyrepair">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_08}

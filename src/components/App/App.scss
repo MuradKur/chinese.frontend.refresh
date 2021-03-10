@@ -28,6 +28,10 @@
   background-color: white;
 }
 
+.font-weight {
+  font-family: 'Roboto Bold';
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -51,11 +55,11 @@
 }
 
 .align-items-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .d-block {
-  display: block;
+  display: block !important;
 }
 
 .text-center {
@@ -74,8 +78,16 @@
   justify-content: space-between;
 }
 
+.justify-content-center {
+  justify-content: center !important;
+}
+
 .justify-content-start {
   justify-content: flex-start !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
 }
 
 .align-items-start {
