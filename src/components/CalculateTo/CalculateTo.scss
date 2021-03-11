@@ -1,4 +1,18 @@
-.CalculateTo-button {
+.CalculateTo {
+  animation-name: show;
+  animation-duration: 1s;
+
+  .CalculateTo-button {
+    &:hover {
+      background-color: #8d1010 !important;
+    }
+    &:not(.first) {
+      margin-top: 10px;
+    }
+  }
+}
+
+.CalculateTo-price {
   background-color: #ffb0007d !important;
   width: 100%;
 
@@ -8,6 +22,14 @@
 
   &:hover {
     background-color: #de2a1b !important;
+  }
+}
+
+.CalculateTo-form--button {
+  height: 38px;
+
+  &:hover {
+    background-color: #8d1010 !important;
   }
 }
 
@@ -40,4 +62,11 @@
 
 .border-bottom {
   border-bottom: 1px solid #d3d3d3;
+}
+
+.CalculateTo {
+  .list-buttons {
+    max-height: 400px;
+    padding-right: 10px;
+  }
 }
