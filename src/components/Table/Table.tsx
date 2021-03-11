@@ -34,7 +34,7 @@ const Table: FC<IProps> = ({
       return null;
     }
     return columns.map((column) => {
-      if (!column.title) {
+      if (column.title === 'undefined' || column.title === null) {
         return null;
       }
 
@@ -64,9 +64,9 @@ const Table: FC<IProps> = ({
           {columns.map((column) => {
             if (item[column.key]) {
               if (typeof item[column.key].render === 'function') {
-                // @ts-ignore
                 return (
                   <div className="Table-body--cell">
+                    {/* @ts-ignore */}
                     {item[column.key].render(item[column.key].value)}
                   </div>
                 );

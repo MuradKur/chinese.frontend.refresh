@@ -1,6 +1,6 @@
 import { Table, TableProps } from 'antd';
 import Button from '../../components/Button/Button';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { COLORS } from '../../constants';
 import { ColumnsType } from 'antd/lib/table';
 import './AutoServiceTable.scss';
