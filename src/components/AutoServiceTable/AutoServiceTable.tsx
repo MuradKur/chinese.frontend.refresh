@@ -28,10 +28,7 @@ export const dataSource = Array.from({ length: 6 }).map(() => {
                 {' '}
                 <b>
                   {' '}
-                  <b>
-                    {' '}
-                    <a href="/"> Заказать услугу </a>{' '}
-                  </b>{' '}
+                  <a href="/"> Заказать услугу </a>{' '}
                 </b>{' '}
               </span>{' '}
             </Button>
