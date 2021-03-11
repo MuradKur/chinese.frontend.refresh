@@ -5,12 +5,34 @@
 }
 
 .AutoServiceTable {
-  th.ant-table-cell {
-    background-color: orange !important;
+  .Table-body--row:nth-child(2n) {
+    background-color: #f2f2f2;
+  }
+
+  .AutoServiceTable-title {
+    flex: 4;
+  }
+
+  .Table-body--row {
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .Table-body--cell {
     padding: 10px;
 
     h3 {
       color: white;
     }
+  }
+}
+
+.AutoServiceTable-header {
+  .Table-header--title {
+    background-color: #d3d3d3;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
