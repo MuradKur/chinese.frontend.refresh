@@ -53,16 +53,16 @@ const CalculateTo: FC<IProps> = ({ modelId, ...restProps }) => {
 
   useEffect(() => {
     getModelsCars(modelId)
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res: any) => res.json())
+      .then((data: any) => {
         setModels(data);
       });
   }, [modelId]);
 
   useEffect(() => {
     getPriceCalculate(idModel)
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res: any) => res.json())
+      .then((data: any) => {
         if (Array.isArray(data)) {
           setPrices(data);
         }
