@@ -3,6 +3,7 @@
   min-width: 300px;
   max-width: 300px;
   height: auto;
+  margin-right: 0;
 
   .LeftSideBar-icon {
     padding-top: 3px;
@@ -50,9 +51,9 @@
 }
 
 @media screen and (max-width: 620px) {
-  .LeftSideBar {
-    display: none;
-  }
+  // .LeftSideBar {
+  //   display: none;
+  // }
 
   .Contacts-map {
     padding-left: 0 !important;

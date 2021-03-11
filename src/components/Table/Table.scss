@@ -1,0 +1,22 @@
+.Table {
+  .Table-header {
+    background-color: #d3d3d3;
+    display: flex;
+
+    &--title {
+      padding: 15px;
+      flex: 1;
+    }
+  }
+
+  .Table-body {
+    &--cell {
+      padding: 15px;
+      flex: 1;
+    }
+
+    &--row {
+      display: flex;
+    }
+  }
+}

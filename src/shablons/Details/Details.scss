@@ -1,27 +1,34 @@
 .Details-title {
   font-size: 21px;
   padding-top: 30px;
+  font-family: 'Roboto Bold';
 }
 
 .Details-container {
   margin-top: 30px;
+
+  .LeftSideBar {
+    min-width: 100%;
+    max-width: 100%;
+  }
 
   .Details-section {
     padding-top: 30px;
   }
 }
 
+.Details-block--left {
+  width: 30%;
+}
+
 .Details-block--right {
   padding-left: 20px;
+  width: 70%;
+  box-sizing: border-box;
 }
 
 .Details-news--title {
   font-weight: bold;
-}
-
-.Details-news--image {
-  min-width: 300px;
-  max-width: 300px;
 }
 
 .Details-news--label {
@@ -50,5 +57,117 @@
 
   &:hover {
     color: #191919;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .TechnicalMaintenance-content--image {
+    max-width: 100% !important;
+    margin-bottom: 10px;
+  }
+
+  .TechnicalMaintenance-content {
+    display: block !important;
+  }
+
+  .TechnicalMaintenance-content--text {
+    margin-left: 0 !important;
+  }
+
+  .Details-block--left {
+    width: 25%;
+
+    .LeftSideBar {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .Details-block--right {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .Details {
+    .container {
+      width: 95%;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .Details-block--left {
+    min-width: 220px;
+
+    .LeftSideBar {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .Details-block--right {
+    flex: 1;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .Details {
+    .container {
+      width: 85%;
+    }
+  }
+
+  .Details-section {
+    flex-direction: column-reverse;
+
+    .cars-list {
+      justify-content: space-between;
+
+      .CarCard {
+        margin-right: 0 !important;
+      }
+    }
+
+    .Details-block--left {
+      padding-top: 30px;
+      max-width: 100%;
+      min-width: 100%;
+
+      .LeftSideBar {
+        display: flex;
+        flex-wrap: wrap;
+
+        .LeftSideBar-item {
+          width: 100%;
+        }
+      }
+    }
+
+    .Details-block--right {
+      padding-left: 0;
+      min-width: 100%;
+    }
+
+    .Details-price--block {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cars-list {
+    .CarCard {
+      min-width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .cars-list {
+    .CarCard {
+      min-width: 100%;
+    }
   }
 }

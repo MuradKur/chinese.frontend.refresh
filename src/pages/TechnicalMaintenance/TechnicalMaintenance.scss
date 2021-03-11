@@ -4,6 +4,16 @@
   min-height: 400px;
 }
 
+.ant-menu-submenu-title {
+  &:hover {
+    color: #de2a1b;
+
+    .ant-menu-submenu-arrow {
+      color: #de2a1b !important;
+    }
+  }
+}
+
 .TechnicalMaintenance-preview--subtitle {
   font-weight: bold;
   color: #797979;
@@ -36,6 +46,17 @@
 
     .CarCard:not(:nth-child(4n)) {
       margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 1375px) {
+  .cars-list {
+    justify-content: space-between;
+
+    .CarCard {
+      min-width: 30%;
+      margin-right: 0 !important;
     }
   }
 }

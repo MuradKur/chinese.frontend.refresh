@@ -31,7 +31,7 @@ const Details: FC<IProps> = ({
   }, []);
 
   return (
-    <div className="page-with-header">
+    <div className="page-with-header Details">
       <div className="container">
         <div className="Details-container">
           <div>
@@ -48,53 +48,55 @@ const Details: FC<IProps> = ({
             </div>
           )}
           <section className="d-flex Details-section align-items-start">
-            <div>
+            <div className="Details-block--left">
               <div className="mb-5">
                 <LeftSideBar menu={menu} />
               </div>
               <div className="mb-5">
                 <LeftSideBar menu={submenu} />
               </div>
-              <h3 className="Details-news--title">НОВОСТИ АВТОСЕРВИСА</h3>
-              <a href="/actions">
-                <div className="Details-news--block">
-                  <img
-                    alt="details"
-                    className="news preview Details-news--image w-100 mb-2"
-                    src={newPreview}
-                  />
-                  <h3 className="Details-news--label">
-                    СПЕЦПРЕДЛОЖЕНИЕ ДЛЯ НОВЫХ КЛИЕНТОВ "ПОПРОБУЙ".
-                  </h3>
-                  <p className="Details-news--date">13.01.2021</p>
-                  <p className="Details-news--content">
-                    Если Вы ещё не являетесь нашим клиентом, то воспользуйтесь
-                    нашим спецпредложением «ПОПРОБУЙ»! Ваша выгода – скидка 15%
-                    на услуги сервиса. Запишитесь на сервис прямо сейчас Скидка
-                    не суммируется с дисконтной программой и другими акциями
-                    нашей компании.
-                  </p>
-                </div>
-              </a>
-              <a href="/actions">
-                <div className="Details-news--block">
-                  <img
-                    alt="details"
-                    className="news preview Details-news--image w-100 mb-2"
-                    src={pereezd_p}
-                  />
-                  <h3 className="Details-news--label">
-                    ВНИМАНИЕ ВАЖНАЯ ИНФОРМАЦИЯ!
-                  </h3>
-                  <p className="Details-news--date">11.01.2021</p>
-                  <p className="Details-news--content">
-                    Уважаемые клиенты! СТО и магазин располагавшиеся по адресу:
-                    Полевая Сабировская 49 - переехали! С 27 января 2021 года
-                    ждём Вас по новому адресу: Богатырский пр., д.14, к.2. ( 2-й
-                    этаж) Записаться на СТО{' '}
-                  </p>
-                </div>
-              </a>
+              <div className="Details-price--block">
+                <h3 className="Details-news--title">НОВОСТИ АВТОСЕРВИСА</h3>
+                <a href="/actions">
+                  <div className="Details-news--block">
+                    <img
+                      alt="details"
+                      className="news preview Details-news--image w-100 mb-2"
+                      src={newPreview}
+                    />
+                    <h3 className="Details-news--label">
+                      СПЕЦПРЕДЛОЖЕНИЕ ДЛЯ НОВЫХ КЛИЕНТОВ "ПОПРОБУЙ".
+                    </h3>
+                    <p className="Details-news--date">13.01.2021</p>
+                    <p className="Details-news--content">
+                      Если Вы ещё не являетесь нашим клиентом, то воспользуйтесь
+                      нашим спецпредложением «ПОПРОБУЙ»! Ваша выгода – скидка
+                      15% на услуги сервиса. Запишитесь на сервис прямо сейчас
+                      Скидка не суммируется с дисконтной программой и другими
+                      акциями нашей компании.
+                    </p>
+                  </div>
+                </a>
+                <a href="/actions">
+                  <div className="Details-news--block">
+                    <img
+                      alt="details"
+                      className="news preview Details-news--image w-100 mb-2"
+                      src={pereezd_p}
+                    />
+                    <h3 className="Details-news--label">
+                      ВНИМАНИЕ ВАЖНАЯ ИНФОРМАЦИЯ!
+                    </h3>
+                    <p className="Details-news--date">11.01.2021</p>
+                    <p className="Details-news--content">
+                      Уважаемые клиенты! СТО и магазин располагавшиеся по
+                      адресу: Полевая Сабировская 49 - переехали! С 27 января
+                      2021 года ждём Вас по новому адресу: Богатырский пр.,
+                      д.14, к.2. ( 2-й этаж) Записаться на СТО{' '}
+                    </p>
+                  </div>
+                </a>
+              </div>
             </div>
             <div className="Details-block--right">{children}</div>
           </section>

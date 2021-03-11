@@ -28,6 +28,7 @@ import autoservise_kind_work1_12 from '../../assets/autoservise_kind_work1_12.pn
 import autoservise_kind_work1_08 from '../../assets/autoservise_kind_work1_08.png';
 // @ts-ignore
 import WOW from 'wowjs';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -74,7 +75,7 @@ export const columns = [
               {' '}
               <b>
                 {' '}
-                <a href="tel:++78126407799">+7(812) 640-77-99</a>{' '}
+                <Link to="tel:++78126407799">+7(812) 640-77-99</Link>{' '}
               </b>{' '}
             </b>{' '}
           </span>{' '}
@@ -113,122 +114,122 @@ const CarService: FC<IProps> = () => {
           <Button className="CarService-search--button">Поиск</Button>
         </div>
 
-        <div className="CarService-icon-block">
-          <a href="/">
+        <div className=" wow fadeIn CarService-icon-block">
+          <Link to="/actions">
             <img
               className="CarService-icon "
               src={autoservise_kind_work1png}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/guarante">
             <img className="CarService-icon" src={servisnaya_knizhka} alt="" />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/autoservice/technical-maintenance">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work_}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/suspensiondiagnosis">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_13}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon "
               src={autoservise_kind_work1_11}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_13__}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_19}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_17}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_01}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_18}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_14}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_09}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_02}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_05}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_12}
               alt=""
             />
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/bodyrepair">
             <img
               className="CarService-icon"
               src={autoservise_kind_work1_08}
               alt=""
             />
-          </a>
+          </Link>
         </div>
 
         <h2 className="CarService-title-h2">АДРЕСА СЕРВИСОВ</h2>
@@ -252,7 +253,7 @@ const CarService: FC<IProps> = () => {
         </h4>
 
         <Table
-          className="wow fadeIn "
+          className=" wow fadeIn "
           dataSource={dataSource}
           columns={columns}
         />

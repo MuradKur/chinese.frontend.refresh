@@ -1,5 +1,7 @@
 export const COLORS = {
   orange: '#ffb000',
+  orangeLight: '#ffeeba',
+  light: 'rgba(250,223,18,0.08)',
   black: '#191919',
   red: '#de2a1b',
   darkRed: '#8d1010',
@@ -8,10 +10,13 @@ export const COLORS = {
   lightgray: '#D3D3D3',
   green: '#0ca007',
   blue: '#0000ff',
+  blue2: '#3593d3',
   primary: '#309bcc',
+  orange2: '#ff9b00',
   transparent: 'transparent',
   yellow: '#f6cb00',
   gray: '#797979',
+  lightgray2: '#eee',
   orangeGradient:
     'linear-gradient(180deg, rgba(255,217,0,1) 45%, rgba(255,63,0,1) 100%)',
   silverGradient: 'linear-gradient(180deg,#aaaaaa80 40%, #f2f2f2 60%)',

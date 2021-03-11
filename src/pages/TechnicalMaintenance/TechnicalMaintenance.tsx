@@ -1,191 +1,98 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import Details from '../../shablons/Details/Details';
 import './TechnicalMaintenance.scss';
 import headerImage from '../../assets/autoservice.jpg';
 import { BiGift, BiPlus } from 'react-icons/bi';
 import { COLORS } from '../../constants';
 import Button from '../../components/Button/Button';
-import CarCard from '../../components/CarCard/CarCard';
+import CarCard, { Model } from '../../components/CarCard/CarCard';
 import Warning from '../../components/Warning/Warning';
+import CalculateTo from '../../components/CalculateTo/CalculateTo';
 import Map from '../../components/Map/Map';
 import { Row, Table } from 'antd';
-import ceed from '../../assets/ceed.png';
-import cerato from '../../assets/cerato.png';
-import mohave from '../../assets/mohave.png';
-import optima from '../../assets/optima.png';
-import picanto from '../../assets/picanto.png';
-import rio from '../../assets/rio.png';
-import sorento_prime from '../../assets/sorento_prime.png';
-import soul from '../../assets/soul.png';
-import sportage from '../../assets/sportage.png';
-import venga from '../../assets/venga.png';
-import notFoundCar from '../../assets/not-found-car.png';
-import sorento from '../../assets/sorento.png';
 import planovoe_to_avtomobilya from '../../assets/planovoe_to_avtomobilya.jpg';
 import { columns, dataSource } from '../CarService/CarService';
 import Footer from '../../components/Footer/Footer';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import { LeftSideBarMenu, LeftSideBarSubMenu } from './menu';
-import creta from '../../assets/creta.png';
-import elantra from '../../assets/elantra.png';
-import grandeur_0 from '../../assets/grandeur_0.png';
-import h1 from '../../assets/h1.png';
-import i30 from '../../assets/i30.png';
-import i40 from '../../assets/i40.png';
-import ix35 from '../../assets/ix35.png';
-import santa_fe from '../../assets/santa_fe.png';
-import solaris from '../../assets/solaris.png';
-import sonata from '../../assets/sonata.png';
-import tucson from '../../assets/tucson.png';
+import { getMarksCars } from '../../services/calculater';
+import notFoundCar from '../../assets/not-found-car.png';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
-const HYUNDAI = [
-  {
-    id: 1,
-    title: 'Creta',
-    image: creta,
-  },
-  {
-    id: 2,
-    title: 'Elantra',
-    image: elantra,
-  },
-  {
-    id: 100,
-    title: 'Grandeur',
-    image: grandeur_0,
-  },
-  {
-    id: 3,
-    title: 'H1',
-    image: h1,
-  },
-  {
-    id: 4,
-    title: 'i30',
-    image: i30,
-  },
-  {
-    id: 5,
-    title: 'i40',
-    image: i40,
-  },
-  {
-    id: 6,
-    title: 'ix35',
-    image: ix35,
-  },
-  {
-    id: 7,
-    title: 'Santa Fe',
-    image: santa_fe,
-  },
-  {
-    id: 8,
-    title: 'Solaris',
-    image: solaris,
-  },
-  {
-    id: 9,
-    title: 'Sonata',
-    image: sonata,
-  },
-  {
-    id: 10,
-    title: 'Tucson',
-    image: tucson,
-  },
-  {
-    id: 11,
-    title: 'Другая',
-    image: notFoundCar,
-  },
-];
-
-const CARS = [
-  {
-    id: 1,
-    title: 'Ceed',
-    image: ceed,
-  },
-  {
-    id: 2,
-    title: 'Cerato',
-    image: cerato,
-  },
-  {
-    id: 3,
-    title: 'Mohave',
-    image: mohave,
-  },
-  {
-    id: 4,
-    title: 'Optima',
-    image: optima,
-  },
-  {
-    id: 5,
-    title: 'Picanto',
-    image: picanto,
-  },
-  {
-    id: 6,
-    title: 'Rio',
-    image: rio,
-  },
-  {
-    id: 6.5,
-    title: 'Sorento',
-    image: sorento,
-  },
-  {
-    id: 7,
-    title: 'Sorento Prime',
-    image: sorento_prime,
-  },
-  {
-    id: 8,
-    title: 'Soul',
-    image: soul,
-  },
-  {
-    id: 9,
-    title: 'Sportage',
-    image: sportage,
-  },
-  {
-    id: 10,
-    title: 'Venga',
-    image: venga,
-  },
-  {
-    id: 11,
-    title: 'Другая',
-    image: notFoundCar,
-  },
-];
-
 const TechnicalMaintenance: FC<IProps> = () => {
-  const renderCars = useCallback(() => {
-    return CARS.map((item) => <CarCard key={item.id} {...item} />);
+  const [visible, setVisible] = useState(false);
+  const [modelId, setModelId] = useState(0);
+  const [kia, setKia] = useState<Model[]>([]);
+  const [hyundai, setHyundai] = useState<Model[]>([]);
+
+  useEffect(() => {
+    getMarksCars('kia')
+      .then((res) => res.json())
+      .then((data) => setKia(data));
+  }, [setKia]);
+
+  useEffect(() => {
+    getMarksCars('hyundai')
+      .then((res) => res.json())
+      .then((data) => setHyundai(data));
+  }, [setHyundai]);
+
+  const handleOpenModal = useCallback((modelId) => {
+    return () => {
+      setVisible(true);
+      setModelId(modelId);
+    };
   }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setVisible(false);
+  }, []);
+
+  const renderCars = useCallback(() => {
+    return [
+      ...kia,
+      {
+        id: 100000,
+        name: 'Другая',
+        brand: '',
+        img: notFoundCar,
+      },
+    ].map((item) => (
+      <CarCard onClick={handleOpenModal(item.id)} key={item.id} {...item} />
+    ));
+  }, [handleOpenModal, kia]);
 
   const renderHundaiCars = useCallback(() => {
-    return HYUNDAI.map((item) => <CarCard key={item.id} {...item} />);
-  }, []);
+    return [
+      ...hyundai,
+      {
+        id: 100000,
+        name: 'Другая',
+        brand: '',
+        img: notFoundCar,
+      },
+    ].map((item) => (
+      <CarCard onClick={handleOpenModal(item.id)} key={item.id} {...item} />
+    ));
+  }, [handleOpenModal, hyundai]);
 
   return (
     <>
+      <CalculateTo
+        visible={visible}
+        onClose={handleCloseModal}
+        modelId={modelId}
+      />
       <Details
         menu={LeftSideBarMenu}
         submenu={LeftSideBarSubMenu}
         title="Плановое техническое обслуживание (ТО) автомобиля">
         <div className="TechnicalMaintenance">
           <img
-            className="TechnicalMaintenance-image mb-2"
+            className=" wow fadeIn TechnicalMaintenance-image mb-2"
             src={headerImage}
             alt="autoservice"
           />
@@ -207,7 +114,9 @@ const TechnicalMaintenance: FC<IProps> = () => {
           <h3 className="text-center TechnicalMaintenance-title--h3 danger mb-3">
             HYUNDAI
           </h3>
-          <Row className="cars-list mb-3 flex-wrap">{renderHundaiCars()}</Row>
+          <Row className="cars-list wow fadeIn mb-3 flex-wrap">
+            {renderHundaiCars()}
+          </Row>
           <p className="text-center color-gray mb-0">
             Не нашли нужную модель или модификацию? Позвоните в любой СТО и
             получите бесплатную консультацию наших <br />
@@ -247,13 +156,13 @@ const TechnicalMaintenance: FC<IProps> = () => {
             dataSource={dataSource}
             columns={columns}
           />
-          <div className="d-flex">
+          <div className="d-flex TechnicalMaintenance-content">
             <img
-              className="TechnicalMaintenance-content--image"
+              className=" wow fadeIn TechnicalMaintenance-content--image"
               src={planovoe_to_avtomobilya}
               alt="planovoe_to_avtomobilya"
             />
-            <div className="ml-2">
+            <div className="ml-2 TechnicalMaintenance-content--text">
               Есть ли у автолюбителя возможность избежать дорогостоящего ремонта
               в будущем или, как минимум, сократить эксплуатационные расходы? Во
               многом это зависит от самого владельца транспортного средства. И

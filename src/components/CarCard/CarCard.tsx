@@ -1,19 +1,32 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import './CarCard.scss';
 
-interface IExternalProps {
+export interface Model {
   id: number;
-  image: any;
-  title: string;
+  name: string;
+  brand: string;
+  img: string;
+}
+
+interface IExternalProps extends Model {
+  onClick?: (id: number) => void;
 }
 
 interface IProps extends IExternalProps {}
 
-const CarCard: FC<IProps> = ({ title, image }) => {
+const CarCard: FC<IProps> = ({ name, img, brand, onClick, id }) => {
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick(id);
+    }
+  }, [id, onClick]);
+
   return (
-    <div className="CarCard">
-      <img src={image} alt="car card" />
-      <p className="CarCard-title">{title}</p>
+    <div onClick={handleClick} className="CarCard">
+      <img src={img} alt="car card" />
+      <p className="CarCard-title">
+        {brand} {name}
+      </p>
     </div>
   );
 };
