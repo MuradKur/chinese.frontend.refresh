@@ -15,6 +15,7 @@ interface IExternalProps {
     [key: string]: {
       value: any;
       render?: (key?: string) => any;
+      className?: string;
     };
   }>;
   hideHeader?: boolean;
@@ -64,15 +65,21 @@ const Table: FC<IProps> = ({
           {columns.map((column) => {
             if (item[column.key]) {
               if (typeof item[column.key].render === 'function') {
-                // @ts-ignore
                 return (
-                  <div className="Table-body--cell">
+                  <div
+                    className={`Table-body--cell ${
+                      item[column.key].className
+                    }`}>
+                    {/* @ts-ignore */}
                     {item[column.key].render(item[column.key].value)}
                   </div>
                 );
               }
               return (
-                <div className="Table-body--cell">{item[column.key].value}</div>
+                <div
+                  className={`Table-body--cell ${item[column.key].className}`}>
+                  {item[column.key].value}
+                </div>
               );
             }
 
