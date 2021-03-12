@@ -4,6 +4,7 @@ import action from '../../assets/Poprobui370x370.jpg';
 import './Actions.scss';
 // @ts-ignore
 import WOW from 'wowjs';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -22,7 +23,7 @@ const Actions: FC<IProps> = () => {
           <Row justify="space-between">
             <Col className="Actions-column wow fadeInLeft" span={8}>
               <div className="Actions-card">
-                <a target="_blank" href="/action/1">
+                <Link to="/action/1">
                   <img
                     className="Actions-image mb-3"
                     src={action}
@@ -36,12 +37,12 @@ const Actions: FC<IProps> = () => {
                     безымянный печатник создал большую коллекцию размеров и форм
                     шрифтов, используя Lorem Ipsum для распечатки образцов.
                   </p>
-                </a>
+                </Link>
               </div>
             </Col>
             <Col className="Actions-column wow fadeInDown" span={8}>
               <div className="Actions-card">
-                <a target="_blank" href="/action/1">
+                <Link to="/action/1">
                   <img
                     className="Actions-image mb-3"
                     src={action}
@@ -55,12 +56,12 @@ const Actions: FC<IProps> = () => {
                     безымянный печатник создал большую коллекцию размеров и форм
                     шрифтов, используя Lorem Ipsum для распечатки образцов.
                   </p>
-                </a>
+                </Link>
               </div>
             </Col>
             <Col className="Actions-column wow fadeInRight" span={8}>
               <div className="Actions-card">
-                <a target="_blank" href="/action/1">
+                <Link to="/action/1">
                   <img
                     className="Actions-image mb-3"
                     src={action}
@@ -74,7 +75,7 @@ const Actions: FC<IProps> = () => {
                     безымянный печатник создал большую коллекцию размеров и форм
                     шрифтов, используя Lorem Ipsum для распечатки образцов.
                   </p>
-                </a>
+                </Link>
               </div>
             </Col>
           </Row>
