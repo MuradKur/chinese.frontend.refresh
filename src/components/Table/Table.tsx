@@ -7,16 +7,19 @@ export interface ColumnsType {
   key: string;
 }
 
+export interface TableItem {
+  value?: any;
+  render?: (key?: string) => any;
+  className?: string;
+}
+
 interface IExternalProps {
   columns?: ColumnsType[];
   classNameHeader?: string;
   className?: string;
+  onRowClick?: (data: TableItem) => void;
   data?: Array<{
-    [key: string]: {
-      value: any;
-      render?: (key?: string) => any;
-      className?: string;
-    };
+    [key: string]: TableItem;
   }>;
   hideHeader?: boolean;
 }
@@ -29,6 +32,7 @@ const Table: FC<IProps> = ({
   data,
   className,
   classNameHeader,
+  onRowClick,
 }) => {
   const renderHeader = useCallback(() => {
     if (!columns) {
@@ -55,13 +59,24 @@ const Table: FC<IProps> = ({
     });
   }, [columns]);
 
+  const handleRowClick = useCallback(
+    (data: TableItem) => {
+      return () => {
+        if (onRowClick) {
+          onRowClick(data);
+        }
+      };
+    },
+    [onRowClick],
+  );
+
   const renderBody = useCallback(() => {
     if (!data || !columns || data.length === 0 || columns.length === 0) {
       return <Empty />;
     }
     return data.map((item) => {
       return (
-        <div className="Table-body--row">
+        <div className="Table-body--row" onClick={handleRowClick(item)}>
           {columns.map((column) => {
             if (item[column.key]) {
               if (typeof item[column.key].render === 'function') {
@@ -88,7 +103,7 @@ const Table: FC<IProps> = ({
         </div>
       );
     });
-  }, [columns, data]);
+  }, [columns, data, handleRowClick]);
 
   return (
     <div className={`Table ${className || ''}`}>

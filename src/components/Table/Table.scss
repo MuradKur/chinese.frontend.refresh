@@ -2,6 +2,7 @@
   .Table-header {
     background-color: #d3d3d3;
     display: flex;
+    flex-wrap: wrap;
 
     &--title {
       padding: 15px;
@@ -17,6 +18,13 @@
 
     &--row {
       display: flex;
+      flex-wrap: wrap;
+      transition: 0.2s;
+      align-items: center;
+
+      &:hover {
+        background-color: #f2f2f2;
+      }
     }
   }
 }

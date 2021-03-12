@@ -23,6 +23,7 @@ import GuaranteePage from '../../pages/GuaranteePage/GuaranteePage';
 import DetailsAutoService from '../../pages/DetailsAutoService/DetailsAutoService';
 import Header from '../Header/Header';
 import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagnosis';
+import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
 
 function App() {
@@ -42,9 +43,8 @@ function App() {
           <Route exact path="/delivery" component={DeliveryInRussia} />
           <Route exact path="/actions" component={Actions} />
           <Route exact path="/guarante" component={GuaranteePage} />
-
+          <Route exact path="/product/:id" component={Product} />
           <Route exact path="/action/:id" component={Action} />
-
           <Route
             exact
             path="/autoservice/technical-maintenance"
