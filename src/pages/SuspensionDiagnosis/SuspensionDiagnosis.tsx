@@ -119,7 +119,11 @@ const SuspensionDiagnosis: FC<IProps> = () => {
         </h1>
 
         <div className="SuspensionDiagnosis-block-mg-p">
-          <img className="SuspensionDiagnosis-icon " src={servise_s} alt="" />
+          <img
+            className="SuspensionDiagnosis-icon wow fadeIn "
+            src={servise_s}
+            alt=""
+          />
           <p>
             {' '}
             <b> Диагностика и ремонт подвески автомобиля </b> бесспорно является
