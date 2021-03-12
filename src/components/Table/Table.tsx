@@ -35,7 +35,7 @@ const Table: FC<IProps> = ({
       return null;
     }
     return columns.map((column) => {
-      if (!column.title) {
+      if (column.title === 'undefined' || column.title === null) {
         return null;
       }
 

@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { COLORS } from '../../constants';
 import './AutoServiceTable.scss';
 import Table from '../../components/Table/Table';
