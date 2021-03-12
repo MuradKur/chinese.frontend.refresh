@@ -9,6 +9,7 @@ import Details from '../../shablons/Details/Details';
 import servise_s from '../../assets/servise_s.jpg';
 // @ts-ignore
 import WOW from 'wowjs';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -78,7 +79,7 @@ export const columns = [
     key: 'phone',
     render() {
       return (
-        <a href="/autoservice/details">
+        <Link to="/autoservice/details">
           <Button
             bgColor={COLORS.lightgray2}
             className="SuspensionDiagnosis-button-td">
@@ -91,7 +92,7 @@ export const columns = [
               </b>{' '}
             </span>{' '}
           </Button>
-        </a>
+        </Link>
       );
     },
   },
