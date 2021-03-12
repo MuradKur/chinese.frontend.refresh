@@ -63,8 +63,8 @@ const AutoServiceTable: FC<IProps> = ({ className, ...restProps }) => {
   return (
     <div>
       <Table
-        className="AutoServiceTable"
-        classNameHeader="AutoServiceTable-header"
+        className="AutoServiceTable wow fadeIn"
+        classNameHeader="AutoServiceTable-header wow fadeIn"
         data={dataSource}
         // @ts-ignore
         columns={columns}

@@ -97,7 +97,7 @@ const BodyRepair: FC<IProps> = () => {
 
         <div>
           <img
-            className="BodyRepair-creta mb-5 mt-5"
+            className="BodyRepair-creta mb-5 mt-5 wow fadeIn"
             src={autoservice_edb46de2}
             alt=""
           />
@@ -170,7 +170,11 @@ const BodyRepair: FC<IProps> = () => {
         </h2>
 
         <div className="BodyRepair-block-mg-p">
-          <img className="BodyRepair-icon " src={kuzovnoy_remont} alt="" />
+          <img
+            className="BodyRepair-icon wow fadeIn"
+            src={kuzovnoy_remont}
+            alt=""
+          />
           <p>
             {' '}
             Кузов автомобиля – самая «нежная» и, пожалуй, самая дорогая часть
@@ -443,7 +447,7 @@ const BodyRepair: FC<IProps> = () => {
           </ul>
         </div>
 
-        <div className="BodyRepair-iframe mt-5">
+        <div className="BodyRepair-iframe mt-5 wow fadeIn">
           <iframe
             title="BodyRepair"
             width="560"
