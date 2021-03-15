@@ -73,7 +73,7 @@ const BodyRepair: FC<IProps> = () => {
   }, []);
 
   return (
-    <div>
+    <div className="BodyRepair">
       <Details title="Кузовной ремонт">
         <h1 className="BodyRepair-title-h1 "> КАЛЬКУЛЯТОР КУЗОВНЫХ РАБОТ</h1>
 
@@ -449,6 +449,7 @@ const BodyRepair: FC<IProps> = () => {
 
         <div className="BodyRepair-iframe mt-5 wow fadeIn">
           <iframe
+            className="BodyRepair-iframe"
             title="BodyRepair"
             width="560"
             height="315"

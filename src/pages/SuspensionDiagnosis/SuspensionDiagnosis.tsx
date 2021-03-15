@@ -104,7 +104,7 @@ const SuspensionDiagnosis: FC<IProps> = () => {
   }, []);
 
   return (
-    <div>
+    <div className="SuspensionDiagnosis">
       <Details title="Диагностика и ремонт подвески">
         <Table
           showHeader={false}
