@@ -352,6 +352,11 @@
   font-family: 'Roboto Bold';
 }
 
+h1,
+h2 {
+  font-weight: bold !important;
+}
+
 @keyframes show {
   from {
     opacity: 0;

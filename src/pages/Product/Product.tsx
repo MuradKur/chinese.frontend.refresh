@@ -1,4 +1,4 @@
-import { InputNumber } from 'antd';
+import { Checkbox, InputNumber } from 'antd';
 import { FC } from 'react';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
@@ -107,13 +107,11 @@ const data = [
 
 const Product: FC<IProps> = () => {
   return (
-    <div className="page-with-header">
-      <div className="container pt-3 d-flex">
+    <div className="page-with-header Product container">
+      <Breadcrumbs />
+      <div className="Product-container pt-3 d-flex">
         <div className="Product-column--left">
-          <Breadcrumbs />
-
           <h1 className="font-weight">Карточка продукта</h1>
-
           <div className="d-flex Product-card">
             <img
               className="Product-card--image"
@@ -159,38 +157,56 @@ const Product: FC<IProps> = () => {
             </p>
 
             <Tabs className="Product-filter" defaultActiveKey="1">
-              <TabPane
-                className="Product-filter-tabpane"
-                tab="По цене"
-                key="1"></TabPane>
+              <TabPane className="Product-filter-tabpane" tab="По цене" key="1">
+                <div className="Product-checkbox--list">
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Metaco</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Hola</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>BM</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Pilenga</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+                </div>
+              </TabPane>
               <TabPane
                 className="Product-filter-tabpane"
                 tab="По алфавиту"
-                key="2"></TabPane>
+                key="2">
+                <div className="Product-checkbox--list">
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Metaco</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Hola</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>BM</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+
+                  <div className="Product-border-contener d-flex justify-content-between">
+                    <Checkbox>Pilenga</Checkbox>
+                    <p className="Product-amount">161p</p>
+                  </div>
+                </div>
+              </TabPane>
             </Tabs>
-            <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Metaco</p>
-              <p className="Product-amount pl-5">161p</p>
-            </div>
-
-            <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Hola</p>
-              <p className="Product-amount pl-5">161p</p>
-            </div>
-
-            <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">BM</p>
-              <p className="Product-amount pl-5">161p</p>
-            </div>
-
-            <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Pilenga</p>
-              <p className="Product-amount pl-5">161p</p>
-            </div>
           </div>
         </div>
       </div>

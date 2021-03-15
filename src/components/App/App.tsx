@@ -12,6 +12,7 @@ import Contacts from '../../pages/Contacts/Contacts';
 import AboutCompany from '../../pages/AboutCompany/AboutCompany';
 import Main from '../../pages/Main/Main';
 import News from '../../pages/News/News';
+import Prices from '../../pages/Prices/Prices';
 import Vacancies from '../../pages/Vacancies/Vacancies';
 import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import CarService from '../../pages/CarService/CarService';
@@ -25,8 +26,12 @@ import Header from '../Header/Header';
 import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagnosis';
 import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
+import { GET_PROFILE_CAR } from '../../graph/queries/cars';
+import { useQuery } from '@apollo/client';
 
 function App() {
+  const { data } = useQuery(GET_PROFILE_CAR);
+  console.log(data);
   return (
     <Router>
       <div>
@@ -44,6 +49,7 @@ function App() {
           <Route exact path="/actions" component={Actions} />
           <Route exact path="/guarante" component={GuaranteePage} />
           <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/prices/:id" component={Prices} />
           <Route exact path="/action/:id" component={Action} />
           <Route
             exact

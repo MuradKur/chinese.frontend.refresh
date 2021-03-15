@@ -106,12 +106,12 @@ const CarService: FC<IProps> = () => {
           </div>
         </div>
 
-        <div className="CarService-border-block">
+        <div className="search-block">
           <input
             placeholder="Введите название СТО"
-            className="CarService-search--input"
+            className="search-block--input"
           />
-          <Button className="CarService-search--button">Поиск</Button>
+          <Button className="search-block--button">Поиск</Button>
         </div>
 
         <div className=" wow fadeIn CarService-icon-block">

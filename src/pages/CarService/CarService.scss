@@ -3,7 +3,7 @@
   margin-top: 30px;
 }
 
-.CarService-search--input {
+.search-block--input {
   height: 40px;
   width: 100%;
   border-radius: 6px;
@@ -44,7 +44,7 @@
   }
 }
 
-.CarService-search--button {
+.search-block--button {
   height: 40px;
   margin-left: 10px;
   border-radius: 6px;
@@ -54,6 +54,7 @@
 .CarService-title {
   font-size: 21px;
   padding-top: 30px;
+  font-weight: bold;
 }
 
 .CarService-breadcrumbs-title {
@@ -69,7 +70,7 @@
   margin-right: 30px;
 }
 
-.CarService-border-block {
+.search-block {
   display: flex;
 }
 
