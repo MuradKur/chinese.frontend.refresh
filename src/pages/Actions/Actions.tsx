@@ -16,7 +16,7 @@ const Actions: FC<IProps> = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white Actions">
       <div className="container page-with-header">
         <div className="pt-3">
           <h1 className="Actions-title">Акции</h1>
