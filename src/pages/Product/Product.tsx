@@ -4,6 +4,9 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
 import Table from '../../components/Table/Table';
 import './Product.scss';
+import { Tabs } from 'antd';
+
+const { TabPane } = Tabs;
 
 interface IExternalProps {}
 
@@ -108,7 +111,9 @@ const Product: FC<IProps> = () => {
       <div className="container pt-3 d-flex">
         <div className="Product-column--left">
           <Breadcrumbs />
+
           <h1 className="font-weight">Карточка продукта</h1>
+
           <div className="d-flex Product-card">
             <img
               className="Product-card--image"
@@ -133,6 +138,7 @@ const Product: FC<IProps> = () => {
               </a>
             </div>
           </div>
+
           <h4 className="font-weight title-table">
             Наличие для запрошенного артикула на центральном складе Кореана
           </h4>
@@ -143,7 +149,50 @@ const Product: FC<IProps> = () => {
           </h4>
           <Table data={data} columns={columns} />
         </div>
-        <div className="Product-column--right">здесь колонка</div>
+
+        <div className="Product-column--right">
+          <div>
+            <div className="Product-solid"></div>
+            <p className="Product-paragraph pt-5">
+              {' '}
+              <b> Производители аналогов </b>
+            </p>
+
+            <Tabs className="Product-filter" defaultActiveKey="1">
+              <TabPane
+                className="Product-filter-tabpane"
+                tab="По цене"
+                key="1"></TabPane>
+              <TabPane
+                className="Product-filter-tabpane"
+                tab="По алфавиту"
+                key="2"></TabPane>
+            </Tabs>
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Metaco</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Hola</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">BM</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Pilenga</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

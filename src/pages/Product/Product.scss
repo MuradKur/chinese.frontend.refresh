@@ -15,6 +15,8 @@
 
 .Product-column--right {
   width: 30%;
+  padding-top: 30px;
+  padding-left: 50px;
 }
 
 .Product-card {
@@ -52,4 +54,50 @@
 
 .title-table {
   font-size: 18px;
+}
+
+.Product-solid {
+  border: black solid 4px;
+  width: 330px;
+}
+
+.Product-filter {
+  cursor: pointer;
+  color: black;
+  width: 210px;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.Product-filter-tabpane {
+  color: black;
+}
+
+.Product-paragraph {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.Product-border-block {
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  background: #f4f4f4;
+}
+
+.Product-border-contener {
+  display: flex;
+}
+
+.Product-amount {
+  margin-left: 40px;
+}
+
+.Product-block-contener {
+  display: flex;
 }
