@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'https://app.asianaauto.ru/playground'
+schema: 'https://app.china-parts.ru/graphql/'
 documents: 'src/graph/**/*.ts'
 config:
   namingConvention:

@@ -26,11 +26,11 @@ import Header from '../Header/Header';
 import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagnosis';
 import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
-import { GET_PROFILE_CAR } from '../../graph/queries/cars';
+import { GET_USERS } from '../../graph/queries/users';
 import { useQuery } from '@apollo/client';
 
 function App() {
-  const { data } = useQuery(GET_PROFILE_CAR);
+  const { data } = useQuery(GET_USERS);
   console.log(data);
   return (
     <Router>
