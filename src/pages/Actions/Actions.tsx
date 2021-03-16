@@ -5,12 +5,16 @@ import './Actions.scss';
 // @ts-ignore
 import WOW from 'wowjs';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_ACTIONS } from '../../graph/queries/actions';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
 const Actions: FC<IProps> = () => {
+  const { data } = useQuery(GET_ACTIONS);
+  console.log(data);
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
