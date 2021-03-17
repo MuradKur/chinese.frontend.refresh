@@ -7,12 +7,17 @@ import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';
 import NewsCard from '../../components/NewsCard/NewsCard';
 // @ts-ignore
 import WOW from 'wowjs';
+import { useQuery } from '@apollo/client';
+import { GET_NEWS } from '../../graph/queries/News';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
 const News: FC<IProps> = () => {
+  const { data } = useQuery(GET_NEWS);
+  console.log(data);
+
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
