@@ -210,6 +210,11 @@ export type Refresh = {
   token: Scalars['String'];
 };
 
+export type NewsFragment = { __typename?: 'NewsType' } & Pick<
+  NewsType,
+  'id' | 'title' | 'preview' | 'content' | 'dateCreated' | 'showMain'
+>;
+
 export type ActionFragment = { __typename?: 'ActionType' } & Pick<
   ActionType,
   'id' | 'date' | 'title' | 'image' | 'body' | 'status'
@@ -230,6 +235,12 @@ export type UserFragment = { __typename?: 'UserType' } & Pick<
   | 'dateJoined'
 >;
 
+export type NewsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type NewsQuery = { __typename?: 'Query' } & {
+  news?: Maybe<Array<Maybe<{ __typename?: 'NewsType' } & NewsFragment>>>;
+};
+
 export type ActionsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type ActionsQuery = { __typename?: 'Query' } & {
@@ -242,6 +253,16 @@ export type UsersQuery = { __typename?: 'Query' } & {
   users?: Maybe<Array<Maybe<{ __typename?: 'UserType' } & UserFragment>>>;
 };
 
+export const NewsFragmentDoc = gql`
+  fragment news on NewsType {
+    id
+    title
+    preview
+    content
+    dateCreated
+    showMain
+  }
+`;
 export const ActionFragmentDoc = gql`
   fragment action on ActionType {
     id
@@ -267,6 +288,48 @@ export const UserFragmentDoc = gql`
     dateJoined
   }
 `;
+export const NewsDocument = gql`
+  query news {
+    news {
+      ...news
+    }
+  }
+  ${NewsFragmentDoc}
+`;
+
+/**
+ * __useNewsQuery__
+ *
+ * To run a query within a React component, call `useNewsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNewsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNewsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNewsQuery(
+  baseOptions?: Apollo.QueryHookOptions<NewsQuery, NewsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<NewsQuery, NewsQueryVariables>(NewsDocument, options);
+}
+export function useNewsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<NewsQuery, NewsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<NewsQuery, NewsQueryVariables>(
+    NewsDocument,
+    options,
+  );
+}
+export type NewsQueryHookResult = ReturnType<typeof useNewsQuery>;
+export type NewsLazyQueryHookResult = ReturnType<typeof useNewsLazyQuery>;
+export type NewsQueryResult = Apollo.QueryResult<NewsQuery, NewsQueryVariables>;
 export const ActionsDocument = gql`
   query actions {
     actions {

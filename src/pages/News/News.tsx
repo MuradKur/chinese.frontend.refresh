@@ -9,6 +9,7 @@ import NewsCard from '../../components/NewsCard/NewsCard';
 import WOW from 'wowjs';
 import { useQuery } from '@apollo/client';
 import { GET_NEWS } from '../../graph/queries/News';
+import { Empty } from 'antd';
 
 interface IExternalProps {}
 
@@ -38,10 +39,13 @@ const News: FC<IProps> = () => {
                 <div className="News-leftSidebar-button">
                   <LeftSideBar />
                 </div>
-
-                <div className="News-title-block">
-                  <NewsCard />
-                </div>
+                {!data ? (
+                  <Empty />
+                ) : (
+                  <div className="News-title-block">
+                    <NewsCard data={data.news} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
