@@ -9,52 +9,53 @@ import NewsCard from '../../components/NewsCard/NewsCard';
 import WOW from 'wowjs';
 import { useQuery } from '@apollo/client';
 import { GET_NEWS } from '../../graph/queries/News';
-import { Empty } from 'antd';
+import { Empty, Spin } from 'antd';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
 const News: FC<IProps> = () => {
-  const { data } = useQuery(GET_NEWS);
-  console.log(data);
+  const { data, loading } = useQuery(GET_NEWS);
 
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
 
   return (
-    <div className="page-with-header">
-      <div className="container">
-        <div className="News-container">
-          <div className="News-breadcrumbs-title">
-            <div className="News-block">
-              <Breadcrumbs />
+    <Spin spinning={loading}>
+      <div className="page-with-header">
+        <div className="container">
+          <div className="News-container">
+            <div className="News-breadcrumbs-title">
+              <div className="News-block">
+                <Breadcrumbs />
+              </div>
+              <h1 className="News-title">Объявления Санкт-Петербург</h1>
             </div>
-            <h1 className="News-title">Объявления Санкт-Петербург</h1>
-          </div>
-          <div>
             <div>
-              <div className="News-leftSidebar-button-title">
-                <div className="News-leftSidebar-button">
-                  <LeftSideBar />
-                </div>
-                {!data ? (
-                  <Empty />
-                ) : (
-                  <div className="News-title-block">
-                    <NewsCard data={data.news} />
+              <div>
+                <div className="News-leftSidebar-button-title">
+                  <div className="News-leftSidebar-button">
+                    <LeftSideBar />
                   </div>
-                )}
+                  {!data ? (
+                    <Empty />
+                  ) : (
+                    <div className="News-title-block">
+                      <NewsCard data={data.news} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <Footer />
-      <FloatingFooter />
-    </div>
+        <Footer />
+        <FloatingFooter />
+      </div>
+    </Spin>
   );
 };
 
