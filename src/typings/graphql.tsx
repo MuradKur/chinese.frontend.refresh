@@ -210,6 +210,11 @@ export type Refresh = {
   token: Scalars['String'];
 };
 
+export type ActionFragment = { __typename?: 'ActionType' } & Pick<
+  ActionType,
+  'id' | 'date' | 'title' | 'image' | 'body' | 'status'
+>;
+
 export type UserFragment = { __typename?: 'UserType' } & Pick<
   UserType,
   | 'id'
@@ -225,12 +230,28 @@ export type UserFragment = { __typename?: 'UserType' } & Pick<
   | 'dateJoined'
 >;
 
+export type ActionsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ActionsQuery = { __typename?: 'Query' } & {
+  actions?: Maybe<Array<Maybe<{ __typename?: 'ActionType' } & ActionFragment>>>;
+};
+
 export type UsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type UsersQuery = { __typename?: 'Query' } & {
   users?: Maybe<Array<Maybe<{ __typename?: 'UserType' } & UserFragment>>>;
 };
 
+export const ActionFragmentDoc = gql`
+  fragment action on ActionType {
+    id
+    date
+    title
+    image
+    body
+    status
+  }
+`;
 export const UserFragmentDoc = gql`
   fragment user on UserType {
     id
@@ -246,6 +267,57 @@ export const UserFragmentDoc = gql`
     dateJoined
   }
 `;
+export const ActionsDocument = gql`
+  query actions {
+    actions {
+      ...action
+    }
+  }
+  ${ActionFragmentDoc}
+`;
+
+/**
+ * __useActionsQuery__
+ *
+ * To run a query within a React component, call `useActionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useActionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useActionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useActionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ActionsQuery, ActionsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ActionsQuery, ActionsQueryVariables>(
+    ActionsDocument,
+    options,
+  );
+}
+export function useActionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ActionsQuery,
+    ActionsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ActionsQuery, ActionsQueryVariables>(
+    ActionsDocument,
+    options,
+  );
+}
+export type ActionsQueryHookResult = ReturnType<typeof useActionsQuery>;
+export type ActionsLazyQueryHookResult = ReturnType<typeof useActionsLazyQuery>;
+export type ActionsQueryResult = Apollo.QueryResult<
+  ActionsQuery,
+  ActionsQueryVariables
+>;
 export const UsersDocument = gql`
   query users {
     users {

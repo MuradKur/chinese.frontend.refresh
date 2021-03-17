@@ -32,6 +32,7 @@ import { useQuery } from '@apollo/client';
 function App() {
   const { data } = useQuery(GET_USERS);
   console.log(data);
+
   return (
     <Router>
       <div>
