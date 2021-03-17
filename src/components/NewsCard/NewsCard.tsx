@@ -13,13 +13,10 @@ interface IProps extends IExternalProps {}
 const NewsCards: FC<IProps> = ({ data }) => {
   const renderItem = useCallback((item: NewsType) => {
     return (
-      <List.Item
-        className="NewCard wow fadeInRight"
-        key={item.title}
-        actions={[<div>Ваша выгода 15%</div>]}>
+      <List.Item className="NewCard wow fadeInRight" key={item.title}>
         <List.Item.Meta
           title={
-            <Link className="NewCard-title" to="/">
+            <Link className="NewCard-title" to={`/news/${item.id}`}>
               {item.title}
             </Link>
           }
