@@ -357,6 +357,10 @@ h2 {
   font-weight: bold !important;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 @keyframes show {
   from {
     opacity: 0;

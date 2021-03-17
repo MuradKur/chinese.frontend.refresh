@@ -121,7 +121,7 @@ const Prices: FC<IProps> = () => {
   return (
     <div className="page-with-header">
       <div className="container">
-        <div className="Prices Prices-container">
+        <div className="Prices Prices-container pb-3">
           <Breadcrumbs />
           <h1 className="Prices-title wow fadeIn">Прайсы</h1>
           <div className="search-block mt-5 mb-2">
@@ -132,35 +132,37 @@ const Prices: FC<IProps> = () => {
             <Button className="search-block--button">Поиск</Button>
           </div>
           <div className="d-flex mb-5 align-items-center flex-wrap">
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Записи для ТО
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Запчасти кузова
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Аксессуары
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Аккумуляторы
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Лампы
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Масла и жидкости
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Ремни
             </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2" danger>
+            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Щётки
             </ButtonComponent>
           </div>
           <div className="mb-3">
             <Warning>
-              Notice: Undefined index: tid in drupal_page_get_cache() (line 1315
-              of /var/www/koreanaparts.ru/includes/bootstrap.inc).
+              <div className="break-all">
+                Notice: Undefined index: tid in drupal_page_get_cache() (line
+                1315 of /var/www/koreanaparts.ru/includes/bootstrap.inc).
+              </div>
             </Warning>
 
             <h2 className="Prices-subtitle mb-5 mt-5 wow fadeIn">
