@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Button as ButtonComponent } from 'antd';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
+import PriceTable from '../../components/PriceTable/PriceTable';
 import './Prices.scss';
 import Warning from '../../components/Warning/Warning';
 import Table from '../../components/Table/Table';
@@ -193,13 +194,13 @@ const Prices: FC<IProps> = () => {
             </b>
           </h3>
           <Table
-            className=" Prices-table-color wow fadeIn"
+            className="Prices-table--article Prices-table-color wow fadeIn"
             hideHeader
             data={data}
             columns={columns}
           />
           <Table
-            className=" Prices-table-color wow fadeIn"
+            className="Prices-table--article Prices-table-color wow fadeIn"
             hideHeader
             data={data}
             columns={columns}
@@ -208,12 +209,7 @@ const Prices: FC<IProps> = () => {
             {' '}
             <b> Дополнительные склады: запрошенный артикул</b>
           </h5>
-          <Table
-            className=" Prices-table-color wow fadeIn"
-            hideHeader
-            data={data}
-            columns={columns}
-          />
+          <PriceTable />
           <h6 className="Prices-subtitle mb-2 mt-5 wow fadeIn">
             {' '}
             <b>
@@ -222,18 +218,8 @@ const Prices: FC<IProps> = () => {
               артикула
             </b>
           </h6>
-          <Table
-            className=" Prices-table-color wow fadeIn"
-            hideHeader
-            data={data}
-            columns={columns}
-          />
-          <Table
-            className=" Prices-table-color wow fadeIn"
-            hideHeader
-            data={data}
-            columns={columns}
-          />
+
+          <PriceTable />
           <Button className=" Prices-show-more-button wow fadeIn mb-5 mt-5">
             ПОКАЗАТЬ ЕЩЕ
           </Button>
