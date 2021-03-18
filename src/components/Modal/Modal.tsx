@@ -9,14 +9,21 @@ interface IExternalProps {
 
 interface IProps extends IExternalProps, ModalProps {}
 
+export interface IModalProps extends IProps {}
+
 const ModalComponent: FC<IProps> = ({
   visible,
   onClose,
   children,
   className,
+  ...props
 }) => {
   return (
-    <Modal className={className} visible={visible} onCancel={onClose}>
+    <Modal
+      className={className}
+      visible={visible}
+      onCancel={onClose}
+      {...props}>
       {children}
     </Modal>
   );

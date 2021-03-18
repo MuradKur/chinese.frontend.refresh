@@ -1,22 +1,31 @@
-import { FC, useEffect } from 'react';
-import Footer from '../../components/Footer/Footer';
-import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
-import './News.scss';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';
-import NewsCard from '../../components/NewsCard/NewsCard';
+import { FC, useEffect, useMemo } from 'react';
 // @ts-ignore
 import WOW from 'wowjs';
 import { useQuery } from '@apollo/client';
 import { GET_NEWS } from '../../graph/queries/News';
 import { Empty, Spin } from 'antd';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';
+import Footer from '../../components/Footer/Footer';
+import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
+import { RouteComponentProps } from 'react-router-dom';
+import { NewsType } from '../../typings/graphql';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps, RouteComponentProps<{ id: string }> {}
 
-const News: FC<IProps> = () => {
+const NewsDetails: FC<IProps> = ({ match }) => {
   const { data, loading } = useQuery(GET_NEWS);
+  const { id } = match.params;
+  const news: NewsType | null = useMemo(() => {
+    if (!data) {
+      return null;
+    }
+
+    const news = data.news.find((item: NewsType) => item.id === id);
+    return news;
+  }, [data, id]);
 
   useEffect(() => {
     new WOW.WOW().init();
@@ -31,7 +40,7 @@ const News: FC<IProps> = () => {
               <div className="News-block">
                 <Breadcrumbs />
               </div>
-              <h1 className="News-title">Объявления Санкт-Петербург</h1>
+              <h1 className="News-title">{news?.title || `Новость №${id}`}</h1>
             </div>
             <div>
               <div>
@@ -39,19 +48,12 @@ const News: FC<IProps> = () => {
                   <div className="News-leftSidebar-button">
                     <LeftSideBar />
                   </div>
-                  {!data ? (
-                    <Empty />
-                  ) : (
-                    <div className="News-title-block">
-                      <NewsCard data={data.news} />
-                    </div>
-                  )}
+                  {!news ? <Empty /> : <div>{news.content}</div>}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
         <Footer />
         <FloatingFooter />
       </div>
@@ -59,4 +61,4 @@ const News: FC<IProps> = () => {
   );
 };
 
-export default News;
+export default NewsDetails;

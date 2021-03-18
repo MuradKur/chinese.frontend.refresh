@@ -1,0 +1,56 @@
+.Prices {
+  &-container {
+    padding-top: 30px;
+  }
+
+  &-title {
+    font-size: 21px;
+    padding-top: 30px;
+  }
+
+  &-subtitle {
+    font-size: 18px;
+  }
+
+  .ant-card-body {
+    padding: 15px;
+  }
+}
+
+.Prices-table-cost {
+  text-decoration: line-through;
+}
+
+.Prices-send-button {
+  height: 32px;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Prices-show-more-button {
+  height: 43px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.Prices-table-color {
+  border-bottom: 1px solid #dedede;
+  background-color: #f7f7f7;
+}
+
+.Prices-md-photo-camera {
+  height: 30px;
+  width: 30px;
+  margin-left: 70px;
+}
+
+.Prices-ti-star {
+  width: 30px;
+  height: 30px;
+  color: goldenrod;
+}
+
+.Prices-ta {
+  text-align: center;
+}

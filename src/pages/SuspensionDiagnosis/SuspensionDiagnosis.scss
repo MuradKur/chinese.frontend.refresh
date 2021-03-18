@@ -53,3 +53,23 @@
   margin-bottom: 70px;
   margin-top: 30px;
 }
+
+@media (max-width: 1025px) {
+  .SuspensionDiagnosis-block-mg-p {
+    display: block;
+  }
+
+  .SuspensionDiagnosis-icon {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  .SuspensionDiagnosis {
+    .ant-table-content {
+      overflow-x: auto;
+    }
+  }
+}

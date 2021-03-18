@@ -95,8 +95,17 @@ p {
 }
 
 @media screen and (max-width: 715px) {
+  .LeftSideBar {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
   .News-leftSidebar-button {
-    display: none;
+    padding-right: 0;
+  }
+
+  .News-leftSidebar-button-title {
+    display: block;
   }
 }
 

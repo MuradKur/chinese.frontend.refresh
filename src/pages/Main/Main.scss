@@ -301,3 +301,10 @@
   height: 2px;
   width: 30%;
 }
+
+@media screen and (max-width: 550px) {
+  .MainNews-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

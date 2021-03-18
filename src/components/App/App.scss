@@ -32,12 +32,22 @@
   font-family: 'Roboto Bold';
 }
 
+.block {
+  padding: 10px;
+  background-color: rgba(250, 223, 18, 0.08);
+  border: 1px solid #ffeeba;
+}
+
+.line-height-1 {
+  line-height: 20px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #191919;
+  background: white;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -318,6 +328,10 @@
   color: #797979;
 }
 
+.scroll-list {
+  overflow-y: auto;
+}
+
 .bg-gray {
   background-color: #f2f2f2;
 }
@@ -336,6 +350,24 @@
 
 .font-weight {
   font-family: 'Roboto Bold';
+}
+
+h1,
+h2 {
+  font-weight: bold !important;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media screen and (min-width: 1500px) {

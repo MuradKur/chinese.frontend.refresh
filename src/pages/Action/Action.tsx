@@ -1,15 +1,29 @@
-import { Col, Row } from 'antd';
-import { FC, useEffect } from 'react';
-import action from '../../assets/Poprobui370x370.jpg';
+import { Col, Empty, Row } from 'antd';
+import { FC, useEffect, useMemo } from 'react';
+import actionImg from '../../assets/Poprobui370x370.jpg';
 import './Action.scss';
 // @ts-ignore
 import WOW from 'wowjs';
+import { useQuery } from '@apollo/client';
+import { RouteComponentProps } from 'react-router-dom';
+import { GET_ACTIONS } from '../../graph/queries/actions';
+import { ActionType } from '../../typings/graphql';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps, RouteComponentProps<{ id: string }> {}
 
-const Action: FC<IProps> = () => {
+const Action: FC<IProps> = ({ match }) => {
+  const { id } = match.params;
+  const { data } = useQuery(GET_ACTIONS);
+  const action: ActionType | null = useMemo(() => {
+    if (!data) {
+      return null;
+    }
+    const action = data.actions.find((item: ActionType) => item.id === id);
+    return action;
+  }, [id, data]);
+
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
@@ -18,36 +32,24 @@ const Action: FC<IProps> = () => {
     <div className="bg-white">
       <div className="container page-with-header">
         <div className="pt-5">
-          <h1 className="Action-title">Акция №1</h1>
-          <Row justify="space-between">
-            <Col className="Action-column--left" span={8}>
-              <img
-                className="Action-image mb-3 wow zoomIn"
-                src={action}
-                alt="action"
-              />
-            </Col>
-            <Col className="Action-column--right wow fadeIn" span={16}>
-              <h3 className="mb-3 text-center">Заголовок</h3>
-              <p>
-                Lorem Ipsum - это текст-"рыба", часто используемый в печати и
-                вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для
-                текстов на латинице с начала XVI века. В то время некий
-                безымянный печатник создал большую коллекцию размеров и форм
-                шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem
-                Ipsum - это текст-"рыба", часто используемый в печати и
-                вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для
-                текстов на латинице с начала XVI века. В то время некий
-                безымянный печатник создал большую коллекцию размеров и форм
-                шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem
-                Ipsum - это текст-"рыба", часто используемый в печати и
-                вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для
-                текстов на латинице с начала XVI века. В то время некий
-                безымянный печатник создал большую коллекцию размеров и форм
-                шрифтов, используя Lorem Ipsum для распечатки образцов.
-              </p>
-            </Col>
-          </Row>
+          <h1 className="Action-title">Акция №{id}</h1>
+          {action ? (
+            <Row justify="space-between">
+              <Col className="Action-column--left" span={8}>
+                <img
+                  className="Action-image mb-3 wow zoomIn"
+                  src={action.image || actionImg}
+                  alt="action"
+                />
+              </Col>
+              <Col className="Action-column--right wow fadeIn" span={16}>
+                <h3 className="mb-3 text-center">{action.title}</h3>
+                <p>{action.body}</p>
+              </Col>
+            </Row>
+          ) : (
+            <Empty />
+          )}
         </div>
       </div>
     </div>

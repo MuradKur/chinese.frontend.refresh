@@ -9,6 +9,7 @@ import Details from '../../shablons/Details/Details';
 import servise_s from '../../assets/servise_s.jpg';
 // @ts-ignore
 import WOW from 'wowjs';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -78,7 +79,7 @@ export const columns = [
     key: 'phone',
     render() {
       return (
-        <a href="/autoservice/details">
+        <Link to="/autoservice/details">
           <Button
             bgColor={COLORS.lightgray2}
             className="SuspensionDiagnosis-button-td">
@@ -91,7 +92,7 @@ export const columns = [
               </b>{' '}
             </span>{' '}
           </Button>
-        </a>
+        </Link>
       );
     },
   },
@@ -103,7 +104,7 @@ const SuspensionDiagnosis: FC<IProps> = () => {
   }, []);
 
   return (
-    <div>
+    <div className="SuspensionDiagnosis">
       <Details title="Диагностика и ремонт подвески">
         <Table
           showHeader={false}
@@ -119,7 +120,11 @@ const SuspensionDiagnosis: FC<IProps> = () => {
         </h1>
 
         <div className="SuspensionDiagnosis-block-mg-p">
-          <img className="SuspensionDiagnosis-icon " src={servise_s} alt="" />
+          <img
+            className="SuspensionDiagnosis-icon wow fadeIn "
+            src={servise_s}
+            alt=""
+          />
           <p>
             {' '}
             <b> Диагностика и ремонт подвески автомобиля </b> бесспорно является

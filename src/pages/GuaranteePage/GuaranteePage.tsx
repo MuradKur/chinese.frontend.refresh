@@ -1,16 +1,22 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Details from '../../shablons/Details/Details';
 import './GuaranteePage.scss';
 import { COLORS } from '../../constants';
 import Footer from '../../components/Footer/Footer';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
+// @ts-ignore
+import WOW from 'wowjs';
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
 const GuaranteePage: FC<IProps> = () => {
+  useEffect(() => {
+    new WOW.WOW().init();
+  }, []);
+
   return (
     <div>
       <Details>
@@ -22,7 +28,7 @@ const GuaranteePage: FC<IProps> = () => {
           <h1 className="GuaranteePage-title-h1 mt-3 mb-3">
             ПРЕИМУЩЕСТВА ИСПОЛЬЗОВАНИЯ СЕРВИСНОЙ КНИЖКИ:
           </h1>
-          <div className="pl-2">
+          <div className="pl-2 wow fadeIn">
             <ul>
               <li className="GuaranteePage-ul">
                 {' '}
@@ -67,7 +73,7 @@ const GuaranteePage: FC<IProps> = () => {
               </li>
             </ul>
           </div>
-          <div className="GuaranteePage-entry-to-those-service-block">
+          <div className="GuaranteePage-entry-to-those-service-block wow fadeIn">
             <Button className="GuaranteePage-entry-to-those-service  mb-5 mt-5">
               ЗАПИСЬ НА ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ
             </Button>

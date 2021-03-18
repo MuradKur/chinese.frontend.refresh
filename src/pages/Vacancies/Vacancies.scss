@@ -54,3 +54,28 @@ p {
   padding-top: 110px;
   padding-bottom: 110px;
 }
+
+@media screen and (max-width: 1110px) {
+  .Vacancies-leftSidebar-button-title {
+    display: block;
+
+    .LeftSideBar {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .Vacancies-title-block {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .Vacancies-button-block-div {
+    display: block;
+
+    .Vacancies-button-block {
+      width: 100%;
+    }
+  }
+}

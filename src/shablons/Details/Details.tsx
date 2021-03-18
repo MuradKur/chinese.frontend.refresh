@@ -39,12 +39,12 @@ const Details: FC<IProps> = ({
           </div>
           <h1 className="Details-title">{title}</h1>
           {!hideSearch && (
-            <div className="CarService-border-block">
+            <div className="search-block">
               <input
                 placeholder="Введите название СТО"
-                className="CarService-search--input"
+                className="search-block--input"
               />
-              <Button className="CarService-search--button">Поиск</Button>
+              <Button className="search-block--button">Поиск</Button>
             </div>
           )}
           <section className="d-flex Details-section align-items-start">

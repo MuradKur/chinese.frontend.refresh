@@ -41,6 +41,10 @@
 }
 
 .TechnicalMaintenance {
+  .ant-table-wrapper {
+    overflow-x: auto;
+  }
+
   .cars-list {
     display: flex;
 

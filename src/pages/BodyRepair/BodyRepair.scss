@@ -145,3 +145,27 @@
 .BodyRepair-creta {
   width: 100%;
 }
+
+@media screen and (max-width: 1025px) {
+  .BodyRepair-block-mg-p {
+    display: block;
+  }
+
+  .BodyRepair-icon {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  .BodyRepair-iframe {
+    width: 100%;
+  }
+
+  .BodyRepair {
+    .ant-table-content {
+      overflow-x: auto;
+    }
+  }
+}
