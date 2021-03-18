@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/actions" component={Actions} />
           <Route exact path="/guarante" component={GuaranteePage} />
           <Route exact path="/product/:id" component={Product} />
-          <Route exact path="/prices/:id" component={Prices} />
+          <Route exact path="/prices/:id?" component={Prices} />
           <Route exact path="/action/:id" component={Action} />
           <Route
             exact

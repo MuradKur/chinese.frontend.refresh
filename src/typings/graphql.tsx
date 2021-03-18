@@ -32,11 +32,22 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
+  regions?: Maybe<Array<Maybe<RegionType>>>;
+  contacts?: Maybe<Array<Maybe<ContactType>>>;
   autoServices?: Maybe<Array<Maybe<AutoServiceType>>>;
   users?: Maybe<Array<Maybe<UserType>>>;
   actions?: Maybe<Array<Maybe<ActionType>>>;
   news?: Maybe<Array<Maybe<NewsType>>>;
   profiles?: Maybe<Array<Maybe<ProfileType>>>;
+};
+
+export type QueryRegionsArgs = {
+  regionId?: Maybe<Scalars['Int']>;
+};
+
+export type QueryContactsArgs = {
+  contactId?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['Int']>;
 };
 
 export type QueryAutoServicesArgs = {
@@ -53,6 +64,26 @@ export type QueryNewsArgs = {
 
 export type QueryProfilesArgs = {
   profileId?: Maybe<Scalars['Int']>;
+};
+
+export type RegionType = {
+  __typename?: 'RegionType';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  blockId: Scalars['Int'];
+};
+
+export type ContactType = {
+  __typename?: 'ContactType';
+  id: Scalars['ID'];
+  image?: Maybe<Scalars['String']>;
+  type: Scalars['String'];
+  address: Scalars['String'];
+  city?: Maybe<Scalars['String']>;
+  workTime: Scalars['String'];
+  phone: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
+  coordinates: Scalars['String'];
 };
 
 export type AutoServiceType = {
@@ -235,16 +266,31 @@ export type UserFragment = { __typename?: 'UserType' } & Pick<
   | 'dateJoined'
 >;
 
+export type ActionsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ActionsQuery = { __typename?: 'Query' } & {
+  actions?: Maybe<Array<Maybe<{ __typename?: 'ActionType' } & ActionFragment>>>;
+};
+
 export type NewsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type NewsQuery = { __typename?: 'Query' } & {
   news?: Maybe<Array<Maybe<{ __typename?: 'NewsType' } & NewsFragment>>>;
 };
 
-export type ActionsQueryVariables = Exact<{ [key: string]: never }>;
+export type RegionsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type ActionsQuery = { __typename?: 'Query' } & {
-  actions?: Maybe<Array<Maybe<{ __typename?: 'ActionType' } & ActionFragment>>>;
+export type RegionsQuery = { __typename?: 'Query' } & {
+  regions?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'RegionType' } & Pick<
+          RegionType,
+          'id' | 'name' | 'blockId'
+        >
+      >
+    >
+  >;
 };
 
 export type UsersQueryVariables = Exact<{ [key: string]: never }>;
@@ -288,48 +334,6 @@ export const UserFragmentDoc = gql`
     dateJoined
   }
 `;
-export const NewsDocument = gql`
-  query news {
-    news {
-      ...news
-    }
-  }
-  ${NewsFragmentDoc}
-`;
-
-/**
- * __useNewsQuery__
- *
- * To run a query within a React component, call `useNewsQuery` and pass it any options that fit your needs.
- * When your component renders, `useNewsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useNewsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useNewsQuery(
-  baseOptions?: Apollo.QueryHookOptions<NewsQuery, NewsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<NewsQuery, NewsQueryVariables>(NewsDocument, options);
-}
-export function useNewsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<NewsQuery, NewsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<NewsQuery, NewsQueryVariables>(
-    NewsDocument,
-    options,
-  );
-}
-export type NewsQueryHookResult = ReturnType<typeof useNewsQuery>;
-export type NewsLazyQueryHookResult = ReturnType<typeof useNewsLazyQuery>;
-export type NewsQueryResult = Apollo.QueryResult<NewsQuery, NewsQueryVariables>;
 export const ActionsDocument = gql`
   query actions {
     actions {
@@ -380,6 +384,100 @@ export type ActionsLazyQueryHookResult = ReturnType<typeof useActionsLazyQuery>;
 export type ActionsQueryResult = Apollo.QueryResult<
   ActionsQuery,
   ActionsQueryVariables
+>;
+export const NewsDocument = gql`
+  query news {
+    news {
+      ...news
+    }
+  }
+  ${NewsFragmentDoc}
+`;
+
+/**
+ * __useNewsQuery__
+ *
+ * To run a query within a React component, call `useNewsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNewsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNewsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useNewsQuery(
+  baseOptions?: Apollo.QueryHookOptions<NewsQuery, NewsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<NewsQuery, NewsQueryVariables>(NewsDocument, options);
+}
+export function useNewsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<NewsQuery, NewsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<NewsQuery, NewsQueryVariables>(
+    NewsDocument,
+    options,
+  );
+}
+export type NewsQueryHookResult = ReturnType<typeof useNewsQuery>;
+export type NewsLazyQueryHookResult = ReturnType<typeof useNewsLazyQuery>;
+export type NewsQueryResult = Apollo.QueryResult<NewsQuery, NewsQueryVariables>;
+export const RegionsDocument = gql`
+  query regions {
+    regions {
+      id
+      name
+      blockId
+    }
+  }
+`;
+
+/**
+ * __useRegionsQuery__
+ *
+ * To run a query within a React component, call `useRegionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRegionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRegionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRegionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<RegionsQuery, RegionsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<RegionsQuery, RegionsQueryVariables>(
+    RegionsDocument,
+    options,
+  );
+}
+export function useRegionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    RegionsQuery,
+    RegionsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<RegionsQuery, RegionsQueryVariables>(
+    RegionsDocument,
+    options,
+  );
+}
+export type RegionsQueryHookResult = ReturnType<typeof useRegionsQuery>;
+export type RegionsLazyQueryHookResult = ReturnType<typeof useRegionsLazyQuery>;
+export type RegionsQueryResult = Apollo.QueryResult<
+  RegionsQuery,
+  RegionsQueryVariables
 >;
 export const UsersDocument = gql`
   query users {

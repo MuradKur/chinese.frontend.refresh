@@ -8,7 +8,7 @@ import NewsCard from '../../components/NewsCard/NewsCard';
 // @ts-ignore
 import WOW from 'wowjs';
 import { useQuery } from '@apollo/client';
-import { GET_NEWS } from '../../graph/queries/News';
+import { GET_NEWS } from '../../graph/queries/news';
 import { Empty, Spin } from 'antd';
 
 interface IExternalProps {}

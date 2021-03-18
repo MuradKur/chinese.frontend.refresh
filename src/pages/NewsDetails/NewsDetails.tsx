@@ -2,7 +2,7 @@ import { FC, useEffect, useMemo } from 'react';
 // @ts-ignore
 import WOW from 'wowjs';
 import { useQuery } from '@apollo/client';
-import { GET_NEWS } from '../../graph/queries/News';
+import { GET_NEWS } from '../../graph/queries/news';
 import { Empty, Spin } from 'antd';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import LeftSideBar from '../../components/LeftSideBar/LeftSideBar';

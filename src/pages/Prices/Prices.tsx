@@ -8,6 +8,7 @@ import Table from '../../components/Table/Table';
 import { COLORS } from '../../constants';
 import { MdPhotoCamera } from 'react-icons/md';
 import { TiStar } from 'react-icons/ti';
+import SearchInput from '../../components/SearchInput/SearchInput';
 
 interface IExternalProps {}
 
@@ -125,10 +126,7 @@ const Prices: FC<IProps> = () => {
           <Breadcrumbs />
           <h1 className="Prices-title wow fadeIn">Прайсы</h1>
           <div className="search-block mt-5 mb-2">
-            <input
-              placeholder="Введите название СТО"
-              className="search-block--input"
-            />
+            <SearchInput />
             <Button className="search-block--button">Поиск</Button>
           </div>
           <div className="d-flex mb-5 align-items-center flex-wrap">

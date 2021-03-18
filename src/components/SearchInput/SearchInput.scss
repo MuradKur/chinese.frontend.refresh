@@ -1,0 +1,32 @@
+.Search-input {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+
+  @keyframes showTop {
+    from {
+      opacity: 0;
+      top: 30px;
+    }
+    to {
+      opacity: 1;
+      top: 42px;
+    }
+  }
+
+  &--list {
+    min-height: 200px;
+    max-height: 200px;
+    background-color: white;
+    border: 1px solid #d3d3d3;
+    position: absolute;
+    width: 100%;
+    top: 42px;
+    border-radius: 6px;
+    box-shadow: 0px 10px 16px 0px rgba(0, 0, 0, 0.1);
+    animation-name: showTop;
+    animation-duration: 0.4s;
+    padding: 10px;
+    overflow-y: auto;
+  }
+}
