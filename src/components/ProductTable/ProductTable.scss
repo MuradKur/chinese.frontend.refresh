@@ -1,0 +1,92 @@
+.ProductTable {
+  &-container {
+    padding-top: 30px;
+  }
+
+  &-title {
+    font-size: 21px;
+    padding-top: 30px;
+  }
+
+  &-subtitle {
+    font-size: 18px;
+  }
+
+  .ant-card-body {
+    padding: 15px;
+  }
+}
+
+.ProductTable-table-cost {
+  text-decoration: line-through;
+}
+
+.ProductTable-send-button {
+  height: 32px;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ProductTable-show-more-button {
+  height: 43px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ProductTable-table-color {
+  border-bottom: 1px solid #dedede;
+  background-color: #f7f7f7;
+}
+
+.ProductTable-md-photo-camera {
+  height: 30px;
+  width: 30px;
+  margin-left: 70px;
+}
+
+.ProductTable-ti-star {
+  width: 20px;
+  height: 20px;
+  color: goldenrod;
+}
+
+.ProductTable-ta {
+  text-align: center;
+}
+
+.ProductTable-show-all-offers-button {
+  border-bottom: 1px dashed green;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  &:hover,
+  &:focus {
+    border-bottom: 1px dashed green;
+  }
+}
+
+.ProductTable-table--article {
+  .Table-body--row {
+    .Table-body--cell:nth-child(1) {
+      flex: 2;
+    }
+  }
+}
+
+.ProductTable-table-color-three {
+  border-bottom: 1px solid #dedede;
+}
+
+.ProductTable-under-order {
+  color: red;
+}
+
+.ProductTable-mb {
+  margin-bottom: 0;
+}
+
+.ProductTable-paragraph-link {
+  font-size: 11px;
+  text-decoration: underline red;
+}
