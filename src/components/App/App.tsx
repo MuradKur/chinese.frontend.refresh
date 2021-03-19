@@ -19,6 +19,7 @@ import CarService from '../../pages/CarService/CarService';
 import DeliveryInRussia from '../../pages/DeliveryInRussia/DeliveryInRussia';
 import Actions from '../../pages/Actions/Actions';
 import Action from '../../pages/Action/Action';
+import Auth from '../../pages/Auth/Auth';
 import TechnicalMaintenance from '../../pages/TechnicalMaintenance/TechnicalMaintenance';
 import GuaranteePage from '../../pages/GuaranteePage/GuaranteePage';
 import DetailsAutoService from '../../pages/DetailsAutoService/DetailsAutoService';
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/product/:id" component={Product} />
           <Route exact path="/prices/:id?" component={Prices} />
           <Route exact path="/action/:id" component={Action} />
+          <Route exact path="/auth" component={Auth} />
           <Route
             exact
             path="/autoservice/technical-maintenance"
