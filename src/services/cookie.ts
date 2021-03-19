@@ -3,6 +3,7 @@ export function getCookie(name: string) {
     new RegExp(
       //eslint-disable-next-line
       '(?:^|; )' +
+        //eslint-disable-next-line
         name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
         '=([^;]*)',
     ),
