@@ -10,6 +10,9 @@ import { COLORS } from '../../constants';
 import { MdPhotoCamera } from 'react-icons/md';
 import { TiStar } from 'react-icons/ti';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Footer from '../../components/Footer/Footer';
+import ProductTable from '../../components/ProductTable/ProductTable';
+import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 
 interface IExternalProps {}
 
@@ -77,6 +80,7 @@ const data = [
             <p className="mb-0 Prices-table-cost ">
               <b> 990 руб. </b>
             </p>
+
             <p className="mb-0">
               <b style={{ color: COLORS.red }}> Скидка </b>
             </p>
@@ -218,9 +222,12 @@ const Prices: FC<IProps> = () => {
           </h6>
 
           <PriceTable />
+          <ProductTable />
           <Button className=" Prices-show-more-button wow fadeIn mb-5 mt-5">
             ПОКАЗАТЬ ЕЩЕ
           </Button>
+          <Footer />
+          <FloatingFooter />
         </div>
       </div>
     </div>
