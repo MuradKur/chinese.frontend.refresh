@@ -1,5 +1,4 @@
 import { Breadcrumb } from 'antd';
-import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import './Breadcrumbs.scss';
 
@@ -11,7 +10,7 @@ const BreadcrumbsComponent = () => {
     return null;
   }
 
-  const navs = routes.map((item) => {
+  const navs: any = routes.map((item) => {
     let itemLabel = item;
 
     if (itemLabel.includes('-')) {
@@ -24,13 +23,12 @@ const BreadcrumbsComponent = () => {
       .join('');
   });
 
-  console.log(navs);
   return (
     <Breadcrumb>
       <Breadcrumb.Item>
         <Link to="/">Главная</Link>
       </Breadcrumb.Item>
-      {navs.map((route, index) => {
+      {navs.map((route: string, index: number) => {
         if (index + 1 === navs.length) {
           return <Breadcrumb.Item key={index}>{route}</Breadcrumb.Item>;
         }

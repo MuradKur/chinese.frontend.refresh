@@ -16,9 +16,15 @@
   height: 43px;
   font-size: 15px;
   font-weight: bold;
-  background-color: black;
-  width: 200px;
-  margin-top: 100px;
+  background: rgb(68, 68, 68);
+  min-width: 200px;
+  margin-top: 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: rgb(20, 20, 20);
+  }
 }
 
 .Auth-text-button {
@@ -40,10 +46,16 @@
   height: 43px;
   font-size: 15px;
   font-weight: bold;
-  background-color: black;
-  width: 100px;
+  background: rgb(68, 68, 68);
+  min-width: 100px;
   margin-top: 15px;
   margin-bottom: 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: rgb(20, 20, 20);
+  }
 }
 
 .Auth-text-button {

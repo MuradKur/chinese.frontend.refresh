@@ -28,50 +28,58 @@ import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagn
 import NewsDetails from '../../pages/NewsDetails/NewsDetails';
 import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
+import AuthProvider from '../../providers/AuthProvider';
+import React from 'react';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <FloatingButton />
-        <Header />
-        <Switch>
-          <Route exact path="/components" component={Components} />
-          <Route exact path="/contacts" component={Contacts} />
-          <Route exact path="/" component={Main} />
-          <Route exact path="/news" component={News} />
-          <Route exact path="/news/:id" component={NewsDetails} />
-          <Route exact path="/about-company" component={AboutCompany} />
-          <Route exact path="/vacancies" component={Vacancies} />
-          <Route exact path="/autoservice" component={CarService} />
-          <Route exact path="/delivery" component={DeliveryInRussia} />
-          <Route exact path="/actions" component={Actions} />
-          <Route exact path="/guarante" component={GuaranteePage} />
-          <Route exact path="/product/:id" component={Product} />
-          <Route exact path="/prices/:id?" component={Prices} />
-          <Route exact path="/action/:id" component={Action} />
-          <Route exact path="/auth" component={Auth} />
-          <Route
-            exact
-            path="/autoservice/technical-maintenance"
-            component={TechnicalMaintenance}
-          />
-          <Route exact path="/bodyrepair" component={BodyRepair} />
-          <Route
-            exact
-            path="/suspensiondiagnosis"
-            component={SuspensionDiagnosis}
-          />
-          <Route
-            exact
-            path="/autoservice/details"
-            component={DetailsAutoService}
-          />
-          <Redirect to="/" />
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends React.Component {
+  componentDidCatch(err: any) {
+    console.log(err);
+  }
+
+  render() {
+    return (
+      <Router>
+        <AuthProvider>
+          <FloatingButton />
+          <Header />
+          <Switch>
+            <Route exact path="/components" component={Components} />
+            <Route exact path="/contacts" component={Contacts} />
+            <Route exact path="/" component={Main} />
+            <Route exact path="/news" component={News} />
+            <Route exact path="/news/:id" component={NewsDetails} />
+            <Route exact path="/about-company" component={AboutCompany} />
+            <Route exact path="/vacancies" component={Vacancies} />
+            <Route exact path="/autoservice" component={CarService} />
+            <Route exact path="/delivery" component={DeliveryInRussia} />
+            <Route exact path="/actions" component={Actions} />
+            <Route exact path="/guarante" component={GuaranteePage} />
+            <Route exact path="/product/:id" component={Product} />
+            <Route exact path="/prices/:id?" component={Prices} />
+            <Route exact path="/action/:id" component={Action} />
+            <Route exact path="/auth" component={Auth} />
+            <Route
+              exact
+              path="/autoservice/technical-maintenance"
+              component={TechnicalMaintenance}
+            />
+            <Route exact path="/bodyrepair" component={BodyRepair} />
+            <Route
+              exact
+              path="/suspensiondiagnosis"
+              component={SuspensionDiagnosis}
+            />
+            <Route
+              exact
+              path="/autoservice/details"
+              component={DetailsAutoService}
+            />
+            <Redirect to="/" />
+          </Switch>
+        </AuthProvider>
+      </Router>
+    );
+  }
 }
 
 export default App;
