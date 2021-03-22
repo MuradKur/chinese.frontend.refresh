@@ -51,6 +51,7 @@ function App() {
           <Route exact path="/prices/:id?" component={Prices} />
           <Route exact path="/action/:id" component={Action} />
           <Route exact path="/auth" component={Auth} />
+
           <Route
             exact
             path="/autoservice/technical-maintenance"
