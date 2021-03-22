@@ -31,7 +31,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   const verifyToken = useCallback(() => {
     if (!token) {
-      history.push('/auth');
+      //   history.push('/auth');
     } else {
       verifyTokenRequest({ variables: { token } }).catch((res) => {
         res.graphQLErrors.forEach((error: { message: string }) => {
@@ -41,17 +41,19 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         });
       });
     }
-  }, [token, history, verifyTokenRequest, refreshToken]);
+  }, [token, verifyTokenRequest, refreshToken]);
 
   useEffect(() => {
     verifyToken();
   }, [verifyToken]);
 
   useEffect(() => {
-    if (data && !data.verifyToken) {
-      history.push('/auth');
-    } else {
-      history.push('/');
+    if (data) {
+      if (!data.verifyToken) {
+        //   history.push('/auth');
+      } else {
+        history.push('/');
+      }
     }
   }, [data, history]);
 

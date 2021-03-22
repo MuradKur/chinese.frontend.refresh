@@ -1,10 +1,14 @@
-import { Checkbox, InputNumber } from 'antd';
-import { FC } from 'react';
+import { InputNumber } from 'antd';
+import { FC, useCallback } from 'react';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
 import Table from '../../components/Table/Table';
 import './Product.scss';
 import { Tabs } from 'antd';
+import React, { useState } from 'react';
+import { Drawer, Button as ButtonAntd } from 'antd';
+import filter from '../../assets/filter.png';
+import AddToTheBasket from '../../components/AddToTheBasket/AddToTheBasket';
 
 const { TabPane } = Tabs;
 
@@ -38,86 +42,146 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    preview: {
-      render() {
-        return (
-          <img
-            className="Product-preview"
-            src="https://img4.okidoker.com/c/6/8/8/588738/7259859/15540373_2.jpg"
-            alt="preview"
-          />
-        );
-      },
-    },
-    name: {
-      value: 'PBA032',
-    },
-    brand: {
-      value: 'PMC',
-    },
-    brand_desctiprion: {
-      value: 'Какое то описание',
-    },
-    buy: {
-      render() {
-        return <Button>Купить</Button>;
-      },
-    },
-    count: {
-      render() {
-        return <InputNumber min={1} defaultValue={1} />;
-      },
-    },
-  },
-  {
-    preview: {
-      render() {
-        return (
-          <img
-            className="Product-preview"
-            src="https://img4.okidoker.com/c/6/8/8/588738/7259859/15540373_2.jpg"
-            alt="preview"
-          />
-        );
-      },
-    },
-    name: {
-      value: 'PBA032',
-    },
-    brand: {
-      value: 'PMC',
-    },
-    brand_desctiprion: {
-      value: 'Какое то описание',
-    },
-    buy: {
-      render() {
-        return <Button>Купить</Button>;
-      },
-    },
-    count: {
-      render() {
-        return <InputNumber min={1} defaultValue={1} />;
-      },
-    },
-  },
-];
-
 const Product: FC<IProps> = () => {
+  const [isOpenMessage, setOpenMessage] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  const handleOpen = useCallback(() => {
+    setOpenMessage(true);
+  }, []);
+
+  // const handleClose = useCallback(() => {
+  //   setVisible(false);
+  // }, []);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
+
+  const data = [
+    {
+      preview: {
+        render() {
+          return (
+            <>
+              <ButtonAntd className="Product-button-antd" onClick={showDrawer}>
+                <img
+                  className="Product-preview"
+                  src="https://img4.okidoker.com/c/6/8/8/588738/7259859/15540373_2.jpg"
+                  alt="preview"
+                />
+              </ButtonAntd>
+            </>
+          );
+        },
+      },
+      name: {
+        value: 'PBA032',
+      },
+      brand: {
+        value: 'PMC',
+      },
+      brand_desctiprion: {
+        value: 'Какое то описание',
+      },
+      buy: {
+        render() {
+          return <Button onClick={handleOpen}>Купить</Button>;
+        },
+      },
+      count: {
+        render() {
+          return <InputNumber min={1} defaultValue={1} />;
+        },
+      },
+    },
+    {
+      preview: {
+        render() {
+          return (
+            <ButtonAntd className="Product-button-antd" onClick={showDrawer}>
+              <img
+                className="Product-preview"
+                src="https://img4.okidoker.com/c/6/8/8/588738/7259859/15540373_2.jpg"
+                alt="preview"
+              />
+            </ButtonAntd>
+          );
+        },
+      },
+      name: {
+        value: 'PBA032',
+      },
+      brand: {
+        value: 'PMC',
+      },
+      brand_desctiprion: {
+        value: 'Какое то описание',
+      },
+      buy: {
+        render() {
+          return <Button onClick={handleOpen}>Купить</Button>;
+        },
+      },
+      count: {
+        render() {
+          return <InputNumber min={1} defaultValue={1} />;
+        },
+      },
+    },
+  ];
+
   return (
-    <div className="page-with-header Product container">
-      <Breadcrumbs />
-      <div className="Product-container pt-3 d-flex">
+    <div className="page-with-header">
+      <div className="container pt-3 d-flex">
         <div className="Product-column--left">
+          <Breadcrumbs />
+          <Drawer
+            className="Product-drawer"
+            title="Hyundai / KIA · 2630035505"
+            placement="right"
+            closable={false}
+            width={520}
+            onClose={onClose}
+            visible={visible}>
+            <p className="Product-paragraph-drawer-p">Фильтр масляный</p>
+
+            <Tabs defaultActiveKey="2">
+              <TabPane
+                tab={<span className="Product-paragraph-tab">Фотография</span>}
+                key="1">
+                <div className="Product-photo-filter-border">
+                  <img className="Product-photo-filter" src={filter} alt="" />
+                </div>
+              </TabPane>
+              <TabPane
+                tab={
+                  <span className="Product-paragraph-tab">Производитель</span>
+                }
+                key="2">
+                Компания Hyundai Motor Company была основана в 1967г. В 1998
+                году Hyundai поглотила корейскую автомобилестроительную компанию
+                Kia Motors. В 2000 году заключила стратегический альянс с
+                Daimler Chrysler, существовавший несколько лет. Состоящий из
+                пяти предприятий завод Hyundai в корейском городе Ульсан, по
+                данным на 2006 год считался крупнейшим автомобилестроительным
+                заводом в мире. Использует Товарные Знаки: Hyundai, Mobis, KIA.
+              </TabPane>
+            </Tabs>
+          </Drawer>
+
           <h1 className="font-weight">Карточка продукта</h1>
+
           <div className="d-flex Product-card">
             <img
               className="Product-card--image"
               src="https://img4.okidoker.com/c/6/8/8/588738/7259859/15540373_2.jpg"
               alt="Product-card"
             />
+
             <div>
               <h3 className="mb-0 Product-card--title">PBA032 PMC</h3>
               <p className="color-gray mb-2 Product-card--subtitle">
@@ -157,56 +221,39 @@ const Product: FC<IProps> = () => {
             </p>
 
             <Tabs className="Product-filter" defaultActiveKey="1">
-              <TabPane className="Product-filter-tabpane" tab="По цене" key="1">
-                <div className="Product-checkbox--list">
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Metaco</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Hola</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>BM</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Pilenga</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-                </div>
-              </TabPane>
+              <TabPane
+                className="Product-filter-tabpane"
+                tab="По цене"
+                key="1"></TabPane>
               <TabPane
                 className="Product-filter-tabpane"
                 tab="По алфавиту"
-                key="2">
-                <div className="Product-checkbox--list">
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Metaco</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Hola</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>BM</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-
-                  <div className="Product-border-contener d-flex justify-content-between">
-                    <Checkbox>Pilenga</Checkbox>
-                    <p className="Product-amount">161p</p>
-                  </div>
-                </div>
-              </TabPane>
+                key="2"></TabPane>
             </Tabs>
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Metaco</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Hola</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">BM</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+
+            <div className="Product-border-contener">
+              <div className="Product-border-block "></div>
+              <p className="pl-2">Pilenga</p>
+              <p className="Product-amount pl-5">161p</p>
+            </div>
+            <AddToTheBasket visible={isOpenMessage} />
           </div>
         </div>
       </div>
