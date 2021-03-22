@@ -165,3 +165,41 @@
     }
   }
 }
+
+.Product-button-antd {
+  background-color: transparent;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.Product-photo-filter {
+  height: 250px;
+  width: 250px;
+}
+
+.Product-photo-filter-border {
+  border: black solid 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Product-paragraph-tab {
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.Product-paragraph-drawer-p {
+  color: black;
+  font-size: 17px;
+}

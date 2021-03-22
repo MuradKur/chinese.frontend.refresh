@@ -4,7 +4,6 @@ import './ProductTable.scss';
 import Table from '../../components/Table/Table';
 import { COLORS } from '../../constants';
 import { MdPhotoCamera } from 'react-icons/md';
-import { TiStar } from 'react-icons/ti';
 import { InputNumber } from 'antd';
 import { Link } from 'react-router-dom';
 
