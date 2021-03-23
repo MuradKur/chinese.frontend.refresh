@@ -1,0 +1,16 @@
+.MakingTable-border {
+  border: #dedede solid 1px;
+}
+
+.MakingTable-link {
+  text-decoration: underline;
+
+  &:hover {
+    color: #e34c19;
+  }
+}
+
+.MakingTable-paragraph {
+  color: red;
+  font-weight: bold;
+}
