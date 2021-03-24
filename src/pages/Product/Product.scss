@@ -113,6 +113,8 @@
 
 .Product-border-contener {
   display: flex;
+  justify-content: space-between;
+  max-width: 200px;
 }
 
 .Product-amount {

@@ -1,14 +1,18 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import './Header.scss';
 import logo from '../../assets/logotype.png';
 import orangeLogo from '../../assets/orange-logo.png';
 import { COLORS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
-import { Menu, Collapse } from 'antd';
+import { Menu, Collapse, Badge } from 'antd';
 import Button from '../Button/Button';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import SubHeader from '../SubHeader/SubHeader';
+import { BiCart } from 'react-icons/bi';
+import { getCookie } from '../../services/cookie';
+import { connect } from 'react-redux';
+import { addToCartProduct } from '../../actions';
 
 const { Panel } = Collapse;
 
@@ -20,7 +24,11 @@ export type Navs = Array<{
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  // TODO fix
+  cartProducts: any;
+  addToCartProduct: any;
+}
 
 interface Nav {
   navs: Array<{
@@ -103,8 +111,20 @@ const NAVS: Nav['navs'] = [
   },
 ];
 
-const Header: FC<IProps> = () => {
+const Header: FC<IProps> = ({ cartProducts, addToCartProduct }) => {
   const [isOpenDrawer, setOpenDrawer] = useState(false);
+
+  const getProducts = useCallback(() => {
+    const products = getCookie('products');
+    if (products) {
+      const productsData = JSON.parse(products);
+      addToCartProduct(productsData);
+    }
+  }, [addToCartProduct]);
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
   const styleHeader = {
     background: COLORS.orangeGradient,
@@ -253,17 +273,28 @@ const Header: FC<IProps> = () => {
               <FaUser color={COLORS.black} size={20} />
             </Button> */}
             </div>
-            <div className="Header-burger--button">
-              <Button
-                className="Header-burger-button"
-                onClick={handleChangeStatus(true)}
-                bgColor={COLORS.transparent}>
-                <AiOutlineMenu
+            <div className="d-flex align-items-center">
+              <div className="Header-burger--button ">
+                <Button
                   className="Header-burger-button"
-                  color={COLORS.black}
-                  size={25}
-                />
-              </Button>
+                  onClick={handleChangeStatus(true)}
+                  bgColor={COLORS.transparent}>
+                  <AiOutlineMenu
+                    className="Header-burger-button"
+                    color={COLORS.black}
+                    size={25}
+                  />
+                </Button>
+              </div>
+              <div className="ml-2 mr-2">
+                <div>
+                  <Link to="/cart">
+                    <Badge count={cartProducts.length}>
+                      <BiCart size={25} />
+                    </Badge>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </header>
@@ -272,4 +303,9 @@ const Header: FC<IProps> = () => {
   );
 };
 
-export default Header;
+// TODO types for store
+const mapStateToProps = (state: any) => ({
+  cartProducts: state.cartProducts,
+});
+
+export default connect(mapStateToProps, { addToCartProduct })(Header);

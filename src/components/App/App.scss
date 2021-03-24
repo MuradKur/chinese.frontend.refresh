@@ -361,6 +361,10 @@ h2 {
   word-break: break-all;
 }
 
+.d-none {
+  display: none !important;
+}
+
 @keyframes show {
   from {
     opacity: 0;

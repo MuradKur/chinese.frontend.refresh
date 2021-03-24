@@ -1,20 +1,26 @@
-import { InputNumber } from 'antd';
+import { Checkbox, InputNumber } from 'antd';
 import { FC, useCallback } from 'react';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
 import Table from '../../components/Table/Table';
 import './Product.scss';
 import { Tabs } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Drawer, Button as ButtonAntd } from 'antd';
 import filter from '../../assets/filter.png';
 import AddToTheBasket from '../../components/AddToTheBasket/AddToTheBasket';
+import { getCookie, setCookie } from '../../services/cookie';
+import { connect } from 'react-redux';
+import { addToCartProduct } from '../../actions';
 
 const { TabPane } = Tabs;
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  // TODO
+  addToCartProduct: any;
+}
 
 const columns = [
   {
@@ -42,13 +48,21 @@ const columns = [
   },
 ];
 
-const Product: FC<IProps> = () => {
+const Product: FC<IProps> = ({ addToCartProduct }) => {
   const [isOpenMessage, setOpenMessage] = useState(false);
   const [visible, setVisible] = useState(false);
 
   const handleOpen = useCallback(() => {
+    const product = { title: 'nnn' };
+    const products = getCookie('products');
+    addToCartProduct([product]);
+    if (products) {
+      setCookie('products', JSON.stringify([...JSON.parse(products), product]));
+    } else {
+      setCookie('products', JSON.stringify([product]));
+    }
     setOpenMessage(true);
-  }, []);
+  }, [addToCartProduct]);
 
   // const handleClose = useCallback(() => {
   //   setVisible(false);
@@ -231,27 +245,23 @@ const Product: FC<IProps> = () => {
                 key="2"></TabPane>
             </Tabs>
             <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Metaco</p>
-              <p className="Product-amount pl-5">161p</p>
+              <Checkbox>Metaco</Checkbox>
+              <p className="Product-amount">161p</p>
             </div>
 
             <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Hola</p>
-              <p className="Product-amount pl-5">161p</p>
+              <Checkbox>Hola</Checkbox>
+              <p className="Product-amount">161p</p>
             </div>
 
             <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">BM</p>
-              <p className="Product-amount pl-5">161p</p>
+              <Checkbox>BM</Checkbox>
+              <p className="Product-amount">161p</p>
             </div>
 
             <div className="Product-border-contener">
-              <div className="Product-border-block "></div>
-              <p className="pl-2">Pilenga</p>
-              <p className="Product-amount pl-5">161p</p>
+              <Checkbox>Pilenga</Checkbox>
+              <p className="Product-amount">161p</p>
             </div>
             <AddToTheBasket visible={isOpenMessage} />
           </div>
@@ -261,4 +271,4 @@ const Product: FC<IProps> = () => {
   );
 };
 
-export default Product;
+export default connect(() => {}, { addToCartProduct })(Product);
