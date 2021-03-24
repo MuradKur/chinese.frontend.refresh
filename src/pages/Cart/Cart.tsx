@@ -1,16 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import './Cart.scss';
 import MakingTable from '../../components/MakingTable/MakingTable';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
+import { connect } from 'react-redux';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  // TODO fix
+  cartProducts: any;
+}
 
-const Cart: FC<IProps> = () => {
+const Cart: FC<IProps> = ({ cartProducts }) => {
   return (
     <div>
       <div className="page-with-header">
@@ -26,7 +30,10 @@ const Cart: FC<IProps> = () => {
             <p className="Cart-price">Цена</p>
             <p className="Cart-amount">Сумма</p>
           </div>
-          <MakingTable />
+          {cartProducts.map((item: any, id: number) => (
+            <MakingTable key={id} />
+          ))}
+
           <div className="Cart-border-block mt-1">
             <div className="Cart-border">
               <div className=" mt-2 d-flex  align-items-center Cart-paragraph-block">
@@ -55,4 +62,9 @@ const Cart: FC<IProps> = () => {
   );
 };
 
-export default Cart;
+// TODO types for store
+const mapStateToProps = (state: any) => ({
+  cartProducts: state.cartProducts,
+});
+
+export default connect(mapStateToProps)(Cart);
