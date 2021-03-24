@@ -30,6 +30,7 @@ import SuspensionDiagnosis from '../../pages/SuspensionDiagnosis/SuspensionDiagn
 import NewsDetails from '../../pages/NewsDetails/NewsDetails';
 import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
+import Making from '../../pages/Making/Making';
 import AuthProvider from '../../providers/AuthProvider';
 import React from 'react';
 import store from '../../store';
@@ -63,6 +64,7 @@ class App extends React.Component {
               <Route exact path="/action/:id" component={Action} />
               <Route exact path="/auth" component={Auth} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/making" component={Making} />
 
               <Route
                 exact
