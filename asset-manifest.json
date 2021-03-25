@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/chinese.frontend.refresh/static/css/main.351855b8.chunk.css",
-    "main.js": "/chinese.frontend.refresh/static/js/main.8c6a3063.chunk.js",
-    "main.js.map": "/chinese.frontend.refresh/static/js/main.8c6a3063.chunk.js.map",
-    "runtime-main.js": "/chinese.frontend.refresh/static/js/runtime-main.2794bec8.js",
-    "runtime-main.js.map": "/chinese.frontend.refresh/static/js/runtime-main.2794bec8.js.map",
-    "static/css/2.ea1aa86d.chunk.css": "/chinese.frontend.refresh/static/css/2.ea1aa86d.chunk.css",
-    "static/js/2.accc451d.chunk.js": "/chinese.frontend.refresh/static/js/2.accc451d.chunk.js",
-    "static/js/2.accc451d.chunk.js.map": "/chinese.frontend.refresh/static/js/2.accc451d.chunk.js.map",
+    "main.css": "/chinese.frontend.refresh/static/css/main.27f1c69a.chunk.css",
+    "main.js": "/chinese.frontend.refresh/static/js/main.522e3006.chunk.js",
+    "main.js.map": "/chinese.frontend.refresh/static/js/main.522e3006.chunk.js.map",
+    "runtime-main.js": "/chinese.frontend.refresh/static/js/runtime-main.deecb979.js",
+    "runtime-main.js.map": "/chinese.frontend.refresh/static/js/runtime-main.deecb979.js.map",
+    "static/css/2.cccc74fe.chunk.css": "/chinese.frontend.refresh/static/css/2.cccc74fe.chunk.css",
+    "static/js/2.e64a808e.chunk.js": "/chinese.frontend.refresh/static/js/2.e64a808e.chunk.js",
+    "static/js/2.e64a808e.chunk.js.map": "/chinese.frontend.refresh/static/js/2.e64a808e.chunk.js.map",
     "index.html": "/chinese.frontend.refresh/index.html",
-    "static/css/2.ea1aa86d.chunk.css.map": "/chinese.frontend.refresh/static/css/2.ea1aa86d.chunk.css.map",
-    "static/css/main.351855b8.chunk.css.map": "/chinese.frontend.refresh/static/css/main.351855b8.chunk.css.map",
-    "static/js/2.accc451d.chunk.js.LICENSE.txt": "/chinese.frontend.refresh/static/js/2.accc451d.chunk.js.LICENSE.txt",
+    "static/css/2.cccc74fe.chunk.css.map": "/chinese.frontend.refresh/static/css/2.cccc74fe.chunk.css.map",
+    "static/css/main.27f1c69a.chunk.css.map": "/chinese.frontend.refresh/static/css/main.27f1c69a.chunk.css.map",
+    "static/js/2.e64a808e.chunk.js.LICENSE.txt": "/chinese.frontend.refresh/static/js/2.e64a808e.chunk.js.LICENSE.txt",
     "static/media/Commandant.681d6c0c.jpg": "/chinese.frontend.refresh/static/media/Commandant.681d6c0c.jpg",
     "static/media/Industrial.9eb7cd31.jpg": "/chinese.frontend.refresh/static/media/Industrial.9eb7cd31.jpg",
     "static/media/Krasnoputilovskaya.3161a396.jpg": "/chinese.frontend.refresh/static/media/Krasnoputilovskaya.3161a396.jpg",
     "static/media/Moscow.33b22b9e.jpg": "/chinese.frontend.refresh/static/media/Moscow.33b22b9e.jpg",
     "static/media/App.scss": "/chinese.frontend.refresh/static/media/Roboto-Regular.cfe3602c.ttf",
+    "static/media/Pads.8c0a914f.webp": "/chinese.frontend.refresh/static/media/Pads.8c0a914f.webp",
     "static/media/Parashutnaya.1c81946c.jpg": "/chinese.frontend.refresh/static/media/Parashutnaya.1c81946c.jpg",
     "static/media/Peoples_Militia.ea87ea93.jpg": "/chinese.frontend.refresh/static/media/Peoples_Militia.ea87ea93.jpg",
     "static/media/Poprobui370x370.9c92ec98.jpg": "/chinese.frontend.refresh/static/media/Poprobui370x370.9c92ec98.jpg",
@@ -41,6 +42,7 @@
     "static/media/besplatnaya_dostavka_rf.dc87709c.jpg": "/chinese.frontend.refresh/static/media/besplatnaya_dostavka_rf.dc87709c.jpg",
     "static/media/HeatherPreview.scss": "/chinese.frontend.refresh/static/media/car.48bf09bf.png",
     "static/media/dalnevostochnyy.19889b8b.jpg": "/chinese.frontend.refresh/static/media/dalnevostochnyy.19889b8b.jpg",
+    "static/media/filter.9b0b4b26.png": "/chinese.frontend.refresh/static/media/filter.9b0b4b26.png",
     "static/media/imgicon.b3e38786.png": "/chinese.frontend.refresh/static/media/imgicon.b3e38786.png",
     "static/media/internet_magazin.89abbd13.png": "/chinese.frontend.refresh/static/media/internet_magazin.89abbd13.png",
     "static/media/kuzovnoy_remont.49d86326.png": "/chinese.frontend.refresh/static/media/kuzovnoy_remont.49d86326.png",
@@ -57,10 +59,10 @@
     "static/media/van.2611c1ef.jpg": "/chinese.frontend.refresh/static/media/van.2611c1ef.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2794bec8.js",
-    "static/css/2.ea1aa86d.chunk.css",
-    "static/js/2.accc451d.chunk.js",
-    "static/css/main.351855b8.chunk.css",
-    "static/js/main.8c6a3063.chunk.js"
+    "static/js/runtime-main.deecb979.js",
+    "static/css/2.cccc74fe.chunk.css",
+    "static/js/2.e64a808e.chunk.js",
+    "static/css/main.27f1c69a.chunk.css",
+    "static/js/main.522e3006.chunk.js"
   ]
 }
