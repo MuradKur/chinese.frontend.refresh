@@ -8,16 +8,20 @@ export function getCookie(name: string) {
         '=([^;]*)',
     ),
   );
-  return matches ? decodeURIComponent(matches[1]) : undefined;
+
+  return matches ? matches[1] : undefined;
 }
 
-export function setCookie(name: string, value: string, options: any = {}) {
+export function setCookie(
+  name: string,
+  value: string,
+  options: any = { expires: new Date(Date.now() + 86400e3) },
+) {
   if (options.expires instanceof Date) {
     options.expires = options.expires.toUTCString();
   }
 
-  let updatedCookie =
-    encodeURIComponent(name) + '=' + encodeURIComponent(value);
+  let updatedCookie = name + '=' + value;
 
   for (let optionKey in options) {
     updatedCookie += '; ' + optionKey;
@@ -26,7 +30,7 @@ export function setCookie(name: string, value: string, options: any = {}) {
       updatedCookie += '=' + optionValue;
     }
   }
-
+  console.log(updatedCookie, options);
   document.cookie = updatedCookie;
 }
 

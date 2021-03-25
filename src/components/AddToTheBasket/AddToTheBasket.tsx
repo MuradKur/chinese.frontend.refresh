@@ -1,7 +1,5 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import './AddToTheBasket.scss';
-// @ts-ignore
-import WOW from 'wowjs';
 import Button from '../../components/Button/Button';
 import Pads from '../../assets/Pads.webp';
 
@@ -13,15 +11,12 @@ interface IExternalProps {
 interface IProps extends IExternalProps {}
 
 const AddToTheBasket: FC<IProps> = ({ visible, onPress }) => {
-  useEffect(() => {
-    new WOW.WOW().init();
-  }, [visible]);
+  if (!visible) {
+    return null;
+  }
 
   return (
-    <div
-      className={`AddToTheBasket-border wow slideInRight ${
-        !visible && 'd-none'
-      }`}>
+    <div className="AddToTheBasket-border">
       <div>
         <p className="AddToTheBasket-paragraph pt-3">Товар в корзине</p>
       </div>

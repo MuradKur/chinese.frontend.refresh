@@ -92,8 +92,8 @@ const data = [
       render() {
         return (
           <div>
-            <Button bgColor={COLORS.black} className="Prices-send-button">
-              В РЕЗЕРВ
+            <Button bgColor={COLORS.red} className="Prices-send-button">
+              В КОРЗИНУ
             </Button>
           </div>
         );

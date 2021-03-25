@@ -100,15 +100,6 @@ const MakingTable: FC<IProps> = () => {
           columns={columns2}
         />
       </div>
-
-      <div className="MakingTable-border mt-1">
-        <Table
-          className=" wow fadeIn"
-          hideHeader
-          data={data2}
-          columns={columns2}
-        />
-      </div>
     </div>
   );
 };

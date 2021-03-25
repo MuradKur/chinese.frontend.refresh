@@ -52,41 +52,6 @@ const News = [
   },
 ];
 
-// const NewsItem: FC<NewsType> = (news) => {
-//   const [isLoaded, setLoaded] = useState(false);
-
-//   useEffect(() => {
-//     setTimeout(() => {
-//       setLoaded(true);
-//     }, news.id * 500);
-//   }, [news.id]);
-
-//   const styles: any = {
-//     fadeInDown: {
-//       animation: 'x 1s',
-//       animationName: Radium.keyframes(fadeInDown, 'fadeInDown')
-//     }
-//   }
-
-//   if (!isLoaded) {
-//     return null;
-//   }
-
-//   return (
-//     <Radium.StyleRoot>
-//       <div style={styles.fadeInDown} className="MainNews-block">
-//         <a className="MainNews-link" href="/">
-//           {news.title}
-//         </a>
-//         <p className="MainNews-data">{news.date}</p>
-//         <p className="MainNews-item">
-//           {news.content}
-//         </p>
-//       </div>
-//     </Radium.StyleRoot>
-//   )
-// }
-
 const MainNews: FC<IProps> = () => {
   return (
     <div>
