@@ -326,7 +326,7 @@ const Prices: FC<IProps> = () => {
       />
       {isOpen && (
         <Table
-          className="Prices-table--article Prices-table-color-three wow fadeIn"
+          className="Prices-table--article animation-slide-right Prices-table-color-three wow fadeIn"
           hideHeader
           data={data3}
           columns={columns3}

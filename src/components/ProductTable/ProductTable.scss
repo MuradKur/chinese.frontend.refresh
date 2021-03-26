@@ -67,6 +67,11 @@
 }
 
 .ProductTable-table--article {
+  &.animation-slide-right {
+    animation-name: slide;
+    animation-duration: 0.5s;
+  }
+
   .Table-body--row {
     .Table-body--cell:nth-child(1) {
       flex: 2;

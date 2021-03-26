@@ -5,7 +5,7 @@ import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import { connect } from 'react-redux';
-import { addToCartProduct } from '../../actions';
+import { deleteCartProduct } from '../../actions';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { Col, Row, Card, Input } from 'antd';
 import { COLORS } from '../../constants';
@@ -17,12 +17,36 @@ interface IExternalProps {}
 interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
+  deleteCartProduct: any;
 }
 
-const Cart: FC<IProps> = ({ cartProducts }) => {
+const Cart: FC<IProps> = ({ cartProducts, deleteCartProduct }) => {
+  const handleDelete = useCallback(
+    (id?: number) => {
+      const cartProductsResult = cartProducts.filter(
+        (item: any) => item.id !== id,
+      );
+      deleteCartProduct(id);
+      localStorage.setItem('cartProducts', JSON.stringify(cartProductsResult));
+    },
+    [cartProducts, deleteCartProduct],
+  );
+
   const renderProducts = useCallback(() => {
-    return cartProducts.map((item: any) => <CartProduct />);
+    return cartProducts.map((item: any) => (
+      <CartProduct length={item.length} onDelete={handleDelete} id={item.id} />
+    ));
+  }, [cartProducts, handleDelete]);
+
+  const getSize = useCallback(() => {
+    return cartProducts.reduce((num: number, item: any) => {
+      return num + item.length;
+    }, 0);
   }, [cartProducts]);
+
+  const getPrice = useCallback(() => {
+    return getSize() * 14000;
+  }, [getSize]);
 
   return (
     <div className="mb-4">
@@ -36,12 +60,12 @@ const Cart: FC<IProps> = ({ cartProducts }) => {
             <Col className="Cart-column wow fadeIn" span={7}>
               <Card>
                 <div className="d-flex mb-1 justify-content-between">
-                  <span>Товары (7)</span>
-                  <span>71 000</span>
+                  <span>Товары ({getSize()})</span>
+                  <span>{getPrice()}</span>
                 </div>
                 <div className="d-flex mb-3 justify-content-between">
                   <span className="font-weight">Всего</span>
-                  <span className="font-weight">71 000</span>
+                  <span className="font-weight">{getPrice()}</span>
                 </div>
                 <Button
                   bgColor={COLORS.orange}
@@ -68,4 +92,4 @@ const mapStateToProps = (state: any) => ({
   cartProducts: state.cartProducts,
 });
 
-export default connect(mapStateToProps, { addToCartProduct })(Cart);
+export default connect(mapStateToProps, { deleteCartProduct })(Cart);

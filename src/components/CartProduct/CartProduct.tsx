@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { InputNumber } from 'antd';
 import './CartProduct.scss';
 import Button from '../Button/Button';
@@ -9,9 +9,19 @@ import WOW from 'wowjs';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  id: number;
+  onDelete?: (id: number) => void;
+  length?: number;
+}
 
-const CartProduct: FC<IProps> = () => {
+const CartProduct: FC<IProps> = ({ id, onDelete, length }) => {
+  const handleDelete = useCallback(() => {
+    if (onDelete) {
+      onDelete(id);
+    }
+  }, [id, onDelete]);
+
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
@@ -33,13 +43,13 @@ const CartProduct: FC<IProps> = () => {
             </p>
           </div>
           <div className="d-flex CartProduct-price">
-            <InputNumber min={1} max={100} defaultValue={1} />
-            <b className="ml-4">14 000 р</b>
+            <InputNumber min={1} max={100} defaultValue={Number(length)} />
+            <b className="ml-4">{14000 * Number(length)} р</b>
           </div>
         </div>
       </div>
       <div className="d-flex justify-content-end">
-        <Button bgColor={COLORS.transparent}>
+        <Button bgColor={COLORS.transparent} onClick={handleDelete}>
           <BiBasket color={COLORS.red} size={20} />
         </Button>
       </div>

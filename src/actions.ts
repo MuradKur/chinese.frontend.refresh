@@ -5,3 +5,10 @@ export const addToCartProduct = (product: any) => {
     payload: product,
   };
 };
+
+export const deleteCartProduct = (productId: number) => {
+  return {
+    type: 'DELETE_PRODUCT',
+    payload: productId,
+  };
+};

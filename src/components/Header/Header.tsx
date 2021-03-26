@@ -102,11 +102,38 @@ const NAVS: Nav['navs'] = [
     label: 'оптовикам',
     link: '/delivery',
   },
-
   {
     id: 6,
     label: 'контакты',
     link: '/contacts',
+  },
+  {
+    id: 9,
+    label: 'другие ссылки',
+    subMenuProps: {
+      navs: [
+        {
+          id: 7,
+          label: 'making',
+          link: '/making',
+        },
+        {
+          id: 8,
+          label: 'prices',
+          link: '/prices/12',
+        },
+        {
+          id: 9,
+          label: 'product',
+          link: '/product/12',
+        },
+        {
+          id: 10,
+          label: 'guarante',
+          link: '/guarante',
+        },
+      ],
+    },
   },
 ];
 

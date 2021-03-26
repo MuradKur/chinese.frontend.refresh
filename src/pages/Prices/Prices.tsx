@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Button as ButtonComponent } from 'antd';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Button from '../../components/Button/Button';
@@ -13,6 +13,8 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import Footer from '../../components/Footer/Footer';
 import ProductTable from '../../components/ProductTable/ProductTable';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
+// @ts-ignore
+import WOW from 'wowjs';
 
 interface IExternalProps {}
 
@@ -124,6 +126,10 @@ const columns = [
 ];
 
 const Prices: FC<IProps> = () => {
+  useEffect(() => {
+    new WOW.WOW().init();
+  }, []);
+
   return (
     <div className="page-with-header">
       <div className="container">
@@ -161,7 +167,7 @@ const Prices: FC<IProps> = () => {
             </ButtonComponent>
           </div>
           <div className="mb-3">
-            <Warning>
+            <Warning className="wow slideInLeft">
               <div className="break-all">
                 Notice: Undefined index: tid in drupal_page_get_cache() (line
                 1315 of /var/www/koreanaparts.ru/includes/bootstrap.inc).
@@ -171,7 +177,7 @@ const Prices: FC<IProps> = () => {
             <h2 className="Prices-subtitle mb-5 mt-5 wow fadeIn">
               SP1047 | SANGSIN | КОМПЛЕКТ ПЕРЕДНИХ ТОРМОЗНЫХ КОЛОДОК
             </h2>
-            <Warning>
+            <Warning className="wow slideInRight">
               <b style={{ color: COLORS.red }}>
                 {' '}
                 Минимальная стоимость доставки{' '}

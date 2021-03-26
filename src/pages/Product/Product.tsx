@@ -57,21 +57,42 @@ const Product: FC<IProps> = ({ addToCartProduct }) => {
     new WOW.WOW().init();
   }, []);
 
-  const handleOpen = useCallback(() => {
-    const product = { title: 'nnn' };
-    const products = localStorage.getItem('products');
-    addToCartProduct([product]);
+  const handleOpen = useCallback(
+    (id) => {
+      return () => {
+        const product = { title: 'nnn', id, length: 1 };
+        const products = localStorage.getItem('products');
 
-    if (products) {
-      localStorage.setItem(
-        'products',
-        JSON.stringify([...JSON.parse(products), product]),
-      );
-    } else {
-      localStorage.setItem('products', JSON.stringify([product]));
-    }
-    setOpenMessage(true);
-  }, [addToCartProduct]);
+        if (products) {
+          const productsArr = JSON.parse(products);
+          const similarProducts = productsArr.find(
+            (item: any) => item.id === id,
+          );
+          if (similarProducts) {
+            const result = productsArr.map((item: any) => {
+              if (item.id === id) {
+                similarProducts.length++;
+                return similarProducts;
+              }
+              return item;
+            });
+            addToCartProduct(result);
+
+            localStorage.setItem('products', JSON.stringify(result));
+          } else {
+            const productsResult = [...productsArr, product];
+            addToCartProduct(productsResult);
+            localStorage.setItem('products', JSON.stringify(productsResult));
+          }
+        } else {
+          localStorage.setItem('products', JSON.stringify([product]));
+          addToCartProduct([product]);
+        }
+        setOpenMessage(true);
+      };
+    },
+    [addToCartProduct],
+  );
 
   const showDrawer = () => {
     setVisible(true);
@@ -109,7 +130,7 @@ const Product: FC<IProps> = ({ addToCartProduct }) => {
       },
       buy: {
         render() {
-          return <Button onClick={handleOpen}>Купить</Button>;
+          return <Button onClick={handleOpen(1)}>Купить</Button>;
         },
       },
       count: {
@@ -143,7 +164,7 @@ const Product: FC<IProps> = ({ addToCartProduct }) => {
       },
       buy: {
         render() {
-          return <Button onClick={handleOpen}>Купить</Button>;
+          return <Button onClick={handleOpen(2)}>Купить</Button>;
         },
       },
       count: {

@@ -7,7 +7,14 @@ const reducer = (state = initialState, action: any) => {
     case 'ADD_PRODUCT':
       return {
         ...state,
-        cartProducts: [...state.cartProducts, ...action.payload],
+        cartProducts: action.payload,
+      };
+    case 'DELETE_PRODUCT':
+      return {
+        ...state,
+        cartProducts: state.cartProducts.filter(
+          (item: any) => item.id !== action.payload,
+        ),
       };
     default:
       return state;
