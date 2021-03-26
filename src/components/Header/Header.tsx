@@ -132,6 +132,11 @@ const NAVS: Nav['navs'] = [
           label: 'guarante',
           link: '/guarante',
         },
+        {
+          id: 11,
+          label: 'auth',
+          link: '/auth',
+        },
       ],
     },
   },
