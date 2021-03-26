@@ -5,7 +5,7 @@ import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import { connect } from 'react-redux';
-import { deleteCartProduct } from '../../actions';
+import { deleteCartProduct, addToCartProduct } from '../../actions';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { Col, Row, Card, Input } from 'antd';
 import { COLORS } from '../../constants';
@@ -18,25 +18,55 @@ interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
   deleteCartProduct: any;
+  addToCartProduct: any;
 }
 
-const Cart: FC<IProps> = ({ cartProducts, deleteCartProduct }) => {
+const Cart: FC<IProps> = ({
+  cartProducts,
+  deleteCartProduct,
+  addToCartProduct,
+}) => {
   const handleDelete = useCallback(
     (id?: number) => {
       const cartProductsResult = cartProducts.filter(
         (item: any) => item.id !== id,
       );
       deleteCartProduct(id);
-      localStorage.setItem('cartProducts', JSON.stringify(cartProductsResult));
+      localStorage.setItem('products', JSON.stringify(cartProductsResult));
     },
     [cartProducts, deleteCartProduct],
   );
 
+  const handleChangeQuantity = useCallback(
+    (id: number, value: number) => {
+      const productIndex = cartProducts.findIndex(
+        (item: any) => item.id === id,
+      );
+
+      if (productIndex !== -1) {
+        cartProducts[productIndex].length = value;
+        const newCart = [
+          ...cartProducts.slice(0, productIndex),
+          cartProducts[productIndex],
+          ...cartProducts.slice(productIndex + 1),
+        ];
+        addToCartProduct(newCart);
+        localStorage.setItem('products', JSON.stringify(newCart));
+      }
+    },
+    [cartProducts, addToCartProduct],
+  );
+
   const renderProducts = useCallback(() => {
     return cartProducts.map((item: any) => (
-      <CartProduct length={item.length} onDelete={handleDelete} id={item.id} />
+      <CartProduct
+        length={item.length}
+        onChangeQuantity={handleChangeQuantity}
+        onDelete={handleDelete}
+        id={item.id}
+      />
     ));
-  }, [cartProducts, handleDelete]);
+  }, [cartProducts, handleDelete, handleChangeQuantity]);
 
   const getSize = useCallback(() => {
     return cartProducts.reduce((num: number, item: any) => {
@@ -92,4 +122,7 @@ const mapStateToProps = (state: any) => ({
   cartProducts: state.cartProducts,
 });
 
-export default connect(mapStateToProps, { deleteCartProduct })(Cart);
+export default connect(mapStateToProps, {
+  deleteCartProduct,
+  addToCartProduct,
+})(Cart);
