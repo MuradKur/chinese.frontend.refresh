@@ -5,10 +5,11 @@ import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import { connect } from 'react-redux';
-import { deleteCartProduct, addToCartProduct } from '../../actions';
+import { deleteCartProduct, updateQuantity } from '../../actions';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { Col, Row, Card, Input } from 'antd';
 import { COLORS } from '../../constants';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -17,44 +18,27 @@ interface IExternalProps {}
 interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
-  deleteCartProduct: any;
-  addToCartProduct: any;
+  deleteCartProduct: (id?: number | string) => void;
+  updateQuantity: (id: number, value: number) => void;
 }
 
 const Cart: FC<IProps> = ({
   cartProducts,
   deleteCartProduct,
-  addToCartProduct,
+  updateQuantity,
 }) => {
   const handleDelete = useCallback(
     (id?: number) => {
-      const cartProductsResult = cartProducts.filter(
-        (item: any) => item.id !== id,
-      );
       deleteCartProduct(id);
-      localStorage.setItem('products', JSON.stringify(cartProductsResult));
     },
-    [cartProducts, deleteCartProduct],
+    [deleteCartProduct],
   );
 
   const handleChangeQuantity = useCallback(
     (id: number, value: number) => {
-      const productIndex = cartProducts.findIndex(
-        (item: any) => item.id === id,
-      );
-
-      if (productIndex !== -1) {
-        cartProducts[productIndex].length = value;
-        const newCart = [
-          ...cartProducts.slice(0, productIndex),
-          cartProducts[productIndex],
-          ...cartProducts.slice(productIndex + 1),
-        ];
-        addToCartProduct(newCart);
-        localStorage.setItem('products', JSON.stringify(newCart));
-      }
+      updateQuantity(id, value);
     },
-    [cartProducts, addToCartProduct],
+    [updateQuantity],
   );
 
   const renderProducts = useCallback(() => {
@@ -64,6 +48,7 @@ const Cart: FC<IProps> = ({
         onChangeQuantity={handleChangeQuantity}
         onDelete={handleDelete}
         id={item.id}
+        key={item.id}
       />
     ));
   }, [cartProducts, handleDelete, handleChangeQuantity]);
@@ -97,12 +82,14 @@ const Cart: FC<IProps> = ({
                   <span className="font-weight">Всего</span>
                   <span className="font-weight">{getPrice()}</span>
                 </div>
-                <Button
-                  bgColor={COLORS.orange}
-                  color={COLORS.black}
-                  className="Cart-button--registration mb-4 w-100">
-                  Перейти к оформлению
-                </Button>
+                <Link to="/making">
+                  <Button
+                    bgColor={COLORS.orange}
+                    color={COLORS.black}
+                    className="Cart-button--registration mb-4 w-100">
+                    Перейти к оформлению
+                  </Button>
+                </Link>
                 <Search
                   enterButton="Применить"
                   placeholder="input search w-100 text"
@@ -124,5 +111,5 @@ const mapStateToProps = (state: any) => ({
 
 export default connect(mapStateToProps, {
   deleteCartProduct,
-  addToCartProduct,
+  updateQuantity,
 })(Cart);

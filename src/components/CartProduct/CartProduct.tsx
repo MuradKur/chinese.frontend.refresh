@@ -59,7 +59,7 @@ const CartProduct: FC<IProps> = ({
               onChange={handleChangeQuantity}
               min={1}
               max={100}
-              defaultValue={Number(length)}
+              value={Number(length)}
             />
             <b className="ml-4">{14000 * Number(length)} р</b>
           </div>

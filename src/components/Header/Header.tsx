@@ -11,7 +11,8 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import SubHeader from '../SubHeader/SubHeader';
 import { BiCart } from 'react-icons/bi';
 import { connect } from 'react-redux';
-import { addToCartProduct } from '../../actions';
+import { setProducts } from '../../actions';
+import { getLocalStorage } from '../../services/localStorage';
 
 const { Panel } = Collapse;
 
@@ -26,7 +27,7 @@ interface IExternalProps {}
 interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
-  addToCartProduct: any;
+  setProducts: any;
 }
 
 interface Nav {
@@ -125,7 +126,7 @@ const NAVS: Nav['navs'] = [
         {
           id: 9,
           label: 'product',
-          link: '/product/12',
+          link: '/product/1/750',
         },
         {
           id: 10,
@@ -142,17 +143,16 @@ const NAVS: Nav['navs'] = [
   },
 ];
 
-const Header: FC<IProps> = ({ cartProducts, addToCartProduct }) => {
+const Header: FC<IProps> = ({ cartProducts, setProducts }) => {
   const [isOpenDrawer, setOpenDrawer] = useState(false);
 
   const getProducts = useCallback(() => {
-    const products = localStorage.getItem('products');
+    const products = getLocalStorage('products');
 
     if (products) {
-      const productsData = JSON.parse(products);
-      addToCartProduct(productsData);
+      setProducts(products);
     }
-  }, [addToCartProduct]);
+  }, [setProducts]);
 
   useEffect(() => {
     getProducts();
@@ -331,4 +331,4 @@ const mapStateToProps = (state: any) => ({
   cartProducts: state.cartProducts,
 });
 
-export default connect(mapStateToProps, { addToCartProduct })(Header);
+export default connect(mapStateToProps, { setProducts })(Header);
