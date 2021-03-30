@@ -1,0 +1,38 @@
+.SuccessfulOrder-border {
+  border: darkgoldenrod solid 3px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.SuccessfulOrder-title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.SuccessfulOrder-flex-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SuccessfulOrder-paragraph-pt {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.SuccessfulOrder-paragraph-pb {
+  margin-bottom: 0;
+}
+
+.SuccessfulOrder-link {
+  color: red;
+
+  &:hover {
+    color: crimson;
+    text-decoration: underline;
+  }
+}
+
+.SuccessfulOrder-change-of-color {
+  color: red;
+}
