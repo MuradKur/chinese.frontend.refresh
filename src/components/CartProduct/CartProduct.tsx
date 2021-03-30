@@ -13,14 +13,26 @@ interface IProps extends IExternalProps {
   id: number;
   onDelete?: (id: number) => void;
   length?: number;
+  onChangeQuantity?: (id: number, value: number) => void;
 }
 
-const CartProduct: FC<IProps> = ({ id, onDelete, length }) => {
+const CartProduct: FC<IProps> = ({
+  id,
+  onDelete,
+  length,
+  onChangeQuantity,
+}) => {
   const handleDelete = useCallback(() => {
     if (onDelete) {
       onDelete(id);
     }
   }, [id, onDelete]);
+
+  const handleChangeQuantity = (num: number) => {
+    if (onChangeQuantity) {
+      onChangeQuantity(id, num);
+    }
+  };
 
   useEffect(() => {
     new WOW.WOW().init();
@@ -43,7 +55,12 @@ const CartProduct: FC<IProps> = ({ id, onDelete, length }) => {
             </p>
           </div>
           <div className="d-flex CartProduct-price">
-            <InputNumber min={1} max={100} defaultValue={Number(length)} />
+            <InputNumber
+              onChange={handleChangeQuantity}
+              min={1}
+              max={100}
+              value={Number(length)}
+            />
             <b className="ml-4">{14000 * Number(length)} р</b>
           </div>
         </div>

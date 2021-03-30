@@ -74,14 +74,18 @@ const Table: FC<IProps> = ({
     if (!data || !columns || data.length === 0 || columns.length === 0) {
       return <Empty />;
     }
-    return data.map((item) => {
+    return data.map((item, index) => {
       return (
-        <div className="Table-body--row" onClick={handleRowClick(item)}>
-          {columns.map((column) => {
+        <div
+          className="Table-body--row"
+          key={index}
+          onClick={handleRowClick(item)}>
+          {columns.map((column, idx) => {
             if (item[column.key]) {
               if (typeof item[column.key].render === 'function') {
                 return (
                   <div
+                    key={idx}
                     className={`Table-body--cell ${
                       item[column.key].className
                     }`}>
@@ -92,6 +96,7 @@ const Table: FC<IProps> = ({
               }
               return (
                 <div
+                  key={idx}
                   className={`Table-body--cell ${item[column.key].className}`}>
                   {item[column.key].value}
                 </div>

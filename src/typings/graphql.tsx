@@ -32,6 +32,8 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
+  carts?: Maybe<Array<Maybe<CartType>>>;
+  products?: Maybe<Array<Maybe<ProductType>>>;
   regions?: Maybe<Array<Maybe<RegionType>>>;
   contacts?: Maybe<Array<Maybe<ContactType>>>;
   autoServices?: Maybe<Array<Maybe<AutoServiceType>>>;
@@ -40,6 +42,14 @@ export type Query = {
   actions?: Maybe<Array<Maybe<ActionType>>>;
   news?: Maybe<Array<Maybe<NewsType>>>;
   profiles?: Maybe<Array<Maybe<ProfileType>>>;
+};
+
+export type QueryCartsArgs = {
+  cartId?: Maybe<Scalars['Int']>;
+};
+
+export type QueryProductsArgs = {
+  productId?: Maybe<Scalars['Int']>;
 };
 
 export type QueryRegionsArgs = {
@@ -65,6 +75,61 @@ export type QueryNewsArgs = {
 
 export type QueryProfilesArgs = {
   profileId?: Maybe<Scalars['Int']>;
+};
+
+export type CartType = {
+  __typename?: 'CartType';
+  id: Scalars['ID'];
+  user: UserType;
+  product: ProductType;
+};
+
+export type UserType = {
+  __typename?: 'UserType';
+  id: Scalars['ID'];
+  password: Scalars['String'];
+  lastLogin?: Maybe<Scalars['DateTime']>;
+  /** Designates that this user has all permissions without explicitly assigning them. */
+  isSuperuser: Scalars['Boolean'];
+  /** Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+  username: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  email: Scalars['String'];
+  /** Designates whether the user can log into this admin site. */
+  isStaff: Scalars['Boolean'];
+  /** Designates whether this user should be treated as active. Unselect this instead of deleting accounts. */
+  isActive: Scalars['Boolean'];
+  dateJoined: Scalars['DateTime'];
+  profile?: Maybe<UserProfile>;
+  cartSet: Array<CartType>;
+};
+
+export type UserProfile = {
+  __typename?: 'UserProfile';
+  id: Scalars['ID'];
+  user: UserType;
+  role: ProfileRole;
+};
+
+/** An enumeration. */
+export enum ProfileRole {
+  /** user */
+  USER = 'USER',
+  /** manager */
+  MANAGER = 'MANAGER',
+}
+
+export type ProductType = {
+  __typename?: 'ProductType';
+  id: Scalars['ID'];
+  title: Scalars['String'];
+  image?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  brand: Scalars['String'];
+  quantity: Scalars['Int'];
+  price: Scalars['Float'];
+  cartSet: Array<CartType>;
 };
 
 export type RegionType = {
@@ -99,41 +164,6 @@ export type AutoServiceType = {
   coordinates?: Maybe<Scalars['String']>;
 };
 
-export type UserType = {
-  __typename?: 'UserType';
-  id: Scalars['ID'];
-  password: Scalars['String'];
-  lastLogin?: Maybe<Scalars['DateTime']>;
-  /** Designates that this user has all permissions without explicitly assigning them. */
-  isSuperuser: Scalars['Boolean'];
-  /** Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-  username: Scalars['String'];
-  firstName: Scalars['String'];
-  lastName: Scalars['String'];
-  email: Scalars['String'];
-  /** Designates whether the user can log into this admin site. */
-  isStaff: Scalars['Boolean'];
-  /** Designates whether this user should be treated as active. Unselect this instead of deleting accounts. */
-  isActive: Scalars['Boolean'];
-  dateJoined: Scalars['DateTime'];
-  profile?: Maybe<UserProfile>;
-};
-
-export type UserProfile = {
-  __typename?: 'UserProfile';
-  id: Scalars['ID'];
-  user: UserType;
-  role: ProfileRole;
-};
-
-/** An enumeration. */
-export enum ProfileRole {
-  /** user */
-  USER = 'USER',
-  /** manager */
-  MANAGER = 'MANAGER',
-}
-
 export type ActionType = {
   __typename?: 'ActionType';
   id: Scalars['ID'];
@@ -167,6 +197,8 @@ export type ProfileType = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createCarts?: Maybe<CreateCart>;
+  createProducts?: Maybe<CreateProduct>;
   createAutoservices?: Maybe<CreateAutoService>;
   createUser?: Maybe<CreateUser>;
   createProfile?: Maybe<CreateProfile>;
@@ -174,6 +206,14 @@ export type Mutation = {
   tokenAuth?: Maybe<ObtainJsonWebToken>;
   verifyToken?: Maybe<Verify>;
   refreshToken?: Maybe<Refresh>;
+};
+
+export type MutationCreateCartsArgs = {
+  input: CartInput;
+};
+
+export type MutationCreateProductsArgs = {
+  input: ProductInput;
 };
 
 export type MutationCreateAutoservicesArgs = {
@@ -200,6 +240,32 @@ export type MutationVerifyTokenArgs = {
 
 export type MutationRefreshTokenArgs = {
   token: Scalars['String'];
+};
+
+export type CreateCart = {
+  __typename?: 'CreateCart';
+  ok?: Maybe<Scalars['Boolean']>;
+  cart?: Maybe<CartType>;
+};
+
+export type CartInput = {
+  userId?: Maybe<Scalars['Int']>;
+  productId?: Maybe<Scalars['Int']>;
+};
+
+export type CreateProduct = {
+  __typename?: 'CreateProduct';
+  ok?: Maybe<Scalars['Boolean']>;
+  product?: Maybe<ProductType>;
+};
+
+export type ProductInput = {
+  title?: Maybe<Scalars['String']>;
+  image?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  brand?: Maybe<Scalars['String']>;
+  quantity?: Maybe<Scalars['Int']>;
+  price?: Maybe<Scalars['Int']>;
 };
 
 export type CreateAutoService = {
@@ -263,9 +329,27 @@ export type ActionFragment = { __typename?: 'ActionType' } & Pick<
   'id' | 'date' | 'title' | 'image' | 'body' | 'status'
 >;
 
+export type ContactFragment = { __typename?: 'ContactType' } & Pick<
+  ContactType,
+  | 'id'
+  | 'image'
+  | 'type'
+  | 'address'
+  | 'city'
+  | 'workTime'
+  | 'phone'
+  | 'email'
+  | 'coordinates'
+>;
+
 export type NewsFragment = { __typename?: 'NewsType' } & Pick<
   NewsType,
   'id' | 'title' | 'preview' | 'content' | 'dateCreated' | 'showMain'
+>;
+
+export type ProductFragment = { __typename?: 'ProductType' } & Pick<
+  ProductType,
+  'id' | 'title' | 'image' | 'description' | 'brand' | 'quantity' | 'price'
 >;
 
 export type ProfileFragment = { __typename?: 'UserProfile' } & Pick<
@@ -340,10 +424,31 @@ export type ActionsQuery = { __typename?: 'Query' } & {
   actions?: Maybe<Array<Maybe<{ __typename?: 'ActionType' } & ActionFragment>>>;
 };
 
+export type ContactsQueryVariables = Exact<{
+  contactId?: Maybe<Scalars['Int']>;
+  blockId?: Maybe<Scalars['Int']>;
+}>;
+
+export type ContactsQuery = { __typename?: 'Query' } & {
+  contacts?: Maybe<
+    Array<Maybe<{ __typename?: 'ContactType' } & ContactFragment>>
+  >;
+};
+
 export type NewsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type NewsQuery = { __typename?: 'Query' } & {
   news?: Maybe<Array<Maybe<{ __typename?: 'NewsType' } & NewsFragment>>>;
+};
+
+export type ProductsQueryVariables = Exact<{
+  productId?: Maybe<Scalars['Int']>;
+}>;
+
+export type ProductsQuery = { __typename?: 'Query' } & {
+  products?: Maybe<
+    Array<Maybe<{ __typename?: 'ProductType' } & ProductFragment>>
+  >;
 };
 
 export type RegionsQueryVariables = Exact<{ [key: string]: never }>;
@@ -377,6 +482,19 @@ export const ActionFragmentDoc = gql`
     status
   }
 `;
+export const ContactFragmentDoc = gql`
+  fragment contact on ContactType {
+    id
+    image
+    type
+    address
+    city
+    workTime
+    phone
+    email
+    coordinates
+  }
+`;
 export const NewsFragmentDoc = gql`
   fragment news on NewsType {
     id
@@ -385,6 +503,17 @@ export const NewsFragmentDoc = gql`
     content
     dateCreated
     showMain
+  }
+`;
+export const ProductFragmentDoc = gql`
+  fragment product on ProductType {
+    id
+    title
+    image
+    description
+    brand
+    quantity
+    price
   }
 `;
 export const UserFragmentDoc = gql`
@@ -671,6 +800,61 @@ export type ActionsQueryResult = Apollo.QueryResult<
   ActionsQuery,
   ActionsQueryVariables
 >;
+export const ContactsDocument = gql`
+  query contacts($contactId: Int, $blockId: Int) {
+    contacts(contactId: $contactId, blockId: $blockId) {
+      ...contact
+    }
+  }
+  ${ContactFragmentDoc}
+`;
+
+/**
+ * __useContactsQuery__
+ *
+ * To run a query within a React component, call `useContactsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useContactsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useContactsQuery({
+ *   variables: {
+ *      contactId: // value for 'contactId'
+ *      blockId: // value for 'blockId'
+ *   },
+ * });
+ */
+export function useContactsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ContactsQuery, ContactsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ContactsQuery, ContactsQueryVariables>(
+    ContactsDocument,
+    options,
+  );
+}
+export function useContactsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ContactsQuery,
+    ContactsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ContactsQuery, ContactsQueryVariables>(
+    ContactsDocument,
+    options,
+  );
+}
+export type ContactsQueryHookResult = ReturnType<typeof useContactsQuery>;
+export type ContactsLazyQueryHookResult = ReturnType<
+  typeof useContactsLazyQuery
+>;
+export type ContactsQueryResult = Apollo.QueryResult<
+  ContactsQuery,
+  ContactsQueryVariables
+>;
 export const NewsDocument = gql`
   query news {
     news {
@@ -713,6 +897,60 @@ export function useNewsLazyQuery(
 export type NewsQueryHookResult = ReturnType<typeof useNewsQuery>;
 export type NewsLazyQueryHookResult = ReturnType<typeof useNewsLazyQuery>;
 export type NewsQueryResult = Apollo.QueryResult<NewsQuery, NewsQueryVariables>;
+export const ProductsDocument = gql`
+  query products($productId: Int) {
+    products(productId: $productId) {
+      ...product
+    }
+  }
+  ${ProductFragmentDoc}
+`;
+
+/**
+ * __useProductsQuery__
+ *
+ * To run a query within a React component, call `useProductsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductsQuery({
+ *   variables: {
+ *      productId: // value for 'productId'
+ *   },
+ * });
+ */
+export function useProductsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ProductsQuery, ProductsQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ProductsQuery, ProductsQueryVariables>(
+    ProductsDocument,
+    options,
+  );
+}
+export function useProductsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProductsQuery,
+    ProductsQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ProductsQuery, ProductsQueryVariables>(
+    ProductsDocument,
+    options,
+  );
+}
+export type ProductsQueryHookResult = ReturnType<typeof useProductsQuery>;
+export type ProductsLazyQueryHookResult = ReturnType<
+  typeof useProductsLazyQuery
+>;
+export type ProductsQueryResult = Apollo.QueryResult<
+  ProductsQuery,
+  ProductsQueryVariables
+>;
 export const RegionsDocument = gql`
   query regions {
     regions {
