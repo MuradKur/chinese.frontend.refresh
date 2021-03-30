@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC } from 'react';
 import './Cart.scss';
 import MakingTable from '../../components/MakingTable/MakingTable';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
