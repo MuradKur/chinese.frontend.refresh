@@ -5,10 +5,11 @@ import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import { connect } from 'react-redux';
-import { deleteCartProduct } from '../../actions';
+import { deleteCartProduct, updateQuantity } from '../../actions';
 import CartProduct from '../../components/CartProduct/CartProduct';
 import { Col, Row, Card, Input } from 'antd';
 import { COLORS } from '../../constants';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -17,26 +18,40 @@ interface IExternalProps {}
 interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
-  deleteCartProduct: any;
+  deleteCartProduct: (id?: number | string) => void;
+  updateQuantity: (id: number, value: number) => void;
 }
 
-const Cart: FC<IProps> = ({ cartProducts, deleteCartProduct }) => {
+const Cart: FC<IProps> = ({
+  cartProducts,
+  deleteCartProduct,
+  updateQuantity,
+}) => {
   const handleDelete = useCallback(
     (id?: number) => {
-      const cartProductsResult = cartProducts.filter(
-        (item: any) => item.id !== id,
-      );
       deleteCartProduct(id);
-      localStorage.setItem('cartProducts', JSON.stringify(cartProductsResult));
     },
-    [cartProducts, deleteCartProduct],
+    [deleteCartProduct],
+  );
+
+  const handleChangeQuantity = useCallback(
+    (id: number, value: number) => {
+      updateQuantity(id, value);
+    },
+    [updateQuantity],
   );
 
   const renderProducts = useCallback(() => {
     return cartProducts.map((item: any) => (
-      <CartProduct length={item.length} onDelete={handleDelete} id={item.id} />
+      <CartProduct
+        length={item.length}
+        onChangeQuantity={handleChangeQuantity}
+        onDelete={handleDelete}
+        id={item.id}
+        key={item.id}
+      />
     ));
-  }, [cartProducts, handleDelete]);
+  }, [cartProducts, handleDelete, handleChangeQuantity]);
 
   const getSize = useCallback(() => {
     return cartProducts.reduce((num: number, item: any) => {
@@ -67,12 +82,14 @@ const Cart: FC<IProps> = ({ cartProducts, deleteCartProduct }) => {
                   <span className="font-weight">Всего</span>
                   <span className="font-weight">{getPrice()}</span>
                 </div>
-                <Button
-                  bgColor={COLORS.orange}
-                  color={COLORS.black}
-                  className="Cart-button--registration mb-4 w-100">
-                  Перейти к оформлению
-                </Button>
+                <Link to="/making">
+                  <Button
+                    bgColor={COLORS.orange}
+                    color={COLORS.black}
+                    className="Cart-button--registration mb-4 w-100">
+                    Перейти к оформлению
+                  </Button>
+                </Link>
                 <Search
                   enterButton="Применить"
                   placeholder="input search w-100 text"
@@ -92,4 +109,7 @@ const mapStateToProps = (state: any) => ({
   cartProducts: state.cartProducts,
 });
 
-export default connect(mapStateToProps, { deleteCartProduct })(Cart);
+export default connect(mapStateToProps, {
+  deleteCartProduct,
+  updateQuantity,
+})(Cart);

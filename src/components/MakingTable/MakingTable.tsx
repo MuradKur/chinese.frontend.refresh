@@ -10,21 +10,27 @@ interface IProps extends IExternalProps {}
 const columns2 = [
   {
     key: 'title',
+    title: 'Title',
   },
   {
     key: 'name',
+    title: 'Name',
   },
   {
     key: 'brand',
+    title: 'Brand',
   },
   {
     key: 'quantity',
+    title: 'Quanity',
   },
   {
     key: 'price',
+    title: 'Price',
   },
   {
     key: 'amount',
+    title: 'Amount',
   },
   {
     key: 'button',
@@ -93,12 +99,7 @@ const MakingTable: FC<IProps> = () => {
   return (
     <div>
       <div className="MakingTable-border mt-1">
-        <Table
-          className="wow fadeIn"
-          hideHeader
-          data={data2}
-          columns={columns2}
-        />
+        <Table className="wow fadeIn" data={data2} columns={columns2} />
       </div>
     </div>
   );

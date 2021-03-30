@@ -66,7 +66,11 @@ class App extends React.Component<IProps> {
             <Route exact path="/delivery" component={DeliveryInRussia} />
             <Route exact path="/actions" component={Actions} />
             <Route exact path="/guarante" component={GuaranteePage} />
-            <Route exact path="/product/:id" component={Product} />
+            <Route
+              exact
+              path="/product/:priceId/:sangsin"
+              component={Product}
+            />
             <Route exact path="/prices/:id?" component={Prices} />
             <Route exact path="/action/:id" component={Action} />
             <Route exact path="/auth" component={Auth} />
