@@ -1,60 +1,85 @@
-import React, { FC } from 'react';
+import { FC, useCallback } from 'react';
 import './Cart.scss';
-import MakingTable from '../../components/MakingTable/MakingTable';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import Footer from '../../components/Footer/Footer';
 import Button from '../../components/Button/Button';
 import { connect } from 'react-redux';
+import { deleteCartProduct } from '../../actions';
+import CartProduct from '../../components/CartProduct/CartProduct';
+import { Col, Row, Card, Input } from 'antd';
+import { COLORS } from '../../constants';
+
+const { Search } = Input;
 
 interface IExternalProps {}
 
 interface IProps extends IExternalProps {
   // TODO fix
   cartProducts: any;
+  deleteCartProduct: any;
 }
 
-const Cart: FC<IProps> = ({ cartProducts }) => {
+const Cart: FC<IProps> = ({ cartProducts, deleteCartProduct }) => {
+  const handleDelete = useCallback(
+    (id?: number) => {
+      const cartProductsResult = cartProducts.filter(
+        (item: any) => item.id !== id,
+      );
+      deleteCartProduct(id);
+      localStorage.setItem('cartProducts', JSON.stringify(cartProductsResult));
+    },
+    [cartProducts, deleteCartProduct],
+  );
+
+  const renderProducts = useCallback(() => {
+    return cartProducts.map((item: any) => (
+      <CartProduct length={item.length} onDelete={handleDelete} id={item.id} />
+    ));
+  }, [cartProducts, handleDelete]);
+
+  const getSize = useCallback(() => {
+    return cartProducts.reduce((num: number, item: any) => {
+      return num + item.length;
+    }, 0);
+  }, [cartProducts]);
+
+  const getPrice = useCallback(() => {
+    return getSize() * 14000;
+  }, [getSize]);
+
   return (
-    <div>
+    <div className="mb-4">
       <div className="page-with-header">
-        <div className="container">
+        <div className="container pt-3">
           <Breadcrumbs />
           <FloatingFooter />
           <h1 className="mt-5">Корзина</h1>
-          <div className="Cart-paragraph-table-block">
-            <p className="Cart-room">Номер</p>
-            <p className="Cart-room">Наименование</p>
-            <p className="Cart-brand">Бренд</p>
-            <p className="Cart-quantity">Кол-во</p>
-            <p className="Cart-price">Цена</p>
-            <p className="Cart-amount">Сумма</p>
-          </div>
-          {cartProducts.map((item: any, id: number) => (
-            <MakingTable key={id} />
-          ))}
-
-          <div className="Cart-border-block mt-1">
-            <div className="Cart-border">
-              <div className=" mt-2 d-flex  align-items-center Cart-paragraph-block">
-                <p className="mb-0 pr-5 ;">Тип цены:</p>
-                <p className="mb-0 pl-5">Общая сумма заказа:</p>
-              </div>
-              <div className="d-flex  align-items-center Cart-paragraph-block">
-                <p className="pr-5">
-                  {' '}
-                  <b>Розница -5%</b>{' '}
-                </p>
-                <p className="pl-2">
-                  {' '}
-                  <b>10760 руб.</b>{' '}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="Cart-button-block mt-5">
-            <Button className="Cart-button">ОФОРМИТЬ ЗАКАЗ</Button>
-          </div>
+          <Row className="Cart-product" justify="space-between">
+            <Col className="flex mr-5">{renderProducts()}</Col>
+            <Col className="Cart-column wow fadeIn" span={7}>
+              <Card>
+                <div className="d-flex mb-1 justify-content-between">
+                  <span>Товары ({getSize()})</span>
+                  <span>{getPrice()}</span>
+                </div>
+                <div className="d-flex mb-3 justify-content-between">
+                  <span className="font-weight">Всего</span>
+                  <span className="font-weight">{getPrice()}</span>
+                </div>
+                <Button
+                  bgColor={COLORS.orange}
+                  color={COLORS.black}
+                  className="Cart-button--registration mb-4 w-100">
+                  Перейти к оформлению
+                </Button>
+                <Search
+                  enterButton="Применить"
+                  placeholder="input search w-100 text"
+                />
+              </Card>
+            </Col>
+          </Row>
           <Footer />
         </div>
       </div>
@@ -67,4 +92,4 @@ const mapStateToProps = (state: any) => ({
   cartProducts: state.cartProducts,
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, { deleteCartProduct })(Cart);

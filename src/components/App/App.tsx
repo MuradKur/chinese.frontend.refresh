@@ -4,7 +4,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import './App.scss';
 import 'antd/dist/antd.css';
 import 'animate.css';
@@ -32,63 +32,69 @@ import Product from '../../pages/Product/Product';
 import BodyRepair from '../../pages/BodyRepair/BodyRepair';
 import Making from '../../pages/Making/Making';
 import AuthProvider from '../../providers/AuthProvider';
+import { addToCartProduct } from '../../actions';
 import React from 'react';
-import store from '../../store';
 
-class App extends React.Component {
+interface IProps {
+  // TODO fix
+  addToCartProduct: any;
+  cartProducts: any;
+}
+
+class App extends React.Component<IProps> {
   componentDidCatch(err: any) {
-    console.log(err);
+    console.error(err);
   }
 
   render() {
     return (
       <Router>
-        <Provider store={store}>
-          <AuthProvider>
-            <FloatingButton />
-            <Header />
-            <Switch>
-              <Route exact path="/components" component={Components} />
-              <Route exact path="/contacts" component={Contacts} />
-              <Route exact path="/" component={Main} />
-              <Route exact path="/news" component={News} />
-              <Route exact path="/news/:id" component={NewsDetails} />
-              <Route exact path="/about-company" component={AboutCompany} />
-              <Route exact path="/vacancies" component={Vacancies} />
-              <Route exact path="/autoservice" component={CarService} />
-              <Route exact path="/delivery" component={DeliveryInRussia} />
-              <Route exact path="/actions" component={Actions} />
-              <Route exact path="/guarante" component={GuaranteePage} />
-              <Route exact path="/product/:id" component={Product} />
-              <Route exact path="/prices/:id?" component={Prices} />
-              <Route exact path="/action/:id" component={Action} />
-              <Route exact path="/auth" component={Auth} />
-              <Route exact path="/cart" component={Cart} />
-              <Route exact path="/making" component={Making} />
+        <AuthProvider>
+          <FloatingButton />
+          <Header />
+          <Switch>
+            <Route exact path="/components" component={Components} />
+            <Route exact path="/contacts" component={Contacts} />
+            <Route exact path="/" component={Main} />
+            <Route exact path="/news" component={News} />
+            <Route exact path="/news/:id" component={NewsDetails} />
+            <Route exact path="/about-company" component={AboutCompany} />
+            <Route exact path="/vacancies" component={Vacancies} />
+            <Route exact path="/autoservice" component={CarService} />
+            <Route exact path="/delivery" component={DeliveryInRussia} />
+            <Route exact path="/actions" component={Actions} />
+            <Route exact path="/guarante" component={GuaranteePage} />
+            <Route exact path="/product/:id" component={Product} />
+            <Route exact path="/prices/:id?" component={Prices} />
+            <Route exact path="/action/:id" component={Action} />
+            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/making" component={Making} />
 
-              <Route
-                exact
-                path="/autoservice/technical-maintenance"
-                component={TechnicalMaintenance}
-              />
-              <Route exact path="/bodyrepair" component={BodyRepair} />
-              <Route
-                exact
-                path="/suspensiondiagnosis"
-                component={SuspensionDiagnosis}
-              />
-              <Route
-                exact
-                path="/autoservice/details"
-                component={DetailsAutoService}
-              />
-              <Redirect to="/" />
-            </Switch>
-          </AuthProvider>
-        </Provider>
+            <Route
+              exact
+              path="/autoservice/technical-maintenance"
+              component={TechnicalMaintenance}
+            />
+            <Route exact path="/bodyrepair" component={BodyRepair} />
+            <Route
+              exact
+              path="/suspensiondiagnosis"
+              component={SuspensionDiagnosis}
+            />
+            <Route
+              exact
+              path="/autoservice/details"
+              component={DetailsAutoService}
+            />
+            <Redirect to="/" />
+          </Switch>
+        </AuthProvider>
       </Router>
     );
   }
 }
 
-export default App;
+export default connect((state: any) => ({ cartProducts: state.cartProducts }), {
+  addToCartProduct,
+})(App);

@@ -306,8 +306,8 @@ const Prices: FC<IProps> = () => {
         render() {
           return (
             <div>
-              <Button bgColor={COLORS.black} className="Prices-send-button">
-                Заказать
+              <Button bgColor={COLORS.red} className="Prices-send-button">
+                В КОРЗИНУ
               </Button>
             </div>
           );
@@ -326,7 +326,7 @@ const Prices: FC<IProps> = () => {
       />
       {isOpen && (
         <Table
-          className="Prices-table--article Prices-table-color-three wow fadeIn"
+          className="Prices-table--article animation-slide-right Prices-table-color-three wow fadeIn"
           hideHeader
           data={data3}
           columns={columns3}

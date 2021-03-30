@@ -10,7 +10,6 @@ import Button from '../Button/Button';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import SubHeader from '../SubHeader/SubHeader';
 import { BiCart } from 'react-icons/bi';
-import { getCookie } from '../../services/cookie';
 import { connect } from 'react-redux';
 import { addToCartProduct } from '../../actions';
 
@@ -103,11 +102,38 @@ const NAVS: Nav['navs'] = [
     label: 'оптовикам',
     link: '/delivery',
   },
-
   {
     id: 6,
     label: 'контакты',
     link: '/contacts',
+  },
+  {
+    id: 9,
+    label: 'другие ссылки',
+    subMenuProps: {
+      navs: [
+        {
+          id: 7,
+          label: 'making',
+          link: '/making',
+        },
+        {
+          id: 8,
+          label: 'prices',
+          link: '/prices/12',
+        },
+        {
+          id: 9,
+          label: 'product',
+          link: '/product/12',
+        },
+        {
+          id: 10,
+          label: 'guarante',
+          link: '/guarante',
+        },
+      ],
+    },
   },
 ];
 
@@ -115,7 +141,8 @@ const Header: FC<IProps> = ({ cartProducts, addToCartProduct }) => {
   const [isOpenDrawer, setOpenDrawer] = useState(false);
 
   const getProducts = useCallback(() => {
-    const products = getCookie('products');
+    const products = localStorage.getItem('products');
+
     if (products) {
       const productsData = JSON.parse(products);
       addToCartProduct(productsData);
@@ -263,15 +290,6 @@ const Header: FC<IProps> = ({ cartProducts, addToCartProduct }) => {
                   return null;
                 })}
               </div>
-            </div>
-            <div className="Header-user--block">
-              {/* <Button
-              className="d-flex align-items-center sign-in--button"
-              bgColor={COLORS.transparent}
-              color={COLORS.red}>
-              <span className="sign-in--label">Войти</span>
-              <FaUser color={COLORS.black} size={20} />
-            </Button> */}
             </div>
             <div className="d-flex align-items-center">
               <div className="Header-burger--button ">
