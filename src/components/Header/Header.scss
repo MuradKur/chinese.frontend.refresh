@@ -163,15 +163,14 @@
     }
   }
 
-  .Header-burger--menu {
-    background-color: rgba(0, 0, 0, 0.95);
-    padding: 20px;
-    position: absolute;
-    transition: 0.1s;
+  .ant-drawer-right .ant-drawer-content-wrapper {
     top: 0;
-    right: 0;
-    bottom: 0;
-    width: 40%;
+  }
+
+  .Header-burger--menu {
+    .ant-drawer-body {
+      background-color: rgba(0, 0, 0, 0.95);
+    }
 
     .Header-burger-menu--item {
       margin-bottom: 10px;
