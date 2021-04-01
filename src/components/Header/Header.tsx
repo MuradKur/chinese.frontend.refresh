@@ -13,6 +13,9 @@ import { BiCart } from 'react-icons/bi';
 import { connect } from 'react-redux';
 import { setProducts } from '../../actions';
 import { getLocalStorage } from '../../services/localStorage';
+import { Drawer } from 'antd';
+// @ts-ignore
+import WOW from 'wowjs';
 
 const { Panel } = Collapse;
 
@@ -158,6 +161,18 @@ const Header: FC<IProps> = ({ cartProducts, setProducts }) => {
     getProducts();
   }, [getProducts]);
 
+  useEffect(() => {
+    new WOW.WOW().init();
+  }, []);
+
+  const showDrawer = () => {
+    setOpenDrawer(true);
+  };
+
+  const onClose = () => {
+    setOpenDrawer(false);
+  };
+
   const styleHeader = {
     background: COLORS.orangeGradient,
   };
@@ -231,36 +246,33 @@ const Header: FC<IProps> = ({ cartProducts, setProducts }) => {
 
   return (
     <>
-      <div
-        onClick={handleChangeStatus(false)}
-        className={`Header-burger--container ${
-          !isOpenDrawer && 'Header-burger--container-close'
-        }`}>
-        <div className="Header-burger--menu">
-          <div className="Header-burger--menu-header justify-content-between align-items-start">
-            <Button
-              onClick={handleChangeStatus(false)}
-              className="close-button Header-burger-button"
-              bgColor={COLORS.transparent}>
-              <AiOutlineClose
-                className="Header-burger-button"
-                size={25}
-                color={COLORS.white}
-              />
-            </Button>
-            <div className="d-flex justify-content-center mb-5">
-              <Link to="/">
-                <img
-                  className="logo-burger"
-                  src={orangeLogo}
-                  alt="Logo burger"
-                />
-              </Link>
-            </div>
+      <Drawer
+        className="Header-burger--menu"
+        placement="right"
+        closable={false}
+        width={300}
+        onClose={onClose}
+        visible={isOpenDrawer}>
+        <div className="Header-burger--menu-header justify-content-between align-items-start">
+          <Button
+            onClick={showDrawer}
+            className="close-button Header-burger-button"
+            bgColor={COLORS.transparent}>
+            <AiOutlineClose
+              className="Header-burger-button"
+              size={25}
+              color={COLORS.white}
+            />
+          </Button>
+          <div className="d-flex justify-content-center mb-5">
+            <Link to="/">
+              <img className="logo-burger" src={orangeLogo} alt="Logo burger" />
+            </Link>
           </div>
-          {renderBurgerMenu(NAVS)}
         </div>
-      </div>
+        {renderBurgerMenu(NAVS)}
+      </Drawer>
+
       <div className="Header-container--fixed">
         <SubHeader />
         <header style={styleHeader} className="header">
