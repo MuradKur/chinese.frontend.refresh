@@ -124,7 +124,7 @@ const NAVS: Nav['navs'] = [
         {
           id: 8,
           label: 'prices',
-          link: '/prices/12',
+          link: '/prices/MPH48',
         },
         {
           id: 9,
@@ -233,14 +233,8 @@ const Header: FC<IProps> = ({ cartProducts, setProducts }) => {
 
   const handleChangeStatus = useCallback((status: boolean) => {
     return (e: any) => {
-      const className = e.target.classList.contains('Header-burger--container');
-      const classNameBurgerButton = e.target.classList.contains(
-        'Header-burger-button',
-      );
-
-      if (className || classNameBurgerButton) {
-        setOpenDrawer(status);
-      }
+      e.stopPropagation();
+      setOpenDrawer(status);
     };
   }, []);
 

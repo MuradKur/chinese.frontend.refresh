@@ -8,6 +8,7 @@ import { Article } from '../../typings/types';
 import { Row, Tooltip } from 'antd';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -44,7 +45,9 @@ const Prices: FC<IProps> = ({ koreanaPrices, portalPrices }) => {
       render(item: Article) {
         return (
           <div>
-            <h4 className="mb-2 font-weight">{item.article}</h4>
+            <Link to={`/product/${item.id}/750`}>
+              <h4 className="mb-2 font-weight">{item.article}</h4>
+            </Link>
           </div>
         );
       },
@@ -80,6 +83,9 @@ const Prices: FC<IProps> = ({ koreanaPrices, portalPrices }) => {
     {
       key: 'amount',
       title: 'Цена',
+      render(item: Article) {
+        return <span>{item.amount} руб.</span>;
+      },
     },
     {
       key: 'delivery',
@@ -131,6 +137,9 @@ const Prices: FC<IProps> = ({ koreanaPrices, portalPrices }) => {
     {
       key: 'amount',
       title: 'Цена',
+      render(item: Article) {
+        return <span>{item.amount} руб.</span>;
+      },
     },
     {
       key: 'delivery',
@@ -190,7 +199,6 @@ const Prices: FC<IProps> = ({ koreanaPrices, portalPrices }) => {
 
   const portalPricesData = portalPrices
     ? portalPrices.map((item) => {
-        console.log(item);
         return {
           ...item,
           button: {

@@ -1,6 +1,6 @@
 import { Col, Empty, Spin } from 'antd';
 import { FC, useCallback, useEffect, useState } from 'react';
-import { Link, RouteComponentProps, useHistory } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 // @ts-ignore
 import WOW from 'wowjs';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
@@ -35,16 +35,39 @@ const PricesArticle: FC<IProps> = ({ match }) => {
       }
       setLoading(false);
     });
-  }, []);
+  }, [match]);
 
   const renderArticle = useCallback(() => {
     if (article) {
       return (
         <div>
-          {article.requestedKoreana
+          {article.requestedKoreana?.length
             ? article.requestedKoreana.map((item) => {
                 const portals = article.requestedPortal.filter(
-                  (item) => item.id === item.id,
+                  (t) => t.id === item.id,
+                );
+                return (
+                  <PriceTable
+                    key={item.id}
+                    portalPrices={portals}
+                    koreanaPrices={[item]}
+                  />
+                );
+              })
+            : null}
+        </div>
+      );
+    }
+  }, [article]);
+
+  const renderOtherArticle = useCallback(() => {
+    if (article) {
+      return (
+        <div>
+          {article.othersKoreana
+            ? article.othersKoreana.map((item) => {
+                const portals = article.othersPortal.filter(
+                  (t) => t.id === item.id,
                 );
                 return (
                   <PriceTable
@@ -83,11 +106,11 @@ const PricesArticle: FC<IProps> = ({ match }) => {
         ))}
       </Col>
     );
-  }, [renderArticle, prices]);
+  }, [renderArticle, prices, article]);
 
   return (
     <div className="page-with-header">
-      <div className="container pt-4">
+      <div className="container pt-1">
         <div className="Prices Prices-container pb-3">
           <Breadcrumbs />
           <h1 className="Prices-title wow fadeIn">Прайсы</h1>
@@ -95,6 +118,9 @@ const PricesArticle: FC<IProps> = ({ match }) => {
           <div className="mt-3">
             <Spin tip="Идёт загрузка прайсов" spinning={loading}>
               {renderContent()}
+              <br />
+              <h2>Другие прайсы</h2>
+              {renderOtherArticle()}
             </Spin>
           </div>
         </div>

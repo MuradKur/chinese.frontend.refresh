@@ -1,5 +1,5 @@
 import { Empty } from 'antd';
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import './Table.scss';
 
 export interface ColumnsType {
@@ -35,7 +35,9 @@ const Table: FC<IProps> = ({
   classNameHeader,
   onRowClick,
 }) => {
-  const style = { gridTemplateColumns: `repeat(${columns?.length || 1}, 20%)` };
+  const style = useMemo(() => {
+    return { gridTemplateColumns: `repeat(${columns?.length || 1}, 20%)` };
+  }, [columns]);
 
   const renderHeader = useCallback(() => {
     if (!columns) {
@@ -140,7 +142,7 @@ const Table: FC<IProps> = ({
         </div>
       );
     });
-  }, [columns, data, handleRowClick]);
+  }, [columns, data, handleRowClick, style]);
 
   return (
     <div className={`Table ${className || ''}`}>

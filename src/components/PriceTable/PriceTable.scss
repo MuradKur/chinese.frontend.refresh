@@ -83,6 +83,9 @@
 
 .Prices-table--article {
   &.table-information {
+    max-height: 500px;
+    overflow-y: auto;
+
     .Table-body--cell {
       border-bottom: 1px solid rgb(250, 100, 0);
     }
