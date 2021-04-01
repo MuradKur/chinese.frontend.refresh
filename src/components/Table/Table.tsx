@@ -5,6 +5,7 @@ import './Table.scss';
 export interface ColumnsType {
   title?: string | (() => React.ReactNode);
   key: string;
+  render?: (item: any) => React.ReactNode;
 }
 
 export interface TableItem {
@@ -19,7 +20,7 @@ interface IExternalProps {
   className?: string;
   onRowClick?: (data: TableItem) => void;
   data?: Array<{
-    [key: string]: TableItem;
+    [key: string]: any;
   }>;
   hideHeader?: boolean;
 }
@@ -34,6 +35,8 @@ const Table: FC<IProps> = ({
   classNameHeader,
   onRowClick,
 }) => {
+  const style = { gridTemplateColumns: `repeat(${columns?.length || 1}, 20%)` };
+
   const renderHeader = useCallback(() => {
     if (!columns) {
       return null;
@@ -79,9 +82,22 @@ const Table: FC<IProps> = ({
         <div
           className="Table-body--row"
           key={index}
+          style={style}
           onClick={handleRowClick(item)}>
           {columns.map((column, idx) => {
-            if (item[column.key]) {
+            if (item[column.key] !== undefined) {
+              if (typeof column.render === 'function') {
+                return (
+                  <div
+                    key={idx}
+                    className={`Table-body--cell ${
+                      item[column.key].className
+                    }`}>
+                    {column.render(item[column.key])}
+                  </div>
+                );
+              }
+
               if (typeof item[column.key].render === 'function') {
                 return (
                   <div
@@ -94,6 +110,22 @@ const Table: FC<IProps> = ({
                   </div>
                 );
               }
+              if (
+                typeof item[column.key] === 'string' ||
+                typeof item[column.key] === 'number'
+              ) {
+                // console.log(item[column.key])
+                return (
+                  <div
+                    key={idx}
+                    className={`Table-body--cell ${
+                      item[column.key].className
+                    }`}>
+                    {item[column.key]}
+                  </div>
+                );
+              }
+
               return (
                 <div
                   key={idx}
@@ -113,7 +145,9 @@ const Table: FC<IProps> = ({
   return (
     <div className={`Table ${className || ''}`}>
       {!hideHeader && (
-        <header className={`Table-header ${classNameHeader || ''}`}>
+        <header
+          style={style}
+          className={`Table-header ${classNameHeader || ''}`}>
           {renderHeader()}
         </header>
       )}

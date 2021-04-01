@@ -5,10 +5,19 @@ import { useHistory } from 'react-router-dom';
 import { VERIFY_TOKEN_AUTH } from '../graph/mutations/verifyToken';
 import { REFRESH_TOKEN_AUTH } from '../graph/mutations/refreshToken';
 import { getCookie } from '../services/cookie';
+import { connect } from 'react-redux';
+import { setToken } from '../actions';
 
-interface AuthProviderProps {}
+interface AuthProviderProps {
+  token: string;
+  setToken: (token: string) => void;
+}
 
-const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: FC<AuthProviderProps> = ({
+  children,
+  token: tokenData,
+  setToken,
+}) => {
   const history = useHistory();
   const [verifyTokenRequest, { data, loading }] = useMutation(
     VERIFY_TOKEN_AUTH,
@@ -18,6 +27,12 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   );
   const token = getCookie('token');
   const tokenRefresh = getCookie('refreshToken');
+
+  useEffect(() => {
+    if (token) {
+      setToken(token);
+    }
+  }, [setToken, token]);
 
   const refreshToken = useCallback(() => {
     refreshTokenRequest({
@@ -55,7 +70,11 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         history.push('/');
       }
     }
-  }, [data, history]);
+
+    if (tokenData && history.location.pathname === '/login') {
+      history.push('/');
+    }
+  }, [data, history, tokenData]);
 
   return (
     <Spin spinning={loading || refreshLoading}>
@@ -64,4 +83,10 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+const mapStateToProps = (state: any) => {
+  return {
+    token: state.token,
+  };
+};
+
+export default connect(mapStateToProps, { setToken })(AuthProvider);

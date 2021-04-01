@@ -14,6 +14,7 @@ import AboutCompany from '../../pages/AboutCompany/AboutCompany';
 import Main from '../../pages/Main/Main';
 import News from '../../pages/News/News';
 import Prices from '../../pages/Prices/Prices';
+import PricesArticle from '../../pages/PricesArticle/PricesArticle';
 import Vacancies from '../../pages/Vacancies/Vacancies';
 import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import CarService from '../../pages/CarService/CarService';
@@ -71,7 +72,8 @@ class App extends React.Component<IProps> {
               path="/product/:priceId/:sangsin"
               component={Product}
             />
-            <Route exact path="/prices/:id?" component={Prices} />
+            <Route exact path="/prices/:article?" component={PricesArticle} />
+            <Route exact path="/prices/:article/:id" component={Prices} />
             <Route exact path="/action/:id" component={Action} />
             <Route exact path="/auth" component={Auth} />
             <Route exact path="/cart" component={Cart} />

@@ -1,13 +1,20 @@
-// TODO: fix
+import { ProductType } from './typings/graphql';
 
-export const setProducts = (products: any) => {
+export const setToken = (token: string) => {
+  return {
+    type: 'SET_TOKEN',
+    payload: token,
+  };
+};
+
+export const setProducts = (products: ProductType[]) => {
   return {
     type: 'SET_PRODUCTS',
     payload: products,
   };
 };
 
-export const addToCartProduct = (product: any) => {
+export const addToCartProduct = (product: ProductType) => {
   return {
     type: 'ADD_PRODUCT',
     payload: product,

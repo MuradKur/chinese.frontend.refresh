@@ -5,10 +5,13 @@ import Table from '../../components/Table/Table';
 import { COLORS } from '../../constants';
 import { MdPhotoCamera } from 'react-icons/md';
 import { TiStar } from 'react-icons/ti';
+import { Article } from '../../typings/types';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  koreanaPrices?: Article[];
+}
 
 const columns2 = [
   {
@@ -34,182 +37,44 @@ const columns2 = [
   },
 ];
 
-const data3 = [
+const columnKoreana = [
   {
-    title: {
-      render() {
-        return (
-          <div>
-            <h4 className="mb-2">Колодки HYUNDAI ACCENT 16V</h4>
-          </div>
-        );
-      },
-    },
-    camera: {
-      render() {
-        return <div />;
-      },
-    },
-    available_to_order: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0 ">10</p>
-          </div>
-        );
-      },
-    },
-    available: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0">4 дн.</p>
-          </div>
-        );
-      },
-    },
-    rating: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <div>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-            </div>
-          </div>
-        );
-      },
-    },
-    cost: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0">
-              <b style={{ color: COLORS.red }}> 990 руб. </b>
-            </p>
-            <p className="mb-0 Prices-table-cost ">
-              <b> 990 руб. </b>
-            </p>
-          </div>
-        );
-      },
-    },
-    button: {
-      render() {
-        return (
-          <div>
-            <Button bgColor={COLORS.black} className="Prices-send-button">
-              Заказать
-            </Button>
-          </div>
-        );
-      },
-    },
+    key: 'article',
+    title: 'Номер',
   },
   {
-    title: {
-      render() {
-        return (
-          <div>
-            <h4 className="mb-2">Колодки HYUNDAI ACCENT 16V</h4>
-          </div>
-        );
-      },
-    },
-    camera: {
-      render() {
-        return <div />;
-      },
-    },
-    available_to_order: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0 ">10</p>
-          </div>
-        );
-      },
-    },
-    available: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0">4 дн.</p>
-          </div>
-        );
-      },
-    },
-    rating: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <div>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-              <TiStar className="Prices-ti-star"></TiStar>
-            </div>
-          </div>
-        );
-      },
-    },
-    cost: {
-      render() {
-        return (
-          <div className="Prices-ta">
-            <p className="mb-0">
-              <b style={{ color: COLORS.red }}> 990 руб. </b>
-            </p>
-            <p className="mb-0 Prices-table-cost ">
-              <b> 990 руб. </b>
-            </p>
-          </div>
-        );
-      },
-    },
-    button: {
-      render() {
-        return (
-          <div>
-            <Button bgColor={COLORS.black} className="Prices-send-button">
-              Заказать
-            </Button>
-          </div>
-        );
-      },
-    },
-  },
-];
-
-const columns3 = [
-  {
-    key: 'title',
+    key: 'brand',
+    title: 'Бренд',
   },
   {
-    key: 'camera',
+    key: 'name',
+    title: 'Наименование',
   },
   {
-    key: 'available_to_order',
+    key: 'qty',
+    title: 'Кол-во',
   },
   {
-    key: 'available',
+    key: 'amount',
+    title: 'Цена',
   },
   {
-    key: 'rating',
-  },
-  {
-    key: 'cost',
+    key: 'delivery',
+    title: 'Доставка. дн.',
   },
   {
     key: 'button',
   },
+  // {
+  //   key: 'stock',
+  //   title: 'Кол-во'
+  // },
+  // {
+  //   key: 'harcode',
+  // },
 ];
 
-const Prices: FC<IProps> = () => {
+const Prices: FC<IProps> = ({ koreanaPrices }) => {
   const [isOpen, setOpen] = useState(false);
 
   const handleChangeOpen = useCallback(() => {
@@ -270,7 +135,7 @@ const Prices: FC<IProps> = () => {
           return (
             <div className="Prices-ta">
               <p className="font-weight mb-0 "> Рейтинг</p>
-              <p className="mb-0">
+              <div className="mb-0">
                 <b> поставщика </b>
                 <div>
                   <TiStar className="Prices-ti-star"></TiStar>
@@ -279,7 +144,7 @@ const Prices: FC<IProps> = () => {
                   <TiStar className="Prices-ti-star"></TiStar>
                   <TiStar className="Prices-ti-star"></TiStar>
                 </div>
-              </p>
+              </div>
             </div>
           );
         },
@@ -316,20 +181,36 @@ const Prices: FC<IProps> = () => {
     },
   ];
 
+  const koreanaPricesData = koreanaPrices
+    ? koreanaPrices.map((item) => ({
+        ...item,
+        button: {
+          render() {
+            return (
+              <div>
+                <Button bgColor={COLORS.red} className="Prices-send-button">
+                  В КОРЗИНУ
+                </Button>
+              </div>
+            );
+          },
+        },
+      }))
+    : [];
+
   return (
     <div>
       <Table
         className="Prices-table--article Prices-table-color wow fadeIn"
-        hideHeader
-        data={data2}
-        columns={columns2}
+        data={koreanaPricesData}
+        columns={columnKoreana}
       />
       {isOpen && (
         <Table
           className="Prices-table--article animation-slide-right Prices-table-color-three wow fadeIn"
           hideHeader
-          data={data3}
-          columns={columns3}
+          data={data2}
+          columns={columns2}
         />
       )}
     </div>

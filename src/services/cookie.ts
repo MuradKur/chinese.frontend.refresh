@@ -15,7 +15,7 @@ export function getCookie(name: string) {
 export function setCookie(
   name: string,
   value: string,
-  options: any = { expires: new Date(Date.now() + 86400e3) },
+  options: any = { expires: new Date(Date.now() + 1006400e3) },
 ) {
   if (options.expires instanceof Date) {
     options.expires = options.expires.toUTCString();

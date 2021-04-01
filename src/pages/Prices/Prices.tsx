@@ -13,12 +13,17 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import Footer from '../../components/Footer/Footer';
 import ProductTable from '../../components/ProductTable/ProductTable';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
+import { PricesApi } from '../../services/prices';
 // @ts-ignore
 import WOW from 'wowjs';
+import { RouteComponentProps } from 'react-router-dom';
+import SearchBarPrices from '../../components/SearchBarPrices/SearchBarPrices';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps
+  extends IExternalProps,
+    RouteComponentProps<{ article: string; id: string }> {}
 
 const data = [
   {
@@ -57,7 +62,7 @@ const data = [
         return (
           <div className="Prices-ta">
             <p className="font-weight mb-0 "> Рейтинг</p>
-            <p className="mb-0">
+            <div className="mb-0">
               <b> поставщика </b>
               <div>
                 <TiStar className="Prices-ti-star"></TiStar>
@@ -66,7 +71,7 @@ const data = [
                 <TiStar className="Prices-ti-star"></TiStar>
                 <TiStar className="Prices-ti-star"></TiStar>
               </div>
-            </p>
+            </div>
           </div>
         );
       },
@@ -125,9 +130,15 @@ const columns = [
   },
 ];
 
-const Prices: FC<IProps> = () => {
+const Prices: FC<IProps> = ({ match }) => {
+  const { article, id } = match.params;
+
   useEffect(() => {
     new WOW.WOW().init();
+  }, []);
+
+  useEffect(() => {
+    PricesApi.getPricesById(id).then((result) => console.log(result));
   }, []);
 
   return (
@@ -136,36 +147,7 @@ const Prices: FC<IProps> = () => {
         <div className="Prices Prices-container pb-3">
           <Breadcrumbs />
           <h1 className="Prices-title wow fadeIn">Прайсы</h1>
-          <div className="search-block mt-5 mb-2">
-            <SearchInput />
-            <Button className="search-block--button">Поиск</Button>
-          </div>
-          <div className="d-flex mb-5 align-items-center flex-wrap">
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Записи для ТО
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Запчасти кузова
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Аксессуары
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Аккумуляторы
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Лампы
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Масла и жидкости
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Ремни
-            </ButtonComponent>
-            <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
-              Щётки
-            </ButtonComponent>
-          </div>
+          <SearchBarPrices />
           <div className="mb-3">
             <Warning className="wow slideInLeft">
               <div className="break-all">

@@ -7,14 +7,19 @@ import { TOKEN_AUTH } from '../../graph/mutations/tokenAuth';
 import { CREATE_USER } from '../../graph/mutations/createUser';
 import { useHistory } from 'react-router-dom';
 import { setCookie } from '../../services/cookie';
+import { connect } from 'react-redux';
+import { setToken } from '../../actions';
 
 interface IExternalProps {}
 
 const { TabPane } = Tabs;
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  setToken: (token: string) => void;
+  token: string;
+}
 
-const Auth: FC<IProps> = () => {
+const Auth: FC<IProps> = ({ setToken, token }) => {
   const history = useHistory();
   const [tokenAuth, { data: tokenAuthData, loading }] = useMutation(TOKEN_AUTH);
   const [
@@ -26,6 +31,12 @@ const Auth: FC<IProps> = () => {
   function updateTab(key: string) {
     setTab(key);
   }
+
+  useEffect(() => {
+    if (token) {
+      history.push('/');
+    }
+  }, [token, history]);
 
   const onSubmitRegister = useCallback(
     (e) => {
@@ -66,18 +77,20 @@ const Auth: FC<IProps> = () => {
       message.success('Вы успешно зарегистрированы');
       setCookie('token', createUserData.createUser.token);
       setCookie('refreshToken', createUserData.createUser.refreshToken);
+      setToken(createUserData.createUser.token);
       history.push('/');
     }
-  }, [createUserData, history]);
+  }, [createUserData, history, setToken]);
 
   useEffect(() => {
     if (tokenAuthData?.tokenAuth) {
       message.success('Вы успешно авторизованы');
       setCookie('token', tokenAuthData.tokenAuth.token);
       setCookie('refreshToken', tokenAuthData.tokenAuth.refreshToken);
+      setToken(tokenAuthData.tokenAuth.token);
       history.push('/');
     }
-  }, [tokenAuthData, history]);
+  }, [tokenAuthData, history, setToken]);
 
   const title =
     tab === '1'
@@ -182,4 +195,10 @@ const Auth: FC<IProps> = () => {
   );
 };
 
-export default Auth;
+const mapStateToProps = (state: any) => {
+  return {
+    token: state.token,
+  };
+};
+
+export default connect(mapStateToProps, { setToken })(Auth);

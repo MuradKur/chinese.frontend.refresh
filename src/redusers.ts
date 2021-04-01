@@ -2,6 +2,7 @@ import { setLocalStorage } from './services/localStorage';
 
 const initialState = {
   cartProducts: [] as any,
+  token: null,
 };
 
 function sliceCart(cart: any, index: number) {
@@ -59,6 +60,11 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         cartProducts: cartProductsResult,
+      };
+    case 'SET_TOKEN':
+      return {
+        ...state,
+        token: action.payload,
       };
     default:
       return state;
