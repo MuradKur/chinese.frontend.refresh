@@ -43,8 +43,16 @@ const PricesArticle: FC<IProps> = ({ match }) => {
         <div>
           {article.requestedKoreana
             ? article.requestedKoreana.map((item) => {
-                console.log(item);
-                return <PriceTable koreanaPrices={[item]} />;
+                const portals = article.requestedPortal.filter(
+                  (item) => item.id === item.id,
+                );
+                return (
+                  <PriceTable
+                    key={item.id}
+                    portalPrices={portals}
+                    koreanaPrices={[item]}
+                  />
+                );
               })
             : null}
         </div>

@@ -93,7 +93,7 @@ const Table: FC<IProps> = ({
                     className={`Table-body--cell ${
                       item[column.key].className
                     }`}>
-                    {column.render(item[column.key])}
+                    {column.render(item)}
                   </div>
                 );
               }
