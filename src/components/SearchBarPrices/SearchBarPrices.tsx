@@ -5,6 +5,7 @@ import SearchInput from '../../components/SearchInput/SearchInput';
 import { FC, useCallback, useState } from 'react';
 import { Article } from '../../typings/types';
 import { PricesApi } from '../../services/prices';
+import { debounce } from '../../services/debounce';
 
 interface PriceSearch {
   id: string;
@@ -16,10 +17,13 @@ interface IProps extends RouteComponentProps<{ article: string }> {}
 
 const SearchBarPrices: FC<IProps> = ({ match }) => {
   const history = useHistory();
-
+  const [value, setValue] = useState(match.params.article);
   const [options, setOptions] = useState<PriceSearch[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const requestPrices = useCallback((value) => {
+    setOptions([]);
+    setLoading(true);
     PricesApi.getPricesByArticle(value).then((result) => {
       if (result.articles) {
         setOptions(
@@ -38,17 +42,37 @@ const SearchBarPrices: FC<IProps> = ({ match }) => {
           },
         ]);
       }
+
+      setLoading(false);
     });
   }, []);
 
   const onSelect = (_: string, option: any) => {
     const price = JSON.parse(option.id);
-    history.push(`/prices/${price.article}`);
+    history.push(
+      `/prices/${price.article}-${price.brand.replace(/\//g, 'slash')}`,
+    );
   };
 
   const onChange = (data: string) => {
-    requestPrices(data);
+    if (data) {
+      requestPrices(data);
+    }
+
+    setValue(data);
   };
+
+  const onSearch = () => {
+    if (value) {
+      const search = value.split('-');
+      const params = `${search[0]}${
+        search[1] ? '-' + search[1].replace(/\//g, 'slash') : ''
+      }`;
+      history.push(`/prices/${params}`);
+    }
+  };
+
+  // const articleSearch = match.params.article.split('-')[0];
 
   return (
     <div>
@@ -58,8 +82,9 @@ const SearchBarPrices: FC<IProps> = ({ match }) => {
             <SearchInput
               options={options}
               onSelect={onSelect}
-              onChange={onChange}
+              onChange={debounce(onChange, 1000)}
               defaultValue={match.params.article}
+              notFoundContent={loading ? 'Загрузка...' : 'Ничего не найдено'}
             />
           </div>
           <div className="d-flex mb-5 align-items-center flex-wrap">
@@ -89,7 +114,12 @@ const SearchBarPrices: FC<IProps> = ({ match }) => {
             </ButtonComponent>
           </div>
         </div>
-        <Button className="search-block--button">Поиск</Button>
+        <Button
+          disabled={value === match.params.article}
+          onClick={onSearch}
+          className="search-block--button">
+          Поиск
+        </Button>
       </div>
     </div>
   );

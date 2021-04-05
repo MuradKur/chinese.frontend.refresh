@@ -44,12 +44,14 @@ const Prices: FC<IProps> = ({ match }) => {
       return (
         <div>
           {article.requestedKoreana?.length ? (
-            article.requestedKoreana.map((item) => {
+            article.requestedKoreana.map((item, index) => {
               const portals = article.requestedPortal.filter(
                 (t) => t.id === item.id,
               );
+              const hideHeader = index > 0;
               return (
                 <PriceTable
+                  hideHeader={hideHeader}
                   key={item.id}
                   portalPrices={portals}
                   koreanaPrices={[item]}
@@ -70,13 +72,15 @@ const Prices: FC<IProps> = ({ match }) => {
       return (
         <div>
           {article.othersKoreana
-            ? article.othersKoreana.map((item) => {
+            ? article.othersKoreana.map((item, index) => {
                 const portals = article.othersPortal.filter(
                   (t) => t.id === item.id,
                 );
+                const hideHeader = index > 0;
                 return (
                   <PriceTable
                     key={item.id}
+                    hideHeader={hideHeader}
                     portalPrices={portals}
                     koreanaPrices={[item]}
                   />

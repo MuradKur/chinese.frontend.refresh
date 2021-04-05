@@ -27,6 +27,8 @@ interface IExternalProps {
 
 interface IProps extends IExternalProps {}
 
+export interface ITableProps extends IProps {}
+
 const Table: FC<IProps> = ({
   columns,
   hideHeader,
@@ -36,11 +38,15 @@ const Table: FC<IProps> = ({
   onRowClick,
 }) => {
   const style = useMemo(() => {
-    return { gridTemplateColumns: `repeat(${columns?.length || 1}, 20%)` };
+    return {
+      gridTemplateColumns: `repeat(${columns?.length || 1}, ${
+        columns?.length ? 100 / (columns.length / 1) + '%' : '1fr'
+      })`,
+    };
   }, [columns]);
 
   const renderHeader = useCallback(() => {
-    if (!columns) {
+    if (!data || !columns || data.length === 0 || columns.length === 0) {
       return null;
     }
     return columns.map((column) => {
@@ -62,7 +68,7 @@ const Table: FC<IProps> = ({
         </div>
       );
     });
-  }, [columns]);
+  }, [columns, data]);
 
   const handleRowClick = useCallback(
     (data: TableItem) => {
@@ -77,7 +83,7 @@ const Table: FC<IProps> = ({
 
   const renderBody = useCallback(() => {
     if (!data || !columns || data.length === 0 || columns.length === 0) {
-      return <Empty />;
+      return <Empty className="pl-3 pt-3 pb-3 pr-3" />;
     }
     return data.map((item, index) => {
       return (
@@ -137,7 +143,7 @@ const Table: FC<IProps> = ({
               );
             }
 
-            return null;
+            return <div key={idx} className="able-body--cell" />;
           })}
         </div>
       );

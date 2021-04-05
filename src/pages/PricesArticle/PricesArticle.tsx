@@ -21,13 +21,18 @@ const PricesArticle: FC<IProps> = ({ match }) => {
   const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState<PriceArticleResponse | null>(null);
 
+  const articleId = match.params.article?.replace(/\-.+/, '');
+  const brandId = match.params.article
+    ?.replace(/.+\-/, '')
+    .replace('slash', '/');
+
   useEffect(() => {
     new WOW.WOW().init();
   }, []);
 
   useEffect(() => {
     setLoading(true);
-    PricesApi.getPricesByArticle(match.params.article).then((result) => {
+    PricesApi.getPricesByArticle(articleId, brandId).then((result) => {
       if (result.articles) {
         setPrices(result.articles);
       } else if (result.article) {
@@ -35,19 +40,21 @@ const PricesArticle: FC<IProps> = ({ match }) => {
       }
       setLoading(false);
     });
-  }, [match]);
+  }, [match, articleId, brandId]);
 
   const renderArticle = useCallback(() => {
     if (article) {
       return (
         <div>
           {article.requestedKoreana?.length
-            ? article.requestedKoreana.map((item) => {
+            ? article.requestedKoreana.map((item, index) => {
                 const portals = article.requestedPortal.filter(
                   (t) => t.id === item.id,
                 );
+                const hideHeader = index > 0;
                 return (
                   <PriceTable
+                    hideHeader={hideHeader}
                     key={item.id}
                     portalPrices={portals}
                     koreanaPrices={[item]}
@@ -65,12 +72,14 @@ const PricesArticle: FC<IProps> = ({ match }) => {
       return (
         <div>
           {article.othersKoreana
-            ? article.othersKoreana.map((item) => {
+            ? article.othersKoreana.map((item, index) => {
                 const portals = article.othersPortal.filter(
                   (t) => t.id === item.id,
                 );
+                const hideHeader = index > 0;
                 return (
                   <PriceTable
+                    hideHeader={hideHeader}
                     key={item.id}
                     portalPrices={portals}
                     koreanaPrices={[item]}
@@ -117,9 +126,13 @@ const PricesArticle: FC<IProps> = ({ match }) => {
           <SearchBarPrices />
           <div className="mt-3">
             <Spin tip="Идёт загрузка прайсов" spinning={loading}>
+              <h2>
+                Наличие для запрошенного артикула в магазинах и на центральном
+                складе Кореана
+              </h2>
               {renderContent()}
               <br />
-              <h2>Другие прайсы</h2>
+              <h2>Дополнительные склады: запрошенный артикул</h2>
               {renderOtherArticle()}
             </Spin>
           </div>

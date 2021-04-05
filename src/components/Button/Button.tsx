@@ -11,6 +11,7 @@ interface IExternalProps {
   onMouseMove?: (e: any) => void;
   onMouseOut?: (e: any) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export interface IButtonProps extends IExternalProps {}
@@ -26,9 +27,10 @@ const ButtonComponent: FC<IProps> = ({
   customStyles,
   children,
   onMouseMove,
+  disabled,
 }) => {
   const style = {
-    backgroundColor: bgColor || COLORS.red,
+    backgroundColor: disabled ? COLORS.lightgray : bgColor || COLORS.red,
     color: color || COLORS.white,
   };
 
@@ -38,7 +40,8 @@ const ButtonComponent: FC<IProps> = ({
       onMouseMove={onMouseMove}
       className={`button ${className}`}
       style={{ ...style, ...customStyles }}
-      onClick={onClick}>
+      disabled={disabled}
+      onClick={!disabled ? onClick : undefined}>
       {children}
     </Button>
   );

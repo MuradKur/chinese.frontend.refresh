@@ -1,6 +1,4 @@
 .Table {
-  overflow-x: auto;
-
   .Table-header {
     display: grid;
     flex-wrap: wrap;
@@ -17,16 +15,20 @@
   }
 
   .Table-body {
+    overflow-x: auto;
+
     &--cell {
       padding: 15px;
       flex: 1;
       height: 100%;
+      box-sizing: border-box;
       align-items: center;
       display: flex;
     }
 
     &--row {
       display: grid;
+      box-sizing: border-box;
       // flex-wrap: wrap;
       transition: 0.2s;
       align-items: center;

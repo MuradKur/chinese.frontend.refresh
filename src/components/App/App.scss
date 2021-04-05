@@ -89,6 +89,10 @@
   flex: 1 !important;
 }
 
+.box-sizing {
+  box-sizing: border-box;
+}
+
 .justify-content-between {
   justify-content: space-between;
 }
