@@ -1,4 +1,4 @@
-import { ProductType } from './typings/graphql';
+import { ContactType, ProductType } from './typings/graphql';
 
 export const setToken = (token: string) => {
   return {
@@ -35,5 +35,12 @@ export const deleteCartProduct = (productId?: number | string) => {
   return {
     type: 'DELETE_PRODUCT',
     payload: productId,
+  };
+};
+
+export const setAddress = (address: ContactType) => {
+  return {
+    type: 'SET_ADDRESS',
+    payload: address,
   };
 };

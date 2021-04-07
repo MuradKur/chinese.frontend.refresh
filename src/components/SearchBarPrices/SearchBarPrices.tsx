@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button';
-import { Button as ButtonComponent } from 'antd';
+// import { Button as ButtonComponent } from 'antd';
 import { useHistory, withRouter, RouteComponentProps } from 'react-router-dom';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import { FC, useCallback, useState } from 'react';
@@ -87,7 +87,7 @@ const SearchBarPrices: FC<IProps> = ({ match }) => {
               notFoundContent={loading ? 'Загрузка...' : 'Ничего не найдено'}
             />
           </div>
-          <div className="d-flex mb-5 align-items-center flex-wrap">
+          {/* <div className="d-flex mb-5 align-items-center flex-wrap">
             <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Записи для ТО
             </ButtonComponent>
@@ -112,7 +112,7 @@ const SearchBarPrices: FC<IProps> = ({ match }) => {
             <ButtonComponent className="ml-1 mr-1 mb-2 wow fadeIn" danger>
               Щётки
             </ButtonComponent>
-          </div>
+          </div> */}
         </div>
         <Button
           disabled={value === match.params.article}

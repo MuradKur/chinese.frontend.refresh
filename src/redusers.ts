@@ -1,16 +1,34 @@
 import { setLocalStorage } from './services/localStorage';
+import { ContactType, ProductType } from './typings/graphql';
 
-const initialState = {
-  cartProducts: [] as any,
+type CartType = ProductType & { length: number };
+
+export interface InitialStateType {
+  cartProducts: Array<CartType>;
+  token: null | string;
+  address: ContactType | null;
+}
+
+const initialState: InitialStateType = {
+  cartProducts: [],
   token: null,
+  address: null,
 };
 
-function sliceCart(cart: any, index: number) {
+function sliceCart(cart: CartType[], index: number) {
   return [...cart.slice(0, index), cart[index], ...cart.slice(index + 1)];
 }
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (
+  state = initialState,
+  action: { type: string; payload: any },
+) => {
   switch (action.type) {
+    case 'SET_ADDRESS':
+      return {
+        ...state,
+        address: action.payload,
+      };
     case 'SET_PRODUCTS':
       return {
         ...state,

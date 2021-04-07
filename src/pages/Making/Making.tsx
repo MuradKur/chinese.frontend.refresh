@@ -8,19 +8,19 @@ import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
 import WOW from 'wowjs';
 import Warning from '../../components/Warning/Warning';
 import MakingTable from '../../components/MakingTable/MakingTable';
-import { Input, Radio, Spin } from 'antd';
+import { Input, Radio } from 'antd';
 import { getCookie } from '../../services/cookie';
-import Map from '../../components/Map/Map';
-import { useQuery } from '@apollo/client';
-import { GET_CONTACTS } from '../../graph/queries/contacts';
-import { ContactType } from '../../typings/graphql';
+import AddressMap from '../../components/AddressMap/AddressMap';
+import { connect } from 'react-redux';
+import { InitialStateType } from '../../redusers';
 
 interface IExternalProps {}
 
-interface IProps extends IExternalProps {}
+interface IProps extends IExternalProps {
+  address: InitialStateType['address'];
+}
 
-const Making: FC<IProps> = () => {
-  const { data: contacts, loading } = useQuery(GET_CONTACTS);
+const Making: FC<IProps> = ({ address }) => {
   const [radioValue, setRadioValue] = useState(2);
 
   const onChange = useCallback((e) => {
@@ -41,23 +41,11 @@ const Making: FC<IProps> = () => {
     return null;
   }, []);
 
-  const getCoordinates = useCallback(() => {
-    if (contacts && contacts.contacts.length) {
-      return contacts.contacts.map((item: ContactType) => {
-        return item.coordinates.split(',');
-      });
-    }
-
-    return [];
-  }, [contacts]);
-
   const radioStyle = {
     display: 'block',
     height: '30px',
     lineHeight: '30px',
   };
-
-  const coordinates = getCoordinates();
 
   return (
     <div className="page-with-header">
@@ -252,7 +240,7 @@ const Making: FC<IProps> = () => {
           </p>
         </div>
 
-        <div className="Making-border pt-2">
+        <div className="Making-border pt-2 pr-4">
           <Radio.Group onChange={onChange} value={radioValue}>
             <Radio style={radioStyle} value={1}>
               Курьер до адреса по СПБ. 300 руб.
@@ -261,13 +249,8 @@ const Making: FC<IProps> = () => {
               На вынос: 0 руб.
             </Radio>
           </Radio.Group>
-          <Spin spinning={loading}>
-            <Map
-              defaultState={{ center: coordinates[0], zoom: 5 }}
-              coordinates={coordinates}
-              className="Making-map mt-2"
-            />
-          </Spin>
+          <h3 className="font-weight">{address?.address}</h3>
+          <AddressMap />
         </div>
 
         <Button className="Making-button-checkout mt-4 mb-3">
@@ -287,4 +270,8 @@ const Making: FC<IProps> = () => {
   );
 };
 
-export default Making;
+const mapStateToProps = (state: InitialStateType) => ({
+  address: state.address,
+});
+
+export default connect(mapStateToProps)(Making);

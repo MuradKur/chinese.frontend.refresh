@@ -18,7 +18,7 @@ export interface IButtonProps extends IExternalProps {}
 
 interface IProps extends IExternalProps {}
 
-const ButtonComponent: FC<IProps> = ({
+const CustomButton: FC<IProps> = ({
   onClick,
   className,
   onMouseOut,
@@ -47,4 +47,4 @@ const ButtonComponent: FC<IProps> = ({
   );
 };
 
-export default ButtonComponent;
+export default CustomButton;
