@@ -1,11 +1,12 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
 import './PersonalOffice.scss';
 import Footer from '../../components/Footer/Footer';
 import FloatingFooter from '../../components/FloatingFooter/FloatingFooter';
-import { Tabs, Radio, RadioChangeEvent } from 'antd';
-import React from 'react';
+import { Tabs } from 'antd';
 import { Row, Col } from 'antd';
+// @ts-ignore
+import WOW from 'wowjs';
 import ModalPersonalData from '../../components/ModalPersonalData/ModalPersonalData';
 import ModalCarInformation from '../../components/ModalCarInformation/ModalCarInformation';
 import ModalDeliveryAddress from '../../components/ModalDeliveryAddress/ModalDeliveryAddress';
@@ -17,16 +18,21 @@ interface IProps extends IExternalProps {}
 const { TabPane } = Tabs;
 
 const PersonalOffice: FC<IProps> = () => {
-  const [size, setSize] = useState('1');
-
   const [visibleAddress, setVisibleAddress] = useState(false);
   const [visible, setVisible] = useState(false);
   const [visibleInformation, setVisibleInformation] = useState(false);
+
+  const loadWow = () => {
+    new WOW.WOW().init();
+  };
+
+  useEffect(loadWow, []);
 
   const handleOpenModal = useCallback((e) => {
     e.preventDefault();
     setVisible(true);
   }, []);
+
   const handleCloseModal = useCallback(() => {
     setVisible(false);
   }, []);
@@ -35,6 +41,7 @@ const PersonalOffice: FC<IProps> = () => {
     e.preventDefault();
     setVisibleAddress(true);
   }, []);
+
   const handleCloseModalAddress = useCallback(() => {
     setVisibleAddress(false);
   }, []);
@@ -43,32 +50,20 @@ const PersonalOffice: FC<IProps> = () => {
     e.preventDefault();
     setVisibleInformation(true);
   }, []);
+
   const handleCloseModalInformation = useCallback(() => {
     setVisibleInformation(false);
   }, []);
-
-  const onChange = (e: RadioChangeEvent) => {
-    setSize(e.target.value);
-  };
 
   return (
     <div className="page-with-header">
       <div className="container">
         <div>
           <h1 className="mt-4">ПЕРСОНАЛЬНЫЕ ДАННЫЕ</h1>
-          <Radio.Group
-            value={size}
-            onChange={onChange}
-            style={{ marginBottom: 16 }}>
-            <Radio.Button value="1">Персональные данные</Radio.Button>
-            <Radio.Button value="2">Мои заказы</Radio.Button>
-            <Radio.Button value="3">Блокнот</Radio.Button>
-            <Radio.Button value="4">Мой гараж</Radio.Button>
-          </Radio.Group>
 
-          <Tabs defaultActiveKey="1" type="card" activeKey={size}>
-            <TabPane key="1">
-              <div>
+          <Tabs onChange={loadWow} defaultActiveKey="1" type="card">
+            <TabPane tab="Персональные данные" key="1">
+              <div className="wow fadeIn">
                 <p className="mt-5 mb-1">
                   <b>Аккаунт</b>{' '}
                   <a href="/" className="PersonalOffice-link">
@@ -181,19 +176,25 @@ const PersonalOffice: FC<IProps> = () => {
                 </Row>
               </div>
             </TabPane>
-            <TabPane key="2">
-              <Button className="PersonalOffice-button-items-orders">
-                ЗАКАЗЫ ПО ПОЗИЦИЯМ
-              </Button>
-              <p className="mt-4">Заказы отсутствуют</p>
+            <TabPane tab="Мои заказы" key="2">
+              <div className="wow fadeIn">
+                <Button className="PersonalOffice-button-items-orders">
+                  ЗАКАЗЫ ПО ПОЗИЦИЯМ
+                </Button>
+                <p className="mt-4">Заказы отсутствуют</p>
+              </div>
             </TabPane>
-            <TabPane key="3">
-              <p>В вашем блокноте нет записей</p>
+            <TabPane tab="Блокнот" key="3">
+              <div className="wow fadeIn">
+                <p>В вашем блокноте нет записей</p>
+              </div>
             </TabPane>
-            <TabPane key="4">
-              <Button className="PersonalOffice-button-items-orders">
-                ДОБАВИТЬ МАШИНУ
-              </Button>
+            <TabPane tab="Мой гараж" key="4">
+              <div className="wow fadeIn">
+                <Button className="PersonalOffice-button-items-orders">
+                  ДОБАВИТЬ МАШИНУ
+                </Button>
+              </div>
             </TabPane>
           </Tabs>
         </div>

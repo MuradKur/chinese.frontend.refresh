@@ -80,7 +80,7 @@ class App extends React.Component<IProps> {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/making" component={Making} />
             <Route exact path="/successful-order" component={SuccessfulOrder} />
-            <Route exact path="/personal-office" component={PersonalOffice} />
+            <Route exact path="/profile" component={PersonalOffice} />
             <Route
               exact
               path="/watching-the-order"

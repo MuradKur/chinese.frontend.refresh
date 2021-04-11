@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GET_REGIONS } from '../../graph/queries/regions';
 import { RegionType } from '../../typings/graphql';
 import { getCookie } from '../../services/cookie';
+import { Link } from 'react-router-dom';
 
 interface IExternalProps {}
 
@@ -67,14 +68,16 @@ const SubHeader: FC<IProps> = () => {
               <BiPhone className="mr-2" color={COLORS.red} size={24} />
               <a href="tel:+79602837775">8 (960)283 77 75</a>
             </Button>
-            <Button
-              className="d-flex align-items-center"
-              bgColor={COLORS.transparent}
-              color={COLORS.red}>
-              <Tooltip title="Личный кабинет">
-                <FaUserCircle color={COLORS.red} size={25} />
-              </Tooltip>
-            </Button>
+            <Link to="/profile">
+              <Button
+                className="d-flex align-items-center"
+                bgColor={COLORS.transparent}
+                color={COLORS.red}>
+                <Tooltip title="Личный кабинет">
+                  <FaUserCircle color={COLORS.red} size={25} />
+                </Tooltip>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
