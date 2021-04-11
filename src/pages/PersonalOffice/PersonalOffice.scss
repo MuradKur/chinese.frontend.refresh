@@ -1,0 +1,59 @@
+.PersonalOffice-border-block {
+  background-color: #eee;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.PersonalOffice-button-items-orders {
+  color: #fff;
+  width: 20%;
+  height: 40px;
+}
+
+.PersonalOffice-link {
+  color: red;
+  text-decoration: none;
+  border-bottom: 1px dotted #e34c19;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: #993716;
+  }
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  z-index: 1;
+  color: #fff;
+  background: red;
+}
+
+.ant-radio-button-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  margin: 0;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top-width: 1.02px;
+  border-left-width: 0;
+  cursor: pointer;
+  -webkit-transition: color 0.3s, background 0.3s, border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s,
+    -webkit-box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s,
+    -webkit-box-shadow 0.3s;
+}
+
+// .ant-radio-button-wrapper:hover {
+//     position: relative;
+//     background: #d9d9d9;
+//     color: black;
+// }

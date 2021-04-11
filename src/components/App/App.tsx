@@ -36,6 +36,7 @@ import AuthProvider from '../../providers/AuthProvider';
 import { addToCartProduct } from '../../actions';
 import SuccessfulOrder from '../../pages/SuccessfulOrder/SuccessfulOrder';
 import WatchingTheOrder from '../../pages/WatchingTheOrder/WatchingTheOrder';
+import PersonalOffice from '../../pages/PersonalOffice/PersonalOffice';
 import React from 'react';
 
 interface IProps {
@@ -79,6 +80,7 @@ class App extends React.Component<IProps> {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/making" component={Making} />
             <Route exact path="/successful-order" component={SuccessfulOrder} />
+            <Route exact path="/personal-office" component={PersonalOffice} />
             <Route
               exact
               path="/watching-the-order"
